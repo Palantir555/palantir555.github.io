@@ -1,6 +1,12 @@
 ---
 layout: post
 title: C++ Program Unexpectedly Finished
+tags:
+- software development
+- c++
+- error
+- qt
+- solution
 ---
 
 {% highlight c++ %}

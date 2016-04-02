@@ -1,6 +1,12 @@
 ---
 layout: post
 title: Creating a Drop-Down Menu With Qt 4.8
+tags:
+- software development
+- c++
+- qt
+- drop-down
+- gui
 ---
 
 Using the widget QComboBox in Qt 4.8 is pretty easy, but the documentation can

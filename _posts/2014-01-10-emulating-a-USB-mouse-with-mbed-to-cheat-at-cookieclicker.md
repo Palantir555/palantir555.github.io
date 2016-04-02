@@ -1,6 +1,12 @@
 ---
 layout: post
 title: Emulating a USB Mouse With mbed To Cheat At CookieClicker
+tags:
+- embedded
+- mbed
+- c++
+- cookieclicker
+- starcraft
 ---
 
 Some time ago, I was testing mbed's USBMouse and USBKeyboard, and used

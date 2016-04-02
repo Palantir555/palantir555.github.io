@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Non-Persistent XSS With a Curious Attack Vector
+tags:
+- security
+- xss
+- vulnerability
 ---
 
 For those of you who don’t know it, “memondo network” is the spanish company
