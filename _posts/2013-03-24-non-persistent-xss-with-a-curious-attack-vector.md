@@ -1,3 +1,8 @@
+---
+layout: post
+title: Non-Persistent XSS With a Curious Attack Vector
+---
+
 For those of you who don’t know it, “memondo network” is the spanish company
 behind a bunch of websites for memes, funny gifs, etc. And they have, according
 to alexa, a quite large amount of traffic (a couple of their sites being in the

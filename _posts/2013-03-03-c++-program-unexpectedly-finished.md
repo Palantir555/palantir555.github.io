@@ -1,3 +1,8 @@
+---
+layout: post
+title: C++ Program Unexpectedly Finished
+---
+
 {% highlight c++ %}
 Error: The program has unexpectedly finished
 {% endhighlight %}

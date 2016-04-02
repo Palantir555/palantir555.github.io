@@ -1,3 +1,8 @@
+---
+layout: post
+title: Emulating a USB Mouse With mbed To Cheat At CookieClicker
+---
+
 Some time ago, I was testing mbed's USBMouse and USBKeyboard, and used
 [CookieClicker](http://orteil.dashnet.org/cookieclicker/) for the proof of
 concept.
