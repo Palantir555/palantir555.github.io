@@ -9,7 +9,7 @@ permalink:    pretty
 title:        Hack The World
 tagline:      'Juan Carlos Jimenez'
 description:  'Projects and learnt lessons on Systems Security, Embedded Development, IoT, and anything worth writing about'
-url:          https://jcjc-dev.com
+url:          http://jcjc-dev.com
 baseurl:      /
 
 author:
