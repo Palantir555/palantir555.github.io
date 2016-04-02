@@ -1,26 +1,28 @@
 # Dependencies
-markdown:         redcarpet
-highlighter:      pygments
-gems:            [jekyll-paginate]
+markdown:       redcarpet
+highlighter:    pygments
+gems:          [jekyll-paginate]
 
 # Permalinks
-permalink:        pretty
+permalink:    pretty
 
 # Setup
-title:            Hyde
-tagline:          'A Jekyll theme'
-description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:              http://hyde.getpoole.com
-baseurl:          /
+title:        Hack The World
+tagline:      'Juan Carlos Jimenez'
+description:  'Projects and learnt lessons on Systems Security, Embedded Development, IoT, and anything worth writing about'
+url:          https://jcjc-dev.com
+baseurl:      /
 
 author:
-  name:           'Mark Otto'
-  url:            https://twitter.com/mdo
+    name:      'Juan Carlos Jimenez'
+    twitter:   https://twitter.com/Palantir555
+    linkedin:  https://uk.linkedin.com/in/juan-carlos-jiménez-bba49033
+    gh:        https://github.com/Palantir555
 
-paginate:         5
+paginate:      5
 
 # Custom vars
-version:          2.1.0
+version:       2.1.0
 
 github:
-  repo:           https://github.com/poole/hyde
+    repo:      https://github.com/Palantir555
