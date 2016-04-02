@@ -2,9 +2,13 @@
 layout: default
 ---
 
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
+  <span class="post-date">{{ page.date | date_to_string }}
+  <a align="right" href="https://twitter.com/share" class="twitter-share-button" data-via="d1ca1">Tweet</a>
+  </span>
   {{ content }}
 </div>
 
