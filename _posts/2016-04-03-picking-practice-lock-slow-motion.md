@@ -36,7 +36,7 @@ pretty quick.
 
 Too much pressure in the tension wrench caused the first pin to overset (the lower
 part of the first pin got stuck between the cilinder -the piece that turns when
-the lock is opened- and the case.
+the lock is opened- and the case).
 
 After reducing the force applied in the wrench we can see the pin drop and lock
 into position. The lock is now ready to be opened.
