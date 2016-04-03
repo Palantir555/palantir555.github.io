@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Emulating a USB Mouse With mbed To Cheat At CookieClicker
+title: Emulating a USB Mouse with mbed to Cheat at CookieClicker
 tags:
 - embedded
 - mbed

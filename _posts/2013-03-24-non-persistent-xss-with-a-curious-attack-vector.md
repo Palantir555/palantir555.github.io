@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Non-Persistent XSS With a Curious Attack Vector
+title: Non-Persistent XSS with a Curious Attack Vector
 tags:
 - security
 - xss
