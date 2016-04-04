@@ -12,6 +12,8 @@ description:  'Projects and learnt lessons on Systems Security, Embedded Develop
 url:          http://jcjc-dev.com
 baseurl:      /
 
+disqusid: jcjc-dev
+
 author:
     name:      'Juan Carlos Jimenez'
     twitter:   https://twitter.com/Palantir555
