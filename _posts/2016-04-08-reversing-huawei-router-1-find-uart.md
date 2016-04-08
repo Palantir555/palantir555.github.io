@@ -167,19 +167,11 @@ Please choose operation:
  0
 ```
 
-'Command line interface'?? We've found our way into the system! Let's try it out.
-We press `4` before the timeout to start in command line mode:
-
-```
--------------------------------
------Welcome to ATP Cli------
--------------------------------
-
-Login:
-```
-
-Username and password requested? This could be an issue. Before panicking, let's
-try a few common combinations. What about admin:admin??
+'Command line interface'?? We've found our way into the system! When we press `4`
+we get the message `Welcome to ATP Cli` and a login prompt. If the devs had
+modified the password this step would be a bit of an issue, but it's very common
+to find default credentials in embedded systems. After a few manual tries, the
+credentials `admin:admin` succeeded and I got access into the CLI:
 
 ```
 -------------------------------
@@ -197,8 +189,8 @@ Enter 'help' for a list of built-in commands.
 var   usr   tmp   sbin  proc  mnt   lib   init  etc   dev   bin
 ```
 
-After finding the `shell` command in the ATP Cli help, we finally have access to
-linux!
+Simply running the `shell` command in the ATP Cli gets us into the linux command
+line with root privileges :)
 
 ## Next Steps
 
