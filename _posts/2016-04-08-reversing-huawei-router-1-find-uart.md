@@ -155,13 +155,12 @@ ports at the same time and monitor one of the ports with an oscilloscope:
 
 And when we open a serial terminal in our computer to communicate with the device,
 the primary UART starts spitting out useful info. These are the commands I use
-to connect to each port as well as the first lines they spit out when you turn
-the router ON
+to connect to each port as well as the first lines they send during the boot
+process:
 
 ![Boot Sequence](http://i.imgur.com/t43E8dm.jpg)
 
 ```
-[...]
 Please choose operation:
    3: Boot system code via Flash (default).
    4: Entr boot command line interface.
@@ -190,17 +189,20 @@ Enter 'help' for a list of built-in commands.
 var   usr   tmp   sbin  proc  mnt   lib   init  etc   dev   bin
 ```
 
-Simply running the `shell` command in the ATP Cli gets us into the linux command
-line with root privileges :)
+Running the `shell` command in ATP will take us directly into Linux's CLI with
+root privileges :)
+
+This router runs BusyBox, a linux-ish distro which I'll talk about more in detail
+in the next post.
 
 ## Next Steps
 
-Now that we have acces to the BusyBox CLI (linux-ish) we can start nosing around.
+Now that we have acces to the BusyBox CLI we can start nosing round the software.
 Depending on what device you're reversing there could be plain text passwords,
 TLS certificates, useful algorithms, unsecured private APIs, etc. etc. etc.
 
 In the next post we'll focus on the software side of things. I'll explain the
 difference between different boot modes, how to dump memory, and other fun things
-you can do now that you've got root.
+you can do now that you've got direct access to the device's software.
 
 Thanks for reading! :)
