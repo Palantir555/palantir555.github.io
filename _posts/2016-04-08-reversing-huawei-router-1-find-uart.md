@@ -148,8 +148,8 @@ with the device:
 
 Now that we've got all the info we need on the hardware side, it's time to start
 talking to the device. Connect any UART to USB bridge you have around and start
-wandering around. This is the hardware setup to communicate with both serial
-ports at the same time:
+wandering around. This is my hardware setup to communicate with both serial
+ports at the same time and monitor one of the ports with an oscilloscope:
 
 ![All Connected](https://i.imgur.com/aU83qTd.jpg)
 
