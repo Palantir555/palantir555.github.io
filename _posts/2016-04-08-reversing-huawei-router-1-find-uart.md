@@ -44,10 +44,11 @@ each of them has to offer.
 
 ## Identifying Useless Pins
 
-The first thing you want to do now that you've found what you think to be UART
-ports, is see if any of those pins are actually not connected to anything.
-A neat way I've found to do so is to flash a bright light at the bottom of the
-PCB and look at it from directly up front. This is what that looks like:
+So we've found 2 rows of pins that -at first sight- could be UART ports. The
+first thing you wanna do is find out if any of those contacts is useless.
+There's a very simple trick I figured out to help find useless pads:
+Flash a bright light from the backside of the PCB and look at it from directly
+up front. This is what that looks like:
 
 ![2nd Serial Port - No Headers](https://i.imgur.com/g0REmPG.jpg)
 
