@@ -153,7 +153,11 @@ ports at the same time:
 ![All Connected](https://i.imgur.com/aU83qTd.jpg)
 
 And when we open a serial terminal in our computer to communicate with the device,
-the primary UART starts spitting out useful info:
+the primary UART starts spitting out useful info. These are the commands I use
+to connect to each port as well as the first lines they spit out when you turn
+the router ON
+
+![Boot Sequence](http://i.imgur.com/t43E8dm.jpg)
 
 ```
 [...]
