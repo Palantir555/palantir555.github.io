@@ -26,8 +26,7 @@ in this post.
 
 Most UART ports I've found in commercial products are between 4 and 6 pins,
 usually neatly aligned and sometimes marked in the PCB's silk mask somehow.
-They're not supposed to be used by users, so they usually have no pins or connector
-attached.
+They're not for end users, so they almost never have pins or connectors attached.
 
 After taking a quick look at the board, 2 sets of unused pads call my atention
 (they were unused before I soldered those pins in the picture, anyway):
@@ -202,7 +201,7 @@ Depending on what device you're reversing there could be plain text passwords,
 TLS certificates, useful algorithms, unsecured private APIs, etc. etc. etc.
 
 In the next post we'll focus on the software side of things. I'll explain the
-difference between different boot modes, how to dump memory, and other fun things
+differences between boot modes, how to dump memory, and other fun things
 you can do now that you've got direct access to the device's software.
 
 Thanks for reading! :)
