@@ -25,7 +25,7 @@ in this post.
 ## Finding the Serial Port
 
 Most UART ports I've found in commercial products are between 4 and 6 pins,
-usually neatly aligned and sometimes marked in the PCB's silk mask somehow.
+usually neatly aligned and sometimes marked in the PCB's silkscreen somehow.
 They're not for end users, so they almost never have pins or connectors attached.
 
 After taking a quick look at the board, 2 sets of unused pads call my atention
