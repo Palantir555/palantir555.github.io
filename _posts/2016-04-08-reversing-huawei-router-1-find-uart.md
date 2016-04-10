@@ -69,7 +69,7 @@ but the pad being surrounded by a ground plane would explain those connections
 In the picture above we can see both serial ports.
 
 The pads in these ports are through-hole, but the holes themselves are filled in
-with blobs of very hard, very high-melting point solder.
+with blobs of very hard, very high melting point solder.
 
 I tried soldering the pins over the pads, but the solder they used is not easy
 to work with. For the 2nd serial port I decided to drill through the solder blobs
