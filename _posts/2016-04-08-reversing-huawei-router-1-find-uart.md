@@ -167,10 +167,14 @@ Please choose operation:
 ```
 
 'Command line interface'?? We've found our way into the system! When we press `4`
-we get the message `Welcome to ATP Cli` and a login prompt. If the devs had
-modified the password this step would be a bit of an issue, but it's very common
-to find default credentials in embedded systems. After a few manual tries, the
-credentials `admin:admin` succeeded and I got access into the CLI:
+we get a command line interface to interact with the device's bootloader.
+
+Furthermore, if we let the device start as the default `3`, wait for the Flash
+checksum to be completed and press `enter`, we get the message `Welcome to ATP Cli`
+and a login prompt. If the devs had modified the password this step would be a
+bit of an issue, but it's very common to find default credentials in embedded
+systems. After a few manual tries, the credentials `admin:admin` succeeded and I
+got access into the CLI:
 
 ```
 -------------------------------
