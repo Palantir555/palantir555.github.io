@@ -128,7 +128,7 @@ floating because we haven't connected the other side yet.
 
 So now we know which pin is which, but if we want to talk to the serial port
 we need to figure out its baudrate. We can find this with a simple
-protocol dump from a logic analyser. If you don't have one, you'll have play
+protocol dump from a logic analyser. If you don't have one, you'll have to play
 "guess the baudrate" with a list of the most common ones until you get readable
 text through the serial port.
 
