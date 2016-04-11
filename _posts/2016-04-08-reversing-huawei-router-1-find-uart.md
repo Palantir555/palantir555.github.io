@@ -97,7 +97,7 @@ We also know that according to the Standard, Tx and Rx are pulled up (set to 1)
 by default. The Transmitter of the line (Tx) is in charge of pulling it up,
 which means if it's not connected the line's voltage will float.
 
-So lets compile what we know and get to some conclusions:
+So let's compile what we know and get to some conclusions:
 
 1. Only 3 pins in each header are likely to be connected to anything. **Those
 must be Tx, Rx and GND**
