@@ -195,8 +195,8 @@ var   usr   tmp   sbin  proc  mnt   lib   init  etc   dev   bin
 Running the `shell` command in ATP will take us directly into Linux's CLI with
 root privileges :)
 
-This router runs BusyBox, a linux-ish distro which I'll talk about in more detail
-in the next post.
+This router runs BusyBox, a linux-ish interface which I'll talk about in more
+detail in the next post.
 
 ## Next Steps
 
