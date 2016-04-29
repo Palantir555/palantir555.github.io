@@ -126,7 +126,7 @@ From `ls` and `cd` to `top`, System V init scripts and pipes, it allows us to
 use the Ralink IC like a Linux box.
 
 One of the utilities the BusyBox binary includes is the shell itself, which has
-access to the rest of the commands commands:
+access to the rest of the commands:
 
 ```
 ATP>shell
