@@ -66,9 +66,9 @@ kickstarts the main firmware execution
 3. Busybox: A small binary including reduced versions of multiple linux
 commands. It also supplies the `shell` we call those commands from.
 
-Lower level interfaces are always more tricky to use, may not have access to all
-the data in the device and increases the chances of bricking the device, so it's
-always a good idea to start from BusyBox and walk your way down.
+Lower level interfaces are less intuitive, may not have access to all the data
+and increase the chances of bricking the device; it's always a good idea to
+start from BusyBox and walk your way down.
 
 For now, let's focus on the boot sequence itself. The developers thought it would
 be useful to display certain pieces of data during boot, so let's see if there's
