@@ -222,9 +222,9 @@ It's very common to find private keys for TLS certificates in embedded systems.
 By accessing 1 single device via hardware you may obtain the keys that will help
 you attack any other device of the same model.
 
-This key could be used to communicate with some server the ISP, but that's less
-common. On the other hand, it's also very common to find **public** certs for
-services from the manufacturer or the ISP.
+This key could be used to communicate with some server from Huawei or the ISP,
+although that's less common. On the other hand, it's also very common to find
+**public** certs for services from communication with remote servers.
 
 In this case we find 2 certificates next to the private key; both are self-signed
 by the same 'person':
