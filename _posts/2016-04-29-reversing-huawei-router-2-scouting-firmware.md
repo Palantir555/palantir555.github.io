@@ -224,7 +224,7 @@ you attack any other device of the same model.
 
 This key could be used to communicate with some server from Huawei or the ISP,
 although that's less common. On the other hand, it's also very common to find
-**public** certs for services from communication with remote servers.
+**public** certs used to communicate with remote servers.
 
 In this case we find 2 certificates next to the private key; both are self-signed
 by the same 'person':
