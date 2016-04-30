@@ -83,7 +83,7 @@ find useful info such as the compression algorithm used for some flash segments:
 ![boot msg kernel lzma](http://i.imgur.com/9pRc2mP.jpg)
 
 Intel on how the external flash memory is structured will be very useful when we
-get to extracting the flash contents.
+get to extracting it.
 
 ![ram data. not very useful](http://i.imgur.com/OmDkAxX.jpg)
 
