@@ -60,8 +60,9 @@ var   usr   tmp   sbin  proc  mnt   lib   init  etc   dev   bin
 
 At this point we've seen the 3 basic layers of firmware in the Ralink IC:
 
-1. U-boot: The device's bootloader. It understands the device's memory map
-kickstarts the main firmware execution
+1. U-boot: The device's bootloader. It understands the device's memory map,
+kickstarts the main firmware execution and takes care of some other low level
+tasks
 2. ATP: Controls the bare metal, parallel processes, etc. as a linux-based kernel
 3. Busybox: A small binary including reduced versions of multiple linux
 commands. It also supplies the `shell` we call those commands from.
@@ -273,7 +274,7 @@ ABB4UBMN
 
 ![WiFi pwd in curcfg.xml](http://i.imgur.com/KCo2H4B.jpg)
 
-That is the default WiFi password used by the router. It leads us to 2 VERY
+That is the current WiFi password set in the router. It leads us to 2 VERY
 interesting files. Not just because of their content, but because they're a
 vital part of how the router operates:
 
