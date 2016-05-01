@@ -3,6 +3,17 @@ layout: page
 title: Archive
 ---
 
+## Reverse Engineering
+
+{% for post in site.posts %}
+  {% for tag in post.tags %}
+    {% if tag == "reverse engineering" %}
+  * {{ post.date | date_to_string }} &raquo; [ {{ post.title }} ]({{ site.url }}{{ post.url }})
+    {% break %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
 ## Embedded Systems
 
 {% for post in site.posts %}

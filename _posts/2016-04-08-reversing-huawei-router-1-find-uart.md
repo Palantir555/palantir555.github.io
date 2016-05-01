@@ -3,8 +3,6 @@ layout: post
 title: Practical Reverse Engineering Part 1 - Hunting for Debug Ports
 tags:
 - reverse engineering
-- embedded
-- security
 ---
 
 In this series of posts we're gonna go through the process of Reverse Engineering

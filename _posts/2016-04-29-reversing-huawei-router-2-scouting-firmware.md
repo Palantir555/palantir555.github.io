@@ -3,8 +3,6 @@ layout: post
 title: Practical Reverse Engineering Part 2 - Scouting the Firmware
 tags:
 - reverse engineering
-- embedded
-- security
 ---
 
 In [part 1](http://jcjc-dev.com/2016/04/08/reversing-huawei-router-1-find-uart/)
