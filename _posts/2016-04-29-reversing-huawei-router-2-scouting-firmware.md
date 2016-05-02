@@ -392,7 +392,7 @@ limited subset of data.
 We can find random pieces of data around memory using this method (such as that
 `SPI Flash Image` string), but it's pretty hopeless for finding anything specific.
 You can use it to get familiarised with the memory architecture, but that's about
-it. For instance, there's a very obvious change in memory contents at
+it. For example, there's a very obvious change in memory contents at
 `0x000d0000`:
 
 ![md.w 0x000d0000](http://i.imgur.com/SC1TaeF.png)
