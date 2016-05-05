@@ -97,10 +97,10 @@ data from the external Flash, so it's good to know which ones are being used.
 
 ## What Are ATP CLI and BusyBox Exactly? [Theory]
 
-The Ralink IC runs a Linux kernel (`2.6.21.5`) to control the bare metal,
-support parallel processes, etc. One of the tools that run on top of that kernel
-is the ATP CLI; it provides the first layer of authentication into the
-system, but other than that it is extremely limited:
+The Ralink IC runs a Linux kernel (`2.6.21.5`) to run parallel processes,
+interpret the filesystem, etc. One of the tools that run on top of that kernel
+is the ATP CLI; it provides the first layer of authentication into the system,
+but other than that it's extremely limited:
 
 ```
 ATP>help
