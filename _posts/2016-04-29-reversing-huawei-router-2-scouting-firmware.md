@@ -61,7 +61,8 @@ At this point we've seen the 3 basic layers of firmware in the Ralink IC:
 1. U-boot: The device's bootloader. It understands the device's memory map,
 kickstarts the main firmware execution and takes care of some other low level
 tasks
-2. ATP: Controls the bare metal, parallel processes, etc. as a linux-based kernel
+2. Linux: ATP CLI is part a tool used by the router's underlying Linux system.
+It allows direct control through different interfaces (usually UART and telnet)
 3. Busybox: A small binary including reduced versions of multiple linux
 commands. It also supplies the `shell` we call those commands from.
 
@@ -94,12 +95,12 @@ And more compression intel:
 We'll have to deal with the compression algorithms when we try to access the raw
 data from the external Flash, so it's good to know which ones are being used.
 
-## What Are ATP and BusyBox Exactly? [Theory]
+## What Are ATP CLI and BusyBox Exactly? [Theory]
 
-The Ralink IC in this router uses the ATP firmware to control memory and parallel
-processes, keep overall control of the hardware, etc. In other words, it's a
-kernel, and it's based on Linux. We know ATP has a CLI, but it is extremely
-limited:
+The Ralink IC runs a Linux kernel (`2.6.21.5`) to control the bare metal,
+support parallel processes, etc. One of the tools that run on top of that kernel
+is the ATP CLI; it provides the first layer of authentication into the
+system, but other than that it is extremely limited:
 
 ```
 ATP>help
