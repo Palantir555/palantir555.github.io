@@ -95,7 +95,7 @@ And more compression intel:
 We'll have to deal with the compression algorithms when we try to access the raw
 data from the external Flash, so it's good to know which ones are being used.
 
-## What Are ATP and BusyBox Exactly? [Theory]
+## What Are ATP CLI and BusyBox Exactly? [Theory]
 
 The Ralink IC in this router uses the eCOS Real Time Operating System to control
 memory and parallel processes, keep overall control of the hardware, etc. In
@@ -103,7 +103,7 @@ other words, it's a kernel, and it's based on Linux. In this case, according to
 the Ralink's
 [technical spec](https://wikidevi.com/files/Ralink/RT3352%20product%20brief.pdf),
 they used the `Linux 2.6.21 SDK` for `eCOS`. We know the ATP CLI is running on
-top of it, but it is extremely limited:
+top of eCOS, but it is extremely limited:
 
 ```
 ATP>help
