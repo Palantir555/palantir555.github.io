@@ -61,8 +61,9 @@ At this point we've seen the 3 basic layers of firmware in the Ralink IC:
 1. U-boot: The device's bootloader. It understands the device's memory map,
 kickstarts the main firmware execution and takes care of some other low level
 tasks
-2. eCOS: Controls the bare metal, parallel processes, etc. as a linux-based kernel.
-ATP CLI runs on top of it to provide easy authentication for remote access
+2. eCOS: Main firmware; the RTOS in control the bare metal, multithreading, etc.
+It is based on Linux, and ATP CLI runs on top of it to provide easy
+authentication for remote access
 3. Busybox: A small binary including reduced versions of multiple linux
 commands. It also supplies the `shell` we call those commands from.
 
