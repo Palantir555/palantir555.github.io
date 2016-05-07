@@ -62,7 +62,7 @@ At this point we've seen the 3 basic layers of firmware in the Ralink IC:
 kickstarts the main firmware execution and takes care of some other low level
 tasks
 2. eCOS: Controls the bare metal, parallel processes, etc. as a linux-based kernel.
-ATP CLI runs on top of it
+ATP CLI runs on top of it to provide easy authentication for remote access
 3. Busybox: A small binary including reduced versions of multiple linux
 commands. It also supplies the `shell` we call those commands from.
 
@@ -102,8 +102,8 @@ memory and parallel processes, keep overall control of the hardware, etc. In
 other words, it's a kernel, and it's based on Linux. In this case, according to
 the Ralink's
 [technical spec](https://wikidevi.com/files/Ralink/RT3352%20product%20brief.pdf),
-they used the `Linux 2.6.21 SDK` for `eCOS`. We know ATP has a CLI, but it is
-extremely limited:
+they used the `Linux 2.6.21 SDK` for `eCOS`. We know the ATP CLI is running on
+top of it, but it is extremely limited:
 
 ```
 ATP>help
