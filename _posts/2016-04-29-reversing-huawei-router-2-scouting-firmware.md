@@ -61,8 +61,9 @@ At this point we've seen the 3 basic layers of firmware in the Ralink IC:
 1. U-boot: The device's bootloader. It understands the device's memory map,
 kickstarts the main firmware execution and takes care of some other low level
 tasks
-2. Linux: ATP CLI is part a tool used by the router's underlying Linux system.
-It allows direct control through different interfaces (usually UART and telnet)
+2. eCOS: Main firmware; the RTOS in control the bare metal, multithreading, etc.
+It is based on Linux, and ATP CLI runs on top of it to provide easy
+authentication for remote access
 3. Busybox: A small binary including reduced versions of multiple linux
 commands. It also supplies the `shell` we call those commands from.
 
@@ -97,10 +98,13 @@ data from the external Flash, so it's good to know which ones are being used.
 
 ## What Are ATP CLI and BusyBox Exactly? [Theory]
 
-The Ralink IC runs a Linux kernel (`2.6.21.5`) to run parallel processes,
-interpret the filesystem, etc. One of the tools that run on top of that kernel
-is the ATP CLI; it provides the first layer of authentication into the system,
-but other than that it's extremely limited:
+The Ralink IC in this router uses the eCOS Real Time Operating System to control
+memory and parallel processes, keep overall control of the hardware, etc. In
+other words, it's a kernel, and it's based on Linux. In this case, according to
+the Ralink's
+[technical spec](https://wikidevi.com/files/Ralink/RT3352%20product%20brief.pdf),
+they used the `Linux 2.6.21 SDK` for `eCOS`. We know the ATP CLI is running on
+top of eCOS, but it is extremely limited:
 
 ```
 ATP>help
