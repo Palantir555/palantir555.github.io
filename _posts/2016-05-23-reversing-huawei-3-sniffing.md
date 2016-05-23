@@ -417,7 +417,7 @@ factory resets. It ends with a large chunk of `1`s (`0xff`)
 2. Overwrite that memory segment with `1`s
 3. write a 'new' `ATP_LOG` followed the "current configuration" `curcfg.xml`
 file
-3. Read compressed (unintelligible) memory chunk from the filesystem
+3. Read compressed (unintelligible to us) memory chunk from the filesystem
 
 The chunk from the filesystem is read AFTER writing the new password to Flash,
 which doesn't make sense for a password generation algorithm. That being said,
