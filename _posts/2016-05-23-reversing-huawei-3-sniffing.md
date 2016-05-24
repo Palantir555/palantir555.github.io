@@ -415,7 +415,7 @@ into the system. In this case, the 'factory reset' code seems to:
 1. Read `ATP_LOG` from Flash; it contains info such as remote router accesses or
 factory resets. It ends with a large chunk of `1`s (`0xff`)
 2. Overwrite that memory segment with `1`s
-3. write a 'new' `ATP_LOG` followed the "current configuration" `curcfg.xml`
+3. write a 'new' `ATP_LOG` followed by the "current configuration" `curcfg.xml`
 file
 3. Read compressed (unintelligible to us) memory chunk from the filesystem
 
