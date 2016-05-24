@@ -3,8 +3,6 @@ layout: post
 title: Practical Reverse Engineering Part 3 - Following the Data
 tags:
 - reverse engineering
-- embedded
-- security
 ---
 
 - [Part 1](http://jcjc-dev.com/2016/04/08/reversing-huawei-router-1-find-uart/):
@@ -470,6 +468,6 @@ forward, though.
 
 In the next post we get the data straight from the source, communicating with
 the Flash IC directly to dump its memory. We'll deal with compression algorithms
-for the extracted data, and we'll keep puzzling everything together.
+for the extracted data, and we'll keep piecing everything together.
 
 Happy Hacking! :)
