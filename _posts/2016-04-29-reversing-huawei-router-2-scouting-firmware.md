@@ -221,7 +221,7 @@ itself obvious at first sight. Does that say `/etc/serverkey.pem`??
 
 `¯\_(ツ)_/¯`
 
-It's very common to find private keys for TLS certificates in embedded systems.
+It's not unusual to find private keys for TLS certificates in embedded systems.
 By accessing 1 single device via hardware you may obtain the keys that will help
 you attack any other device of the same model.
 
