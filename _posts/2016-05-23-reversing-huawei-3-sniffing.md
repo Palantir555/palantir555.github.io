@@ -107,7 +107,7 @@ instruction set, available in its datasheet:
 
 Now we can finally analyse the captured data:
 
-![Logic Sample SPI Packet](http://i.imgur.com/Gv9rH7I.png)
+![Logic Sample SPI Packet](http://i.imgur.com/IT1yDVu.png)
 
 In the datasheet we can see that the FL064PIF has high-performance features for
 read and write operations: Dual and Quad options that multiplex the data over
