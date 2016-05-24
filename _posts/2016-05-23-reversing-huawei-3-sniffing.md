@@ -319,9 +319,9 @@ stick it to the back of the device.
 ![Router Sticker - Anotated](http://i.imgur.com/ATznq7F.png)
 
 The WiFi password is the 'unique piece of data', and the computer printing the
-stickers in the factory is the 'external entity'. Both need to know the default
-WiFi credentials, so the engineer needs to decide how to coordinate them.
-Usually there are 2 options available:
+stickers in the factory is the 'external entity'. Both the firmware and the
+computer need to know the default WiFi credentials, so the engineer needs to
+decide how to coordinate them. Usually there are 2 options available:
 
 1. The same algorithm is implemented in both the device and the computer, and its
 input parameters are known to both of them
