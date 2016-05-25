@@ -96,7 +96,7 @@ CPOL and CPHA: (CPOL=0, CPHA=0) or (CPOL=1, CPHA=1)
 
 ![Datasheet SPI Settings](http://i.imgur.com/Jut5DCs.png)
 
-Let's take a first look at some capture captured data:
+Let's take a first look at some sniffed data:
 
 ![Logic Screencap With CPOL/CPHA Anotated](http://i.imgur.com/vaPgOc4.png)
 
