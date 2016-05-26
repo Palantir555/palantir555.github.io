@@ -141,7 +141,7 @@ analyser at its maximum sampling rate for this number of lines,
 ![Picture of Deformed Clock Signal](http://i.imgur.com/9wFGIj3.png)
 
 As you can see, even though the clock signal has the 8 low to high transitions
-required for each byte, the clock signal is deformed.
+required for each byte, the waveform is deformed.
 
 Since the clock signal is used to coordinate when to read the data lines, this
 kind of waveform deformation may cause data corruption even if we don't drop any
