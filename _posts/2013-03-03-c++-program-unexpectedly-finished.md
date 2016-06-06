@@ -25,14 +25,14 @@ This piece of code will make the application crash:
 
 
 {% highlight c++ %}
-QPushButton = *myButton;
+QPushButton *myButton;
 myGridLayout->addWidget (myButton, 0, 0, Qt::AlignLeft);
 {% endhighlight %}
 
 But this one won't:
 
 {% highlight c++ %}
-QPushButton = *myButton;
+QPushButton *myButton;
 myButton = new QPushButton ("button's text");
 myGridLayout->addWidget (myButton, 0, 0, Qt::AlignLeft);
 {% endhighlight %}
