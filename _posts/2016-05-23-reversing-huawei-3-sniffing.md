@@ -231,7 +231,7 @@ code to analyse the CSV file and extract the data we're looking for:
 and
 [traffic_mapper.py](https://gist.github.com/Palantir555/b47ac1ffd878dc7106cedf7b845f4200)
 
-The workflow to analyse a capture becomes the following:
+The workflow to analyse a capture is the following:
 
 1. Export sniffed traffic as CSV
 2. Run the script:
@@ -430,7 +430,7 @@ inside the XML string:
 What about the default password being read? If we look in the MISO binary, it's
 nowhere to be seen. Either the Ralink is reading it using a different mode
 (secure/dual/quad/?) or the credentials/algorithm are already loaded in RAM (no
-need to be read them from Flash again, since they can't change). The later seems
+need to read them from Flash again, since they can't change). The later seems
 more likely, so I'm not gonna bother updating my scripts to support different
 read modes. We write down what we've found and we'll get back to the default
 credentials in the next part.
