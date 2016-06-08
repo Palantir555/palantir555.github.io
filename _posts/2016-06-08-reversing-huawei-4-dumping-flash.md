@@ -237,7 +237,7 @@ we're at it, we may as well look for something useful...
 
 ![strings kernel grep key](http://i.imgur.com/nsWB75q.png)
 
-The `Wi-Fi Easy and Secure Key Derivation` strings looks promising, but as it
+The `Wi-Fi Easy and Secure Key Derivation` string looks promising, but as it
 turns out it's just a hardcoded string defined by the
 [Wi-Fi Protected Setup spec](https://www.dropbox.com/s/fq1i4lkbnslang2/Wi-Fi%20Protected%20Setup%20Specification%201.0h.pdf).
 Nothing to do with the password generation algorithm we're interested in.
