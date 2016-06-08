@@ -16,7 +16,7 @@ In Parts 1 to 3 we've been gathering data within its context. We could sniff
 the specific pieces of data we were interested in, or observe the resources
 used by each process. On the other hand, they had some serious limitations;
 we didn't have access to ALL the data, and we had to deal with very minimal
-tools... And what if you had not been able to find a serial port on the PCB?
+tools... And what if we had not been able to find a serial port on the PCB?
 What if we had but it didn't use default credentials?
 
 In this post we're gonna get the data straight from the source, sacrificing
@@ -283,7 +283,7 @@ everything is nice and tidy:
 
 In the complete
 [file tree](https://gist.github.com/Palantir555/5d66ccd4b084053396749f88ad96a37f)
-you can see we've got every file in the system, (other than runtime files like
+we can see we've got every file in the system, (other than runtime files like
 those in `/var/`, of course).
 
 Using the intel we have been gathering on the firmware since day 1 we can start
@@ -291,8 +291,8 @@ looking for potentially interesting binaries:
 
 ![grep -i -r '$INTEL' squashfs-root](http://i.imgur.com/89GG8mJ.png)
 
-If you're looking for network/application vulnerabilities in the router, having
-every binary and config file in the system will be massively useful.
+If we were looking for network/application vulnerabilities in the router, having
+every binary and config file in the system would be massively useful.
 
 #### Protected
 
