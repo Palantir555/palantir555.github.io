@@ -54,12 +54,11 @@ blob in the middle of the pad.
 
 1. **Connected** to something (we can see a trace "at 2 o'clock")
 2. NOT CONNECTED
-3. 100% connected to a layer or more. This usually means the pin is not
-being used for anything. On paper, it could be connected to a GND or Vcc
-plane, but that's not common practice in the industry
-4. Connections at all sides. This is almost definitely the **GND** pin. There's
-no reason for a data pin in a debug port to be connected to 4 different traces,
-but the pad being surrounded by a ground plane would explain those connections
+3. 100% connected to a plane or thick trace. It's almost certainly a power pin,
+either **GND** or **Vcc**
+4. Connections at all sides. This one is very likely to be the other power pin.
+There's no reason for a data pin in a debug port to be connected to 4 different
+traces, but the pad being surrounded by a plane would explain those connections
 5. **Connected** to something
 
 ## Soldering Pins for Easy Access to the Lines
@@ -99,7 +98,7 @@ So let's compile what we know and get to some conclusions:
 
 1. Only 3 pins in each header are likely to be connected to anything. **Those
 must be Tx, Rx and GND**
-2. One pin looks a lot like GND (connected to a plane on 4 sides)
+2. Two pins look a lot like Vcc and GND
 3. One of them -Tx- will be pulled up by default and be transmitting data
 4. The 3rd of them, Rx, will be floating until we connect the other end of the
 line
@@ -119,7 +118,7 @@ nothing beats a half decent oscilloscope:
 After checking the pins out with an oscilloscope, this is what we can see in
 each of them:
 
-1. GND verified - solid 0V in the pin we suspected to be GND
+1. GND and Vcc verified - solid 3.3V and 0V in pins 2 and 3, as expected
 2. Tx verified - You can clearly see the device is sending information
 3. One of the pins floats at near-0V. This must be the device's Rx, which is
 floating because we haven't connected the other side yet.
