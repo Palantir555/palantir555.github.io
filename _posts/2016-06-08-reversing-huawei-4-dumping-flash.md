@@ -72,8 +72,12 @@ It may power up the Ralink too, but it's worth a try.
 
 We start supplying power while observing the board and waiting for data from
 the Ralink's UART port. We can see some LEDs light up at the back of the PCB,
-but there's no data coming out of the UART port; the Ralink must not be powered
-up. **Success!**
+but there's no data coming out of the UART port; the Ralink must not be running.
+Even though the Ralink is off, its connection to the Flash IC may still interfere
+with our traffic because of multiple design factors in both power circuit and the
+silicon. It's important to keep that possibility in mind in case we see anything
+dodgy later on; if that was to happen we'd have to desolder the Flash IC (or just
+its data pins) to physically disconnect it from everything else.
 
 The LEDs and other static components can't communicate with the Flash IC, so they
 won't be an issue as long as we can supply enough current for all of them.
@@ -140,22 +144,22 @@ splitting of the binary, so let's use it:
 With the binary and the relevant addresses, it's time to split the binary into
 its 4 basic segments. `dd` takes its parameters in terms of block size (`bs`,
 bytes), offset (`skip`, blocks) and size (`count`, blocks); all of them in
-decimal. We could easily use a calculator, but I'd rather let python do the work:
+decimal. We can use a calculator or let the shell do the work:
 
 ```
-$ dd if=spidump.bin of=bootloader.bin bs=1 count=`python -c "print 0x020000"`
+$ dd if=spidump.bin of=bootloader.bin bs=1 count=$((0x020000))
     131072+0 records in
     131072+0 records out
     131072 bytes transferred in 0.215768 secs (607467 bytes/sec)
-$ dd if=spidump.bin of=mainkernel.bin bs=1 count=`python -c "print 0x13D000-0x020000"` skip=`python -c "print 0x020000"`
+$ dd if=spidump.bin of=mainkernel.bin bs=1 count=$((0x13D000-0x020000)) skip=$((0x020000))
     1167360+0 records in
     1167360+0 records out
     1167360 bytes transferred in 1.900925 secs (614101 bytes/sec)
-$ dd if=spidump.bin of=mainrootfs.bin bs=1 count=`python -c "print 0x660000-0x13D000"` skip=`python -c "print 0x13D000"`
+$ dd if=spidump.bin of=mainrootfs.bin bs=1 count=$((0x660000-0x13D000)) skip=$((0x13D000))
     5386240+0 records in
     5386240+0 records out
     5386240 bytes transferred in 9.163635 secs (587784 bytes/sec)
-$ dd if=spidump.bin of=protect.bin bs=1 count=`python -c "print 0x800000-0x660000"` skip=`python -c "print 0x660000"`
+$ dd if=spidump.bin of=protect.bin bs=1 count=$((0x800000-0x660000)) skip=$((0x660000))
     1703936+0 records in
     1703936+0 records out
     1703936 bytes transferred in 2.743594 secs (621060 bytes/sec)
