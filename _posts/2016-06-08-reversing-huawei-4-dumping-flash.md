@@ -326,7 +326,7 @@ provided by the manufacturers will sometimes be complete memory segments;
 the device simply overwrites the relevant flash areas using code previously
 loaded to RAM. Downloading the file from the manufacturer would be the equivalent
 of dumping those segments from flash, so we just need to decompress them.
-They won't have all the data, but it be enough for your purposes.
+They won't have all the data, but it may be enough for your purposes.
 
 Now that we've got the firmware we just need to think of anything we may be
 interested in and start looking for it through the data. In the next post we'll
