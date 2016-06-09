@@ -167,7 +167,7 @@ We have created 4 different binary files:
 U-boot. The bootloader.
 It's not compressed because the Ralink wouldn't know how to decompress it.
 2. `mainkernel.bin`:
-eCOS. The basic firmware that coordinates everything in runtime.
+Linux Kernel. The basic firmware in charge of controlling the bare metal.
 Compressed using `lzma`
 3. `mainrootfs.bin`:
 Filesystem. Contains all sorts of important binaries and configuration files.
