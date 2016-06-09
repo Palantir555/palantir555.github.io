@@ -6,7 +6,7 @@ tags:
 ---
 
 In [part 1](http://jcjc-dev.com/2016/04/08/reversing-huawei-router-1-find-uart/)
-we found a debug UART port that gave us access to a linux shell. At this point
+we found a debug UART port that gave us access to a Linux shell. At this point
 we've got the same access to the router that a developer would use to debug
 issues, control the system, etc.
 
@@ -61,9 +61,8 @@ At this point we've seen the 3 basic layers of firmware in the Ralink IC:
 1. U-boot: The device's bootloader. It understands the device's memory map,
 kickstarts the main firmware execution and takes care of some other low level
 tasks
-2. eCOS: Main firmware; the RTOS in control the bare metal, multithreading, etc.
-It is based on Linux, and ATP CLI runs on top of it to provide easy
-authentication for remote access
+2. Linux: The router is running Linux to keep overall control of the hardware,
+coordinate parallel processes, etc. Both ATP CLI and BusyBox run on top of it
 3. Busybox: A small binary including reduced versions of multiple linux
 commands. It also supplies the `shell` we call those commands from.
 
@@ -98,13 +97,13 @@ data from the external Flash, so it's good to know which ones are being used.
 
 ## What Are ATP CLI and BusyBox Exactly? [Theory]
 
-The Ralink IC in this router uses the eCOS Real Time Operating System to control
-memory and parallel processes, keep overall control of the hardware, etc. In
-other words, it's a kernel, and it's based on Linux. In this case, according to
+The Ralink IC in this router runs a Linux kernel to control memory and parallel
+processes, keep overall control of the system, etc. In this case, according to
 the Ralink's
-[technical spec](https://wikidevi.com/files/Ralink/RT3352%20product%20brief.pdf),
-they used the `Linux 2.6.21 SDK` for `eCOS`. We know the ATP CLI is running on
-top of eCOS, but it is extremely limited:
+[product brief](https://wikidevi.com/files/Ralink/RT3352%20product%20brief.pdf),
+they used the `Linux 2.6.21 SDK`. `ATP CLI` is a CLI running either on top of
+Linux or as part of the kernel. It provides a first layer of authentication into
+the system, but other than that it's very limited:
 
 ```
 ATP>help
@@ -127,7 +126,7 @@ of complex process control or file navigation. That's where BusyBox comes in.
 BusyBox is a single binary containing reduced versions of common unix
 commands, both for development convenience and -most importantly- to save memory.
 From `ls` and `cd` to `top`, System V init scripts and pipes, it allows us to
-use the Ralink IC like a Linux box.
+use the Ralink IC somewhat like your regular Linux box.
 
 One of the utilities the BusyBox binary includes is the shell itself, which has
 access to the rest of the commands:
