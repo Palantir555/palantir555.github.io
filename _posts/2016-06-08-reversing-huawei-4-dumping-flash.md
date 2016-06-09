@@ -144,7 +144,8 @@ splitting of the binary, so let's use it:
 With the binary and the relevant addresses, it's time to split the binary into
 its 4 basic segments. `dd` takes its parameters in terms of block size (`bs`,
 bytes), offset (`skip`, blocks) and size (`count`, blocks); all of them in
-decimal. We can use a calculator or let the shell do the work:
+decimal. We can use a calculator or let the shell do the hex do decimal
+conversions with `$(())`:
 
 ```
 $ dd if=spidump.bin of=bootloader.bin bs=1 count=$((0x020000))
