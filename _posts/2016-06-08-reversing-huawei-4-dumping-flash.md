@@ -274,8 +274,8 @@ accross this
 [OSX-specific fork](https://github.com/cinquemb/firmware-mod-kit-osx)
 of the
 [Firmware Modification Kit](https://code.google.com/archive/p/firmware-mod-kit/),
-which compiles multiple different versions *unsquashfs* and includes a neat
-script called `unsquashfs_all.sh` that tries all of them. Let's give it a try:
+which compiles multiple versions of `unsquashfs` and includes a neat script
+called `unsquashfs_all.sh` to run all of them. It's worth a try.
 
 ![unsquashfs_all.sh mainrootfs.bin](http://i.imgur.com/sYi6PO6.png)
 
