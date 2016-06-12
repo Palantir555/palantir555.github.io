@@ -135,9 +135,9 @@ to know them if you're into hardware hacking.*
 ![binwalk spidump.bin](http://i.imgur.com/vdmjcDt.png)
 
 In this case we're not in a 0-knowledge scenario; we've been gathering data since
-day 1, and we obtained a complete memory map of the Flash IC in Part 2. I trust
-debug messages more than I do binary parsers, and it makes for much cleaner
-splitting of the binary, so let's use it:
+day 1, and we obtained a complete memory map of the Flash IC in Part 2. The
+addresses mentioned in the debug message are confirmed by binwalk, and it makes
+for much cleaner splitting of the binary, so let's use it:
 
 ![Flash Memory Map From Part 2](http://i.imgur.com/CX9raje.png)
 
