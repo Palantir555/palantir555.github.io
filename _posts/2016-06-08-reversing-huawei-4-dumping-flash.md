@@ -264,7 +264,7 @@ you what the signature looks like in this case:
 
 ![sqsh signature in hexdump](http://i.imgur.com/GFaD38g.png)
 
-Since SquashFS does use signatures to delimite the where the compressed data
+Since SquashFS does use signatures to delimit the where the compressed data
 beings and ends, we probably won't have to trim the binary like we did with the
 kernel.
 
