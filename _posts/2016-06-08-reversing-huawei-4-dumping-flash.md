@@ -264,12 +264,9 @@ you what the signature looks like in this case:
 
 ![sqsh signature in hexdump](http://i.imgur.com/GFaD38g.png)
 
-Since SquashFS does use signatures to delimit where the compressed data beings
-and ends, we probably won't have to trim the binary like we did with the kernel.
-
-Since the filesystem is very common and the work to find the right configuration
-is tedious, let's see if anybody has already written a script for this. I came
-accross this
+Since the filesystem is very common and finding the right configuration is
+tedious work, somebody may have already written a script to automate the task.
+I came accross this
 [OSX-specific fork](https://github.com/cinquemb/firmware-mod-kit-osx)
 of the
 [Firmware Modification Kit](https://code.google.com/archive/p/firmware-mod-kit/),
