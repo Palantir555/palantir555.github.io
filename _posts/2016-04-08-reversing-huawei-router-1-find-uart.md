@@ -197,7 +197,7 @@ detail in the next post.
 
 ## Next Steps
 
-Now that we have acces to the BusyBox CLI we can start nosing round the software.
+Now that we have access to the BusyBox CLI we can start nosing round the software.
 Depending on what device you're reversing there could be plain text passwords,
 TLS certificates, useful algorithms, unsecured private APIs, etc. etc. etc.
 

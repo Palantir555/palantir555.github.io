@@ -66,7 +66,7 @@ and Flash. Let's get started; the first thing we need is to figure out how to
 connect the logic analyser. In this case we've got the datasheet for the Flash
 IC, so there's no need to reverse engineer any pinouts:
 
-![Flash Pic Anotated Pinout](http://i.imgur.com/54ih2LZ.jpg)
+![Flash Pic Annotated Pinout](http://i.imgur.com/54ih2LZ.jpg)
 
 Standard SPI communication uses 4 pins:
 
@@ -98,7 +98,7 @@ CPOL and CPHA: (CPOL=0, CPHA=0) or (CPOL=1, CPHA=1)
 
 Let's take a first look at some sniffed data:
 
-![Logic Screencap With CPOL/CPHA Anotated](http://i.imgur.com/vaPgOc4.png)
+![Logic Screencap With CPOL/CPHA Annotated](http://i.imgur.com/vaPgOc4.png)
 
 In order to understand exactly what's happenning you'll need the FL064PIF's
 instruction set, available in its datasheet:
@@ -130,11 +130,11 @@ digital inputs faster than the device writes them. Otherwise the data will be
 mangled by missing bits or deformed waveforms.
 
 Unfortunately, your logic analyser's maximum sampling rate depends on how
-powerful/expensive it is and how many lines you need to sniff at a time. High
-speed interfaces with multiple data lines can be a problem if you don't have
+powerful/expensive it is and how many lines you need to sniff at a time.
+High-speed interfaces with multiple data lines can be a problem if you don't have
 access to expensive equipment.
 
-I recorded this data from the Ralink-Flash SPI bus using a low end Saleae
+I recorded this data from the Ralink-Flash SPI bus using a low-end Saleae
 analyser at its maximum sampling rate for this number of lines,
 `24 MS/s`:
 
@@ -145,9 +145,9 @@ required for each byte, the waveform is deformed.
 
 Since the clock signal is used to coordinate when to read the data lines, this
 kind of waveform deformation may cause data corruption even if we don't drop any
-any bits (depending partly on the design of your logic analyser). There's
-always some wiggle room for read innacuracies, and we don't need 100% correct
-data at this point, but it's important to keep all error vectors in mind.
+bits (depending partly on the design of your logic analyser). There's always
+some wiggle room for read inaccuracies, and we don't need 100% correct data at
+this point, but it's important to keep all error vectors in mind.
 
 Let's sniff the same bus using a higher performance logic analyser at
 `100 MS/s`:
@@ -316,7 +316,7 @@ The most widely adopted solution for routers is to create a WiFi network using
 default credentials, print those credentials on a sticker at the factory and
 stick it to the back of the device.
 
-![Router Sticker - Anotated](http://i.imgur.com/ATznq7F.png)
+![Router Sticker - Annotated](http://i.imgur.com/ATznq7F.png)
 
 The WiFi password is the 'unique piece of data', and the computer printing the
 stickers in the factory is the 'external entity'. Both the firmware and the
@@ -328,7 +328,7 @@ input parameters are known to both of them
 2. A computer generates the credentials for each device and **they're stored
 into each device separately**
 
-Developer incopetence aside, the first approach is usually taken as a last
+Developer incompetence aside, the first approach is usually taken as a last
 resort; if you can't get your hardware manufacturer to flash unique data to each
 device or can't afford the increase in manufacturing cost.
 
@@ -419,8 +419,8 @@ file
 
 The chunk from the filesystem is read AFTER writing the new password to Flash,
 which doesn't make sense for a password generation algorithm. That being said,
-the algorithm may be already loaded in memory, so its absence in the SPI traffic
-is not conclussive on whether or not it exists.
+the algorithm may be already loaded into memory, so its absence in the SPI
+traffic is not conclusive on whether or not it exists.
 
 As part of the MOSI data we can see the new WiFi password be saved to Flash
 inside the XML string:

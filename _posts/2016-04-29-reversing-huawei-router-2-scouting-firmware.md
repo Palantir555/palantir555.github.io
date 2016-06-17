@@ -245,7 +245,7 @@ later).
 
 With so many different files everywhere it can be quite time consuming to go
 through all the info without the right tools. We're gonna copy as much data as
-we can into the USB drive and go through it in our computer.
+we can into the USB drive and go through it on our computer.
 
 ## The Rambo Approach to Intel Gathering
 

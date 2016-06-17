@@ -22,7 +22,7 @@ What if we had but it didn't use default credentials?
 In this post we're gonna get the data straight from the source, sacrificing
 context in favour of absolute access. We're gonna dump the data from the Flash
 IC and decompress it so it's usable. This method doesn't require expensive
-equipment and is independent from everything we've done until now. An external
+equipment and is independent of everything we've done until now. An external
 Flash IC with a public datasheet is a reverser's great ally.
 
 ## Dumping the Memory Contents
@@ -30,7 +30,7 @@ Flash IC with a public datasheet is a reverser's great ally.
 As discussed in Part 3, we've got access to the datasheet for the Flash IC, so
 there's no need to reverse its pinout:
 
-![Flash Pic Anotated Pinout](http://i.imgur.com/54ih2LZ.jpg)
+![Flash Pic Annotated Pinout](http://i.imgur.com/54ih2LZ.jpg)
 
 We also have its instruction set, so we can communicate with the IC using almost
 any device capable of 'speaking' SPI.
