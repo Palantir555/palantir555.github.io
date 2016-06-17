@@ -29,7 +29,7 @@ even though this device can be reversed without it.
 
 *Please check out the
 [legal disclaimer](https://gist.github.com/Palantir555/de23c2ceb5355efe6ec105a8d2d73486)
-in case I come accross anything sensitive.*
+in case I come across anything sensitive.*
 
 *Full disclosure: I'm in contact with Huawei's security team. I tried to contact
 TalkTalk, but their security staff is nowhere to be seen.*
@@ -276,7 +276,7 @@ the `/var/curcfg.xml` file we discovered in Part 2. As we discussed then, this
 WiFi credentials.
 
 It's standard to keep *reserved* areas in flash; they're mostly for
-miscellaneous data that needs to survive accross reboots and be configurable
+miscellaneous data that needs to survive across reboots and be configurable
 by user, firmware or factory. It makes sense for a command called `save` to
 write data to such area, it explains why the data is perfectly readable as
 opposed to being compressed like the `filesystem`, and why we found the XML file

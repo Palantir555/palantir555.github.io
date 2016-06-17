@@ -266,7 +266,7 @@ you what the signature looks like in this case:
 
 Since the filesystem is very common and finding the right configuration is
 tedious work, somebody may have already written a script to automate the task.
-I came accross this
+I came across this
 [OSX-specific fork](https://github.com/cinquemb/firmware-mod-kit-osx)
 of the
 [Firmware Modification Kit](https://code.google.com/archive/p/firmware-mod-kit/),
@@ -300,7 +300,7 @@ every binary and config file in the system would be massively useful.
 ![binwalk protect.bin](http://i.imgur.com/t6bcd05.png)
 
 As we discussed in Part 3, this memory area is not compressed and contains all
-pieces of data that need to survive across reboots but be different accross
+pieces of data that need to survive across reboots but be different across
 devices. `strings` seems like an appropriate tool for a quick overview of the
 data:
 

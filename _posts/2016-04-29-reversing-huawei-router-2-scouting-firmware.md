@@ -23,7 +23,7 @@ may come in handy later on.
 
 Please check out the
 [legal disclaimer](https://gist.github.com/Palantir555/de23c2ceb5355efe6ec105a8d2d73486)
-in case I come accross anything sensitive.
+in case I come across anything sensitive.
 
 *Full disclosure: I'm in contact with Huawei's security team; they've had time
 to review the data I'm going to reveal in this post and confirm there's nothing
@@ -76,7 +76,7 @@ anything we can use.
 
 ## Boot Debug Messages
 
-We find multiple random pieces of data scattered accross the boot sequence. We'll
+We find multiple random pieces of data scattered across the boot sequence. We'll
 find useful info such as the compression algorithm used for some flash segments:
 
 ![boot msg kernel lzma](http://i.imgur.com/9pRc2mP.jpg)
