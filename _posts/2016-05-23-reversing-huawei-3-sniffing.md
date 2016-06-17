@@ -15,7 +15,7 @@ and all the electrical signals that make the system work. With ingenuity and
 access to the right equipment we should be able to obtain any data we want. From
 simply sniffing traffic with a cheap logic analyser to using thousands of
 dollars worth of equipment to obtain private keys by measuring the power
-consumed by the device with enough precission (power analysis side channel
+consumed by the device with enough precision (power analysis side channel
 attack); if the physics make sense, it's likely to work given the right
 circumstances.
 
