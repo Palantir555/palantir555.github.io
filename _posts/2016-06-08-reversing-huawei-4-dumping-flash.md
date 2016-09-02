@@ -64,7 +64,7 @@ circuit. Injecting power into the PCB in a way it wasn't designed for could
 blow something up; we could reverse engineer the power circuit, but that's
 tedious work. This router is cheap and widely available, so I took the 'fuck it'
 approach. The voltage required, according to the
-[datasheet](https://www.dropbox.com/s/55c3hj349k8b8hj/Flash_S25FL064P.pdf?dl=1),
+[datasheet](https://www.dropbox.com/s/55c3hj349k8b8hj/Flash_S25FL064P.pdf?dl=0),
 is 3V; I'm just gonna apply power directly to the Flash IC and see what happens.
 It may power up the Ralink too, but it's worth a try.
 

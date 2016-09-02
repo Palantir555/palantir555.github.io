@@ -53,7 +53,7 @@ you want to sniff:
 
 - [Ralink RT3352F product brief](https://wikidevi.com/files/Ralink/RT3352%20product%20brief.pdf):
 Not a datasheet, but it's got some useful data
-- [Spansion FL064PIF](https://www.dropbox.com/s/55c3hj349k8b8hj/Flash_S25FL064P.pdf?dl=1):
+- [Spansion FL064PIF](https://www.dropbox.com/s/55c3hj349k8b8hj/Flash_S25FL064P.pdf?dl=0):
 64-Mbit SPI Flash Memory
 
 Now we've got pinouts, electrical characteristics, protocol details... Let's
