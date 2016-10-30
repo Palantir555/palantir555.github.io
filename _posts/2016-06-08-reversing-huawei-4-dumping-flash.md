@@ -11,7 +11,7 @@ Hunting for Debug Ports
 Scouting the Firmware
 - [Part 3](http://jcjc-dev.com/2016/05/23/reversing-huawei-3-sniffing/):
 Following the Data
-- Part 4: Dumping the Flash
+- **Part 4**: Dumping the Flash
 
 In Parts 1 to 3 we've been gathering data within its context. We could sniff
 the specific pieces of data we were interested in, or observe the resources

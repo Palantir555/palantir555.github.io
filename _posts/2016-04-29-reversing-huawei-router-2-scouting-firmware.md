@@ -7,10 +7,10 @@ tags:
 
 - [Part 1](http://jcjc-dev.com/2016/04/08/reversing-huawei-router-1-find-uart/):
 Hunting for Debug Ports
-- Part 2: Scouting the Firmware
-- [Part 3](http://jcjc-dev.com/2016/05/23/reversing-huawei-3-sniffing/)
+- **Part 2**: Scouting the Firmware
+- [Part 3](http://jcjc-dev.com/2016/05/23/reversing-huawei-3-sniffing/):
 Following the Data
-- [Part 4](http://jcjc-dev.com/2016/06/08/reversing-huawei-4-dumping-flash/)
+- [Part 4](http://jcjc-dev.com/2016/06/08/reversing-huawei-4-dumping-flash/):
 Dumping the Flash
 
 In part 1 we found a debug UART port that gave us access to a Linux shell. At

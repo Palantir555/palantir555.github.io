@@ -9,8 +9,8 @@ tags:
 Hunting for Debug Ports
 - [Part 2](http://jcjc-dev.com/2016/04/29/reversing-huawei-router-2-scouting-firmware/):
 Scouting the Firmware
-- Part 3: Following the Data
-- [Part 4](http://jcjc-dev.com/2016/06/08/reversing-huawei-4-dumping-flash/)
+- **Part 3**: Following the Data
+- [Part 4](http://jcjc-dev.com/2016/06/08/reversing-huawei-4-dumping-flash/):
 Dumping the Flash
 
 The best thing about hardware hacking is having full access to very bare metal,
