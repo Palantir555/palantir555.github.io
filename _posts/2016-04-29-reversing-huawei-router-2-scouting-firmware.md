@@ -5,10 +5,17 @@ tags:
 - reverse engineering
 ---
 
-In [part 1](http://jcjc-dev.com/2016/04/08/reversing-huawei-router-1-find-uart/)
-we found a debug UART port that gave us access to a Linux shell. At this point
-we've got the same access to the router that a developer would use to debug
-issues, control the system, etc.
+- [Part 1](http://jcjc-dev.com/2016/04/08/reversing-huawei-router-1-find-uart/):
+Hunting for Debug Ports
+- Part 2: Scouting the Firmware
+- [Part 3](http://jcjc-dev.com/2016/05/23/reversing-huawei-3-sniffing/)
+Following the Data
+- [Part 4](http://jcjc-dev.com/2016/06/08/reversing-huawei-4-dumping-flash/)
+Dumping the Flash
+
+In part 1 we found a debug UART port that gave us access to a Linux shell. At
+this point we've got the same access to the router that a developer would use to
+debug issues, control the system, etc.
 
 This first overview of the system is easy to access, doesn't require expensive
 tools and will often yield very interesting results. If you want to

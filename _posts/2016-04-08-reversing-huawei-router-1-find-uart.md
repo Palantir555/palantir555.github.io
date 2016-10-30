@@ -5,6 +5,14 @@ tags:
 - reverse engineering
 ---
 
+- *Part 1*: Hunting for Debug Ports
+- [Part 2](http://jcjc-dev.com/2016/04/29/reversing-huawei-router-2-scouting-firmware/):
+Scouting the Firmware
+- [Part 3](http://jcjc-dev.com/2016/05/23/reversing-huawei-3-sniffing/)
+Following the Data
+- [Part 4](http://jcjc-dev.com/2016/06/08/reversing-huawei-4-dumping-flash/)
+Dumping the Flash
+
 In this series of posts we're gonna go through the process of Reverse Engineering
 a router. More specifically, a Huawei HG533.
 
