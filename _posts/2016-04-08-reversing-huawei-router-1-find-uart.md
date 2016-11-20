@@ -205,12 +205,12 @@ detail in the next post.
 
 ## Next Steps
 
-Now that we have access to the BusyBox CLI we can start nosing round the software.
+Now that we have access to the BusyBox CLI we can start nosing around the software.
 Depending on what device you're reversing there could be plain text passwords,
 TLS certificates, useful algorithms, unsecured private APIs, etc. etc. etc.
 
 In the next post we'll focus on the software side of things. I'll explain the
 differences between boot modes, how to dump memory, and other fun things
-you can do now that you've got direct access to the device's software.
+you can do now that you've got direct access to the device's firmware.
 
 Thanks for reading! :)
