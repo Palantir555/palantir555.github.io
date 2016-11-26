@@ -1,16 +1,16 @@
 # Dependencies
 highlighter:   rouge
-gems:          [jekyll-paginate]
+gems: [jekyll-paginate, jekyll-sitemap]
 
 # Permalinks
-permalink:    pretty
+permalink: pretty
 
 # Setup
-title:        Hack The World
-tagline:      'Juan Carlos Jimenez'
-description:  'Projects and learnt lessons on Systems Security, Embedded Development, IoT and anything worth writing about'
-url:          http://jcjc-dev.com
-baseurl:      /
+title: Hack The World
+tagline: 'Juan Carlos Jimenez'
+description: 'Projects and learnt lessons on Systems Security, Embedded Development, IoT and anything worth writing about'
+url: http://jcjc-dev.com
+baseurl: /
 
 disqusid: jcjc-dev
 
