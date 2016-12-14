@@ -2,15 +2,12 @@
 <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
 <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta property="og:image" content="{% if post.thumbnail %}{{ post.thumbnail }}{% else %}{{ site.homepage_thumbnail }}{% endif %}">
-<meta property="og:locale" content="{{ site.locale }}">
 
 {% if post.description %}
   <meta property="og:description" content="{{ post.description | strip_html | strip_newlines | truncate: 160 }}">
 {% endif %}
 
 {% if page.date %}
-  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
-  <meta property="article:author" content="{{ site.author.name }}">
   {% for post in site.related_posts limit:3 %}
     <meta property="og:see_also" content="{{ post.url | replace:'index.html','' | prepend: site.url }}">
   {% endfor %}
