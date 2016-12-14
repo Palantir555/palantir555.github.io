@@ -1,5 +1,5 @@
 # Dependencies
-highlighter:   rouge
+highlighter: rouge
 gems: [jekyll-paginate, jekyll-sitemap]
 
 # Permalinks
@@ -11,6 +11,7 @@ tagline: 'Juan Carlos Jimenez'
 description: 'Projects and learnt lessons on Systems Security, Embedded Development, IoT and anything worth writing about'
 url: http://jcjc-dev.com
 baseurl: /
+homepage_thumbnail: http://imgur.com/plg2HBD
 
 disqusid: jcjc-dev
 
@@ -27,3 +28,6 @@ version:       2.1.0
 
 github:
     repo:      https://github.com/Palantir555
+
+exclude:
+    - _posts/WORK_IN_PROGRESS

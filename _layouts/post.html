@@ -34,7 +34,7 @@ layout: default
 */
 
 var disqus_config = function () {
-this.page.url = "{{ site.url }}{{ page.url | replace:'index.html','' }}"; // Replace w/ canonical URL
+this.page.url = "{{ site.url }}{{ page.url | replace:'index.html','' }}";
 this.page.identifier = "{{ page.url | replace:'/','-' }}";
 };
 
