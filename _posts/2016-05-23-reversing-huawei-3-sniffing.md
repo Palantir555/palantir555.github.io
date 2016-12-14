@@ -12,6 +12,8 @@ Scouting the Firmware
 - **Part 3**: Following the Data
 - [Part 4]({{ site.url }}/2016/06/08/reversing-huawei-4-dumping-flash/):
 Dumping the Flash
+- [Part 5]({{ site.url }}/2016/12/14/reversing-huawei-5-reversing-firmware/):
+Digging Through the Firmware
 
 The best thing about hardware hacking is having full access to very bare metal,
 and all the electrical signals that make the system work. With ingenuity and

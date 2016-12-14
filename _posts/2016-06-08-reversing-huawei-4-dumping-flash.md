@@ -12,6 +12,8 @@ Scouting the Firmware
 - [Part 3]({{ site.url }}/2016/05/23/reversing-huawei-3-sniffing/):
 Following the Data
 - **Part 4**: Dumping the Flash
+- [Part 5]({{ site.url }}/2016/12/14/reversing-huawei-5-reversing-firmware/):
+Digging Through the Firmware
 
 In Parts 1 to 3 we've been gathering data within its context. We could sniff
 the specific pieces of data we were interested in, or observe the resources

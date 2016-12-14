@@ -12,6 +12,8 @@ Hunting for Debug Ports
 Following the Data
 - [Part 4]({{ site.url }}/2016/06/08/reversing-huawei-4-dumping-flash/):
 Dumping the Flash
+- [Part 5]({{ site.url }}/2016/12/14/reversing-huawei-5-reversing-firmware/):
+Digging Through the Firmware
 
 In part 1 we found a debug UART port that gave us access to a Linux shell. At
 this point we've got the same access to the router that a developer would use to

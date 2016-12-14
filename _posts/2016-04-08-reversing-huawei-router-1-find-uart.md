@@ -13,6 +13,8 @@ Scouting the Firmware
 Following the Data
 - [Part 4]({{ site.url }}/2016/06/08/reversing-huawei-4-dumping-flash/):
 Dumping the Flash
+- [Part 5]({{ site.url }}/2016/12/14/reversing-huawei-5-reversing-firmware/):
+Digging Through the Firmware
 
 In this series of posts we're gonna go through the process of Reverse Engineering
 a router. More specifically, a Huawei HG533.
