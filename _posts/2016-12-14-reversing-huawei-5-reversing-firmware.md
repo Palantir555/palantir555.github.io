@@ -45,7 +45,7 @@ One step at a time.
 #### GPL Licenses - What They Are and What to Expect [Theory]
 
 Linux, U-Boot and other tools used in this
-router are licensed with the
+router are licensed under the
 **[General Public License](https://en.wikipedia.org/wiki/GNU_General_Public_License)**.
 This license mandates that the source code for any binaries built with GPL'd
 projects must be made available to anyone who wants it.
@@ -56,8 +56,8 @@ and not just to find security issues. For instance:
 
 When hunting for GPL'd sources you can usually expect one of these scenarios:
 
-1. The code is freely available in the manufacturer's website, nicely ordered and
-completely open to be tinkered with. For instance:
+1. The code is freely available on the manufacturer's website, nicely ordered
+and completely open to be tinkered with. For instance:
 [apple products](https://opensource.apple.com/) or the
 [amazon echo](https://www.amazon.com/gp/help/customer/display.html?nodeId=201626480)
 2. The source code is available by request
@@ -131,13 +131,13 @@ compiling everything into the kernel
 3. **libc** ("*The C Library*"): It serves as a general purpose wrapper for the
 System Call API, including extremely common functions like `printf`, `malloc`
 or `system`. Developers are free to call the system call API directly, but in
-most cases it's MUCH more convenient to use libc. Instead of the extremely
+most cases, it's MUCH more convenient to use libc. Instead of the extremely
 common `glibc` (GNU C library) we usually find in more powerful systems, this
 device uses a version optimised for embedded devices:
 [`uClibc`](https://www.uclibc.org/).
 4. **User Applications**: Executable binaries in `/bin/` and *shared objects*
 in `/lib/` (libraries that contain functions used by multiple binaries) comprise
-most of the high level logic. Shared objects are used to save space by storing
+most of the high-level logic. Shared objects are used to save space by storing
 commonly used functions in a single location
 
 #### Bootloader Source Code
@@ -162,15 +162,16 @@ previous post:
 
 ![UART system restore logs](http://i.imgur.com/u8ZMr4Q.png)
 
-With a some simple `grep` commands we can see how the different components
+With some simple `grep` commands we can see how the different components
 of the system (kernel, binaries and shared objects) can work together and
 produce the serial output we saw:
 
 ![System reset button propagates to user space](http://i.imgur.com/ASQBsR6.png)
 
-Having the kernel can help us find weak algorithms used for security purposes,
-and other weaknesses that are sometimes passed as 'accepted risks'. Most
-importantly, we can use the drivers to compile and run our own OS in the device.
+Having the kernel can help us find weak algorithms used for security purposes
+and other weaknesses that are sometimes considered 'accepted risks' by
+manufacturers. Most importantly, we can use the drivers to compile and run our
+own OS in the device.
 
 #### User Space Source Code
 
@@ -197,7 +198,7 @@ equivalence so it can go through the binary, find data and machine code and
 [translate it into assembly](https://www.youtube.com/watch?v=2_bJ6Ei6zWo).
 Assembly is not pretty, but at least it's human-readable.
 
-Due to the very low level nature of the kernel, and how heavily it interacts
+Due to the very low-level nature of the kernel, and how heavily it interacts
 with the hardware, it is incredibly difficult to make any sense of it. User
 space binaries, on the other hand, are abstracted away from the hardware and
 follow unix standards for calling conventions, binary format, etc. They're an
@@ -399,7 +400,7 @@ Let's see what we can do with that...
 #### Finding Hardcoded Strings
 
 Let's assume there IS such algorithm in the router. Between username and
-password, there's only one string that remains constant accross devices:
+password, there's only one string that remains constant across devices:
 `TALKTALK-`. This string is prepended to the last 6 characters of the MAC
 address. If the generation algorithm is in the router, surely this string must
 be hardcoded in there. Let's look it up:
@@ -432,8 +433,8 @@ somewhere in there it performs the following actions:
 3. Save the string somewhere:
     - `ATP_DBSetPara(SavedRegister3, 0xE8801E09, SSID)`
 
-Unfortunateloy, right after this branch the function simply does an
-`ATP_DBSave` and moves on to start running commands and whanot. e.g.:
+Unfortunately, right after this branch the function simply does an
+`ATP_DBSave` and moves on to start running commands and whatnot. e.g.:
 
 ![ATP_WLAN_Init moves on before you](http://i.imgur.com/HVhwFzU.png)
 
@@ -449,7 +450,7 @@ the default credentials in the `protected` flash area: The manufacturer used
 proper security techniques and flashed the credentials at the factory, which
 is why there is no algorithm. Since the designers manufacture their own
 hardware, that makes perfect sense for this router. They can do whatever they
-want with ther manufacturing lines, so they decided to do it right.
+want with their manufacturing lines, so they decided to do it right.
 
 I might take another look at it in the future, or try to find it in some other
 router (I'd like to document the process of reversing it), but you should know
@@ -479,7 +480,7 @@ target, and you need to serve them the results:
 
 Once you receive the data of which server to target, you have two options: You
 find a library with the ICMP protocol implemented and call it directly from the
-web backend, or you could use a single, satandard function call and use the
+web backend, or you could use a single, standard function call and use the
 router's already existing `ping` shell command. The later is easier to
 implement, saves memory, etc. and it's the obvious choice. Taking user input
 (target server address) and using it as part of a shell command is where the
@@ -523,7 +524,7 @@ to remote command injections is the "LAN-Side DSL CPE Configuration" protocol,
 or **TR-064**. Even though this protocol was designed to be used over the
 internal network only, it's been used to configure routers over the internet.
 Remote command injection vulnerabilities in this protocol have been used to
-extract things like WiFi cerdentials from routers remotely with just a few
+extract things like WiFi credentials from routers remotely with just a few
 packets.
 
 This router has a binary conveniently named `/bin/tr064`; if we take a look,
@@ -572,7 +573,7 @@ If you'd like to find a potential vulnerability so you can learn exploit
 development on your own, you can use the same techniques we've been using so
 far. Find potentially interesting inputs, locate the code that manages them
 using function names, hardcoded strings, etc. and try to trigger a malfunction
-seinding an unexpected inpt. If we find an improperly handled string, we might
+sending an unexpected input. If we find an improperly handled string, we might
 have an exploitable bug.
 
 Once we've located the piece of disassembled code we're going to attack, we're
@@ -620,7 +621,7 @@ against some assembly code for a few hours, but an additional layer of
 abstraction means more potential errors, which can result in massive wastes of
 time.
 
-In my (admittedly short) personal experience, the otuput just doesn't look
+In my (admittedly short) personal experience, the output just doesn't look
 reliable enough. It might be fine when using expensive decompilers (IDA itself
 supports a couple of architectures), but I haven't found one I can trust with
 MIPS binaries. That being said, if you'd like to give one a try, the
@@ -637,7 +638,7 @@ Whether we want to learn something about an algorithm we're reversing, to debug
 an exploit we're developing or to find any other sort of vulnerability, being
 able to execute (and, if possible, debug) the binary on an environment we fully
 control would be a massive advantage. In some/most cases -like this router-,
-being able to debug on the original hardware is not possible. In the next post
+being able to debug on the original hardware is not possible. In the next post,
 we'll work on CPU emulation to debug the binaries in our own computers.
 
 *Thanks for reading! I'm sorry this post took so long to come out. Between work,
@@ -654,10 +655,10 @@ to those soon, work permitting... Happy Hacking :)*
 
 #### Mistaken xrefs and how to remove them
 
-Sometimes an address is loaded to a register for 16bit/32bit adjustments.
+Sometimes an address is loaded into a register for 16bit/32bit adjustments.
 (see irc_logs.txt). If there happens to be a string in the "arbitrary" address
-that was loaded to the register, IDA will x-ref it just in case the code was
-in fact refering to the address. If the xref doesn't make sense, press `o` to
+that was loaded into the register, IDA will x-ref it just in case the code was
+in fact referring to the address. If the xref doesn't make sense, press `o` to
 display the regular address.
 
 #### Setting function prototypes so IDA comments the args around calls for us
