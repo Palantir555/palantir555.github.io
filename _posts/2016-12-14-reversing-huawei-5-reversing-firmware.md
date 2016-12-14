@@ -656,10 +656,14 @@ to those soon, work permitting... Happy Hacking :)*
 #### Mistaken xrefs and how to remove them
 
 Sometimes an address is loaded into a register for 16bit/32bit adjustments.
-(see irc_logs.txt). If there happens to be a string in the "arbitrary" address
-that was loaded into the register, IDA will x-ref it just in case the code was
-in fact referring to the address. If the xref doesn't make sense, press `o` to
-display the regular address.
+The contents of that address have no effect on the rest of the code; it's just
+a routinary adjustment. If the address that is assigned to the register happens
+to be pointing to some valid data, IDA will rename the address in the assembly
+and display the contents in a comment.
+
+It is up to you to figure out whether an x-ref makes sense or not. If it
+doesn't, select the variable and press `o` in IDA to ignore the contents and
+give you only the address. This makes the code much less confusing.
 
 #### Setting function prototypes so IDA comments the args around calls for us
 
