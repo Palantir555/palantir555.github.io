@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 1 - Hunting for Debug Ports
+thumbnail: https://i.imgur.com/aU83qTd.jpg
 tags:
 - reverse engineering
 ---
