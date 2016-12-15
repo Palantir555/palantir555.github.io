@@ -642,7 +642,7 @@ being able to debug on the original hardware is not possible. In the next post,
 we'll work on CPU emulation to debug the binaries in our own computers.
 
 *Thanks for reading! I'm sorry this post took so long to come out. Between work,
-[hardewar.io](https://hardwear.io) and seeing family/friends, this post was
+[hardwear.io](https://hardwear.io) and seeing family/friends, this post was
 written about 1 paragraph at a time from 4 different countries. Things should
 slow down for a while, so hopefully I'll be able to publish Part 6 soon. I've
 also got some other reversing projects coming down the pipeline,
