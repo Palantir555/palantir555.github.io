@@ -78,7 +78,7 @@ site:
 
 ![ls -lh gpl_source](http://i.imgur.com/rqWb3Jj.png)
 
-**Bug what if they're hiding something!?** How could we possibly tell whether
+**But what if they're hiding something!?** How could we possibly tell whether
 the sources they gave us are the same they used to compile the production
 binaries?
 
