@@ -443,14 +443,15 @@ not reveal anything interesting.
 
 #### Giving Up
 
-After a long time using this process to find potentially relevant pieces of
-code, reversing them, etc. I didn't find anything that looked like the password
-generation algorithm. That would confirm the suspicions I've had since we found
-the default credentials in the `protected` flash area: The manufacturer used
-proper security techniques and flashed the credentials at the factory, which
-is why there is no algorithm. Since the designers manufacture their own
-hardware, that makes perfect sense for this router. They can do whatever they
-want with their manufacturing lines, so they decided to do it right.
+After some time using this process to find potentially relevant pieces of code,
+reverse them, and analyse them, I didn't find anything that looked like the
+password generation algorithm. That would confirm the suspicions I've had since
+we found the default credentials in the `protected` flash area: The manufacturer
+used proper security techniques and flashed the credentials at the factory,
+which is why there is no algorithm. Since the designers manufacture their own
+hardware, the decision makes perfect sense for this device. They can do
+whatever they want with their manufacturing lines, so they decided to do it
+right.
 
 I might take another look at it in the future, or try to find it in some other
 router (I'd like to document the process of reversing it), but you should know
