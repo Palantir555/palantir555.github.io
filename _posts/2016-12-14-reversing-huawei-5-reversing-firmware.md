@@ -186,7 +186,7 @@ tested and may very well be riddled with bugs. Most of this code is stored as
 binaries in the user space; we've got the entire filesystem, so we're good.
 
 Without the source code for user space binaries, we need to find a way to
-read the *machine code* inside the binaries. That's where disassembly comes in.
+read the *machine code* inside them. That's where disassembly comes in.
 
 ## Binary Disassembly [Theory]
 
@@ -199,10 +199,10 @@ equivalence so it can go through the binary, find data and machine code and
 Assembly is not pretty, but at least it's human-readable.
 
 Due to the very low-level nature of the kernel, and how heavily it interacts
-with the hardware, it is incredibly difficult to make any sense of it. User
-space binaries, on the other hand, are abstracted away from the hardware and
-follow unix standards for calling conventions, binary format, etc. They're an
-ideal target for disassembly.
+with the hardware, it is incredibly difficult to make any sense of its binary.
+User space binaries, on the other hand, are abstracted away from the hardware
+and follow unix standards for calling conventions, binary format, etc. They're
+an ideal target for disassembly.
 
 #### Popular Disassemblers
 
@@ -522,10 +522,10 @@ interface. Another example of a network interface
 [potentially vulnerable](https://www.pentestpartners.com/blog/tr-064-worm-its-not-mirai-and-the-outages-are-interesting/)
 to remote command injections is the "LAN-Side DSL CPE Configuration" protocol,
 or **TR-064**. Even though this protocol was designed to be used over the
-internal network only, it's been used to configure routers over the internet.
-Remote command injection vulnerabilities in this protocol have been used to
-extract things like WiFi credentials from routers remotely with just a few
-packets.
+internal network only, it's been used to configure routers over the internet in
+the past. Remote command injection vulnerabilities in this protocol have been
+used to extract things like WiFi credentials from routers remotely with just a
+few packets.
 
 This router has a binary conveniently named `/bin/tr064`; if we take a look,
 we find this right in the `main()` function:
@@ -536,8 +536,8 @@ That's the private RSA key we found in
 [Part 2]({{ site.url }}/2016/04/29/reversing-huawei-router-2-scouting-firmware/)
 being used for SSL authentication. Now we might be able to supplant a router
 in the system and look for vulnerabilities in their servers, or we might use it
-to find other attack vectors. Most importantly, it closes the mistery of what
-was the private key doing in the filesystem.
+to find other attack vectors. Most importantly, it closes the mistery of the
+private key we found while scouting the firmware.
 
 ## Looking for More Complex Vulnerabilities [Theory]
 
@@ -553,7 +553,7 @@ The idea behind a buffer overflow is rather simple: We manage to pass a string
 into the system that contains executable code. We override some address in the
 program so the execution flow jumps into the code we just injected. Now we can
 do anything that binary could do -in embedded systems like this one, where
-everything runs like root, it means immediate root pwnage.
+everything runs as root, it means immediate root pwnage.
 
 ![Introducing an unexpectedly long input](http://i.imgur.com/hbRsOrE.png)
 
