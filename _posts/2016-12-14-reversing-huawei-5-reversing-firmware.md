@@ -168,10 +168,10 @@ produce the serial output we saw:
 
 ![System reset button propagates to user space](http://i.imgur.com/ASQBsR6.png)
 
-Having the kernel can help us find weak algorithms used for security purposes
-and other weaknesses that are sometimes considered 'accepted risks' by
-manufacturers. Most importantly, we can use the drivers to compile and run our
-own OS in the device.
+Having the kernel can help us find poorly implemented security-related
+algorithms and other weaknesses that are sometimes considered 'accepted risks'
+by manufacturers. Most importantly, we can use the drivers to compile and run
+our own OS on the device.
 
 #### User Space Source Code
 
@@ -517,16 +517,20 @@ me wrong. The idea would be to inject something to the effects of this:
 
 ![Attempt reboot injection on ping field](http://i.imgur.com/bPv4AxJ.png)
 
-As I said, I couldn't find anything. The idea would be to verify that for all
+Which would result in this final string being executed as a shell command:
+`ping google.com -c 1; reboot; ping 192.168.1.1 > /dev/null`. If the router
+reboots, we found a way in.
+
+As I said, I couldn't find anything. Ideally we'd like to verify that for all
 input fields, whether they're in the web interface or some other network
 interface. Another example of a network interface
 [potentially vulnerable](https://www.pentestpartners.com/blog/tr-064-worm-its-not-mirai-and-the-outages-are-interesting/)
 to remote command injections is the "LAN-Side DSL CPE Configuration" protocol,
 or **TR-064**. Even though this protocol was designed to be used over the
 internal network only, it's been used to configure routers over the internet in
-the past. Remote command injection vulnerabilities in this protocol have been
-used to extract things like WiFi credentials from routers remotely with just a
-few packets.
+the past. Command injection vulnerabilities in some implementations of this
+protocol have been used to remotely extract data like WiFi credentials from
+routers with just a few packets.
 
 This router has a binary conveniently named `/bin/tr064`; if we take a look,
 we find this right in the `main()` function:
