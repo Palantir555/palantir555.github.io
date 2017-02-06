@@ -11,6 +11,7 @@
 
     <nav class="sidebar-nav">
 
+{% comment %}
       {% comment %}
         The code below dynamically generates a sidebar nav of pages with
         `layout: page` in the front-matter. See readme for usage.
@@ -24,7 +25,9 @@
           {% endif %}
         {% endif %}
       {% endfor %}
+{% endcomment %}
 
+      <a class="sidebar-nav-item" href="/archive/">Archive</a>
       <a class="sidebar-nav-item" href="{{ site.author.linkedin }}">Juan Carlos Jimenez</a>
       <a class="sidebar-nav-item" href="{{ site.author.twitter }}" >Twitter</a>
       <a class="sidebar-nav-item" href="{{ site.author.gh }}"      >GitHub</a>
