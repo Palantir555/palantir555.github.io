@@ -52,7 +52,7 @@ projects must be made available to anyone who wants it.
 
 Having access to all that source code can be a massive advantage during the
 reversing process. The kernel and the bootloader are particularly interesting,
-and not just to find security issues. For instance:
+and not just to find security issues.
 
 When hunting for GPL'd sources you can usually expect one of these scenarios:
 
