@@ -41,12 +41,12 @@ staff is nowhere to be seen.*
 
 ## Picking Up Where We Left Off
 
-![Picture of Documented UARTs](http://i.imgur.com/znXRocn.jpg)
+![Picture of Documented UARTs](https://i.imgur.com/znXRocn.jpg)
 
 We get our serial terminal application up and running in the computer and power
 up the router.
 
-![Boot Sequence](http://i.imgur.com/t43E8dm.jpg)
+![Boot Sequence](https://i.imgur.com/t43E8dm.jpg)
 
 We press `enter` and get the login prompt from `ATP Cli`; introduce the
 credentials `admin:admin` and we're in the ATP command line. Execute the command
@@ -88,18 +88,18 @@ anything we can use.
 We find multiple random pieces of data scattered across the boot sequence. We'll
 find useful info such as the compression algorithm used for some flash segments:
 
-![boot msg kernel lzma](http://i.imgur.com/9pRc2mP.jpg)
+![boot msg kernel lzma](https://i.imgur.com/9pRc2mP.jpg)
 
 Intel on how the external flash memory is structured will be very useful when we
 get to extracting it.
 
-![ram data. not very useful](http://i.imgur.com/OmDkAxX.jpg)
+![ram data. not very useful](https://i.imgur.com/OmDkAxX.jpg)
 
-![SPI Flash Memory Map!](http://i.imgur.com/ODnxzJY.jpg)
+![SPI Flash Memory Map!](https://i.imgur.com/ODnxzJY.jpg)
 
 And more compression intel:
 
-![root is squashfs'd](http://i.imgur.com/Qw6Z08z.jpg)
+![root is squashfs'd](https://i.imgur.com/Qw6Z08z.jpg)
 
 We'll have to deal with the compression algorithms when we try to access the raw
 data from the external Flash, so it's good to know which ones are being used.
@@ -181,7 +181,7 @@ The `top` command will help us identify which processes are consuming the most
 resources. This can be an extremely good indicator of whether some processes are
 important or not. It doesn't say much while the router's idle, though:
 
-![top](http://i.imgur.com/d1lVlP4.png)
+![top](https://i.imgur.com/d1lVlP4.png)
 
 One of the processes running is `usbmount`, so the router must support connecting
 'something' to the USB port. Let's plug in a flash drive in there...
@@ -225,13 +225,15 @@ System configuration files, *etc*.
 `/var/` and `/etc/` always contain tons of useful data, and some of it makes
 itself obvious at first sight. Does that say `/etc/serverkey.pem`??
 
-![Blurred /etc/serverkey.pem](http://i.imgur.com/NNkvDdj.jpg)
+![Blurred /etc/serverkey.pem](https://i.imgur.com/NNkvDdj.jpg)
 
 `¯\_(ツ)_/¯`
 
-It's not unusual to find private keys for TLS certificates in embedded systems.
-By accessing 1 single device via hardware you may obtain the keys that will help
-you attack any other device of the same model.
+It's common to find private keys in embedded systems. They could be RSA private
+keys used for mutually-authenticated TLS connections with a server, variables
+buried in a file to be loaded by an application, etc. By accessing 1 single
+device via hardware you may obtain the keys that will help you eavesdrop
+encrypted connections, attack servers, end users or other devices in the fleet.
 
 This key could be used to communicate with some server from Huawei or the ISP,
 although that's less common. On the other hand, it's also very common to find
@@ -246,7 +248,7 @@ Probably used to connect to a server from the ISP or Huawei. Not sure.
 
 And some more data in `/etc/ppp256/config` and `/etc/ppp258/config`:
 
-![/var/wan/ppp256/config](http://i.imgur.com/U86nGOp.png)
+![/var/wan/ppp256/config](https://i.imgur.com/U86nGOp.png)
 
 These credentials are also available via the HTTP interface, which is why I'm
 publishing them, but that's not the case in many other routers (more on this
@@ -263,7 +265,7 @@ very quick. `find . -name *.pem` reveals there aren't any other TLS certificates
 
 What about searching the word `password` in all files? `grep -i -r password .`
 
-![Grep Password](http://i.imgur.com/skmx7VE.jpg)
+![Grep Password](https://i.imgur.com/skmx7VE.jpg)
 
 We can see lots of credentials; most of them are for STUN, TR-069 and local
 services. I'm publishing them because this router proudly displays
@@ -283,7 +285,7 @@ $ echo "QUJCNFVCTU4=" | base64 -D
 ABB4UBMN
 ```
 
-![WiFi pwd in curcfg.xml](http://i.imgur.com/KCo2H4B.jpg)
+![WiFi pwd in curcfg.xml](https://i.imgur.com/KCo2H4B.jpg)
 
 That is the current WiFi password set in the router. It leads us to 2 VERY
 interesting files. Not just because of their content, but because they're a
@@ -307,7 +309,7 @@ about the commands `igmpproxy`, `cwmp`, `sysuptime` or `atpversion`.
 don't have anything juicy, but what about `cwmp`? Wasn't that related to remote
 configuration of routers?
 
-![debug display cwmp](http://i.imgur.com/2t6IfbQ.png)
+![debug display cwmp](https://i.imgur.com/2t6IfbQ.png)
 
 Once again, these are the CWMP (TR-069) credentials used for remote router
 configuration. Not even encoded this time.
@@ -390,7 +392,7 @@ memory is only addressed by 3 bytes: [`0x00000000`, `0x00FFFFFF`].
 Let's take a look at some of them anyway, just to see the kind of access this
 interface offers.What about `kernel_addr=BFC40000`?
 
-![md `badd` Picture](http://i.imgur.com/nKBcXmT.png)
+![md `badd` Picture](https://i.imgur.com/nKBcXmT.png)
 
 Nope, that `badd` message means `bad address`, and it has been hardcoded in `md`
 to let you know that you're trying to access invalid memory locations. These
@@ -400,7 +402,7 @@ It's worth noting that by starting Uboot's CLI we have stopped the router from
 loading the linux Kernel onto memory, so this interface gives access to a very
 limited subset of data.
 
-![SPI Flash string in md](http://i.imgur.com/aZ32bs8.png)
+![SPI Flash string in md](https://i.imgur.com/aZ32bs8.png)
 
 We can find random pieces of data around memory using this method (such as that
 `SPI Flash Image` string), but it's pretty hopeless for finding anything specific.
@@ -408,7 +410,7 @@ You can use it to get familiarised with the memory architecture, but that's abou
 it. For example, there's a very obvious change in memory contents at
 `0x000d0000`:
 
-![md.w 0x000d0000](http://i.imgur.com/SC1TaeF.png)
+![md.w 0x000d0000](https://i.imgur.com/SC1TaeF.png)
 
 And just because it's about as close as it gets to seeing *the girl in the red
 dress*, here is the `md` command in action. You'll notice it's very easy to spot

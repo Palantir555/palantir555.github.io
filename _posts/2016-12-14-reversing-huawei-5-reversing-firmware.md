@@ -76,7 +76,7 @@ site:
 - [HG533 GPL release](http://download-c.huawei.com/download/downloadCenter?downloadId=17643&siteCode=worldwide)
 - [Mirror of the HG533 release](https://mega.nz/#!QxADUL5D!6Fga4S5C7ENmgDhhrtQqZcevbH8-3Tj6NEhO7yOV8hI).
 
-![ls -lh gpl_source](http://i.imgur.com/rqWb3Jj.png)
+![ls -lh gpl_source](https://i.imgur.com/rqWb3Jj.png)
 
 **But what if they're hiding something!?** How could we possibly tell whether
 the sources they gave us are the same they used to compile the production
@@ -111,7 +111,7 @@ store configuration data. In order to know where to look for what, it's
 important to understand the overall architecture of the system. Let's quickly
 review this device's:
 
-![Linux Architecture](http://i.imgur.com/2lwcSjA.png)
+![Linux Architecture](https://i.imgur.com/2lwcSjA.png)
 
 The bootloader is the first piece of code to be executed on boot. Its job is to
 prepare the kernel for execution, jump into it and stop running. From that point
@@ -160,13 +160,13 @@ which means the GPIO pin that detects the button press must be controlled by
 the drivers. These are the logs we saw coming out of the UART port in a
 previous post:
 
-![UART system restore logs](http://i.imgur.com/u8ZMr4Q.png)
+![UART system restore logs](https://i.imgur.com/u8ZMr4Q.png)
 
 With some simple `grep` commands we can see how the different components
 of the system (kernel, binaries and shared objects) can work together and
 produce the serial output we saw:
 
-![System reset button propagates to user space](http://i.imgur.com/ASQBsR6.png)
+![System reset button propagates to user space](https://i.imgur.com/ASQBsR6.png)
 
 Having the kernel can help us find poorly implemented security-related
 algorithms and other weaknesses that are sometimes considered 'accepted risks'
@@ -233,7 +233,7 @@ In order to display the assembly code in a more readable way, all these
 disasemblers use a "Graph View". It provides an intuitive way to follow the
 different possible execution flows in the binary:
 
-![IDA Small Function Graph View](http://i.imgur.com/ZTXwFZs.png)
+![IDA Small Function Graph View](https://i.imgur.com/ZTXwFZs.png)
 
 Such a clear representation of branches, and their conditionals, loops, etc.
 is extremely useful. Without it, we'd have to manually jump from one branch to
@@ -264,7 +264,7 @@ We can verify that information thanks to the Ralink's
 [product brief](https://wikidevi.com/files/Ralink/RT3352%20product%20brief.pdf),
 which specifies the processor core it uses: `MIPS24KEc`
 
-![Product Brief Highlighted Processor Core](http://i.imgur.com/KgVCwq5.png)
+![Product Brief Highlighted Processor Core](https://i.imgur.com/KgVCwq5.png)
 
 With the exact version of the CPU core, we can easily find its
 [datasheet](http://wiki.prplfoundation.org/w/images/3/39/MD00445-2B-24KEC-DTS-02.00.pdf)
@@ -317,7 +317,7 @@ Binary file ./lib/libcfmapi.so matches
 3 files contain the next string found in the logs: 2 executables in `/bin/` and
 1 shared object in `/lib/`. Let's take a look at `/bin/equipcmd` with IDA:
 
-![restore success string in /bin/equipcmd - IDA GUI](http://i.imgur.com/NYu28hi.png)
+![restore success string in /bin/equipcmd - IDA GUI](https://i.imgur.com/NYu28hi.png)
 
 If we look closely, we can almost read the C code that was compiled into these
 instructions. We can see a "clear configuration file", which would match the
@@ -379,7 +379,7 @@ look anyway.
 
 If you recall, these are the default WiFi credentials in my router:
 
-![Router Sticker - Annotated](http://i.imgur.com/ATznq7F.png)
+![Router Sticker - Annotated](https://i.imgur.com/ATznq7F.png)
 
 So what do we know?
 
@@ -420,7 +420,7 @@ look at the other one: `/bin/cms`.
 
 #### Reversing the Functions that Uses Them
 
-![IDA TALKTALK-XXXXXX String Being Built](http://i.imgur.com/qwksBmi.png)
+![IDA TALKTALK-XXXXXX String Being Built](https://i.imgur.com/qwksBmi.png)
 
 That looks exactly the way we'd expect the SSID generation algorithm to look.
 The code is located inside a rather large function called `ATP_WLAN_Init`, and
@@ -436,7 +436,7 @@ somewhere in there it performs the following actions:
 Unfortunately, right after this branch the function simply does an
 `ATP_DBSave` and moves on to start running commands and whatnot. e.g.:
 
-![ATP_WLAN_Init moves on before you](http://i.imgur.com/HVhwFzU.png)
+![ATP_WLAN_Init moves on before you](https://i.imgur.com/HVhwFzU.png)
 
 Further inspection of this function and other references to `ATP_DBSave` did
 not reveal anything interesting.
@@ -477,7 +477,7 @@ user-defined server from the router, because it's very valuable information to
 debug network problems. You need to give the user the option to define the ping
 target, and you need to serve them the results:
 
-![Router WEB Interface Ping in action](http://i.imgur.com/Nkae9G3.png)
+![Router WEB Interface Ping in action](https://i.imgur.com/Nkae9G3.png)
 
 Once you receive the data of which server to target, you have two options: You
 find a library with the ICMP protocol implemented and call it directly from the
@@ -488,7 +488,7 @@ implement, saves memory, etc. and it's the obvious choice. Taking user input
 danger comes in. Let's see how this router's web application, `/bin/web`,
 handles it:
 
-![/bin/web's ping function](http://i.imgur.com/gRI8fMt.png)
+![/bin/web's ping function](https://i.imgur.com/gRI8fMt.png)
 
 A call to libc's [system()](http://man7.org/linux/man-pages/man3/system.3.html)
 (not to be confused with a
@@ -503,7 +503,7 @@ vectors for command injections. Just investigate the ones that look like may
 be using unfiltered user input. These are all the references to `system()` in
 the `/bin/web` binary:
 
-![xrefs to system in /bin/web](http://i.imgur.com/x2oflih.png)
+![xrefs to system in /bin/web](https://i.imgur.com/x2oflih.png)
 
 Even the names of the functions can give you clues on whether or not a reference
 to `system()` will receive user input. We can also see some references to
@@ -515,7 +515,7 @@ I spent some time trying to find ways around the filtering provided by
 couldn't find anything in this field or any others. Further analysis may prove
 me wrong. The idea would be to inject something to the effects of this:
 
-![Attempt reboot injection on ping field](http://i.imgur.com/bPv4AxJ.png)
+![Attempt reboot injection on ping field](https://i.imgur.com/bPv4AxJ.png)
 
 Which would result in this final string being executed as a shell command:
 `ping google.com -c 1; reboot; ping 192.168.1.1 > /dev/null`. If the router
@@ -535,7 +535,7 @@ routers with just a few packets.
 This router has a binary conveniently named `/bin/tr064`; if we take a look,
 we find this right in the `main()` function:
 
-![/bin/tr064 using /etc/serverkey.pem](http://i.imgur.com/V19ESAp.png)
+![/bin/tr064 using /etc/serverkey.pem](https://i.imgur.com/V19ESAp.png)
 
 That's the private RSA key we found in
 [Part 2]({{ site.url }}/2016/04/29/reversing-huawei-router-2-scouting-firmware/)
@@ -560,7 +560,7 @@ program so the execution flow jumps into the code we just injected. Now we can
 do anything that binary could do -in embedded systems like this one, where
 everything runs as root, it means immediate root pwnage.
 
-![Introducing an unexpectedly long input](http://i.imgur.com/hbRsOrE.png)
+![Introducing an unexpectedly long input](https://i.imgur.com/hbRsOrE.png)
 
 Developing an exploit for this sort of vulnerability is not as simple as
 appending commands to find your way around a filter. There are multiple possible
@@ -587,7 +587,7 @@ mostly interested in string manipulation functions like `strcpy`, `strcat`,
 also potentially vulnerable to some techniques, but usually much more
 complicated to work with.
 
-![Pic of strcpy handling an input](http://i.imgur.com/JNFw0Od.png)
+![Pic of strcpy handling an input](https://i.imgur.com/JNFw0Od.png)
 
 Even though I'm not sure that function -extracted from `/bin/tr064`- is passed
 any user inputs, it's still a good example of the sort of code you should be
@@ -633,7 +633,7 @@ MIPS binaries. That being said, if you'd like to give one a try, the
 [RetDec](https://retdec.com/decompilation/)
 online decompiler supports multiple architectures- including MIPS.
 
-![Binary Decompiled to C by RetDec](http://i.imgur.com/mhSK5I4.png)
+![Binary Decompiled to C by RetDec](https://i.imgur.com/mhSK5I4.png)
 
 Even as a 'high level' language, the code is not exactly pretty to look at.
 
@@ -690,7 +690,7 @@ interested in, but we can see the `extern` declarations for it. Sometimes the
 source will include documentation comments or descriptive variable names; very
 useful info that the disassembly doesn't provide:
 
-![ATP_DBSetPara extern declaration in gpl_source/inc/cfmapi.h](http://i.imgur.com/Yh6VhRK.png)
+![ATP_DBSetPara extern declaration in gpl_source/inc/cfmapi.h](https://i.imgur.com/Yh6VhRK.png)
 
 Unfortunately, the function documentation comment is not very useful in this
 case -seems like there were encoding issues with the file at some point, and

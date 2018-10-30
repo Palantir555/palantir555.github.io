@@ -165,7 +165,7 @@ the primary UART starts spitting out useful info. These are the commands I use
 to connect to each port as well as the first lines they send during the boot
 process:
 
-![Boot Sequence](http://i.imgur.com/t43E8dm.jpg)
+![Boot Sequence](https://i.imgur.com/t43E8dm.jpg)
 
 ```
 Please choose operation:

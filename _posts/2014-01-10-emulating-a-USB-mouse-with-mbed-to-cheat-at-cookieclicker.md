@@ -59,7 +59,7 @@ started a StarCraft 2 game, created 10 random control groups, and kept the butto
 pressed a few times during the beginning of the game. This way, we can inflate
 our APM (Actions Per Minute) automatically. Here is the result:
 
-![StarCraft sky high APM](http://i.imgur.com/EMGDRSY.jpg)
+![StarCraft sky high APM](https://i.imgur.com/EMGDRSY.jpg)
 
 I'll have to try it again, pressing the button during much more time (That 736
 APM is just the average APM for all the game), just to see how high it can go.

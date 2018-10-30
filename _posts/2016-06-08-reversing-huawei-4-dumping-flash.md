@@ -33,7 +33,7 @@ Flash IC with a public datasheet is a reverser's great ally.
 As discussed in Part 3, we've got access to the datasheet for the Flash IC, so
 there's no need to reverse its pinout:
 
-![Flash Pic Annotated Pinout](http://i.imgur.com/54ih2LZ.jpg)
+![Flash Pic Annotated Pinout](https://i.imgur.com/54ih2LZ.jpg)
 
 We also have its instruction set, so we can communicate with the IC using almost
 any device capable of 'speaking' SPI.
@@ -71,7 +71,7 @@ approach. The voltage required, according to the
 is 3V; I'm just gonna apply power directly to the Flash IC and see what happens.
 It may power up the Ralink too, but it's worth a try.
 
-![Flash Powered UART Connected](http://i.imgur.com/JBTsUfo.png)
+![Flash Powered UART Connected](https://i.imgur.com/JBTsUfo.png)
 
 We start supplying power while observing the board and waiting for data from
 the Ralink's UART port. We can see some LEDs light up at the back of the PCB,
@@ -103,7 +103,7 @@ We've got the pinout for both the Flash and my
 [USB-SPI bridge](http://www.xipiter.com/uploads/2/4/4/8/24485815/shikra_documentation.pdf),
 so let's get everything connected.
 
-![Shikra and Power Connected to Flash](http://i.imgur.com/SyUFtey.jpg)
+![Shikra and Power Connected to Flash](https://i.imgur.com/SyUFtey.jpg)
 
 Now that the hardware is ready it's time to start pumping data out.
 
@@ -119,7 +119,7 @@ lots of common Masters and Flash ICs. Let's try the widely known and open source
 Master and the `FL064PIF` as Slave. It gave me lots of trouble in both OSX and
 an Ubuntu VM, but ended up working just fine on a Raspberry Pi (Raspbian):
 
-![flashrom stdout](http://i.imgur.com/VzvjX31.png)
+![flashrom stdout](https://i.imgur.com/VzvjX31.png)
 
 **Success!** We've got our memory dump, so we can ditch the hardware and start
 preparing the data for analysis.
@@ -135,14 +135,14 @@ to take a first look at the binary file and find the data we'd like to extract.
 awesome hackers at [/dev/ttyS0](http://www.devttys0.com/); you'll certainly get
 to know them if you're into hardware hacking.*
 
-![binwalk spidump.bin](http://i.imgur.com/vdmjcDt.png)
+![binwalk spidump.bin](https://i.imgur.com/vdmjcDt.png)
 
 In this case we're not in a 0-knowledge scenario; we've been gathering data since
 day 1, and we obtained a complete memory map of the Flash IC in Part 2. The
 addresses mentioned in the debug message are confirmed by binwalk, and it makes
 for much cleaner splitting of the binary, so let's use it:
 
-![Flash Memory Map From Part 2](http://i.imgur.com/CX9raje.png)
+![Flash Memory Map From Part 2](https://i.imgur.com/CX9raje.png)
 
 With the binary and the relevant addresses, it's time to split the binary into
 its 4 basic segments. `dd` takes its parameters in terms of block size (`bs`,
@@ -191,7 +191,7 @@ look at each of them.
 
 #### Bootloader
 
-![binwalk bootloader.bin](http://i.imgur.com/iuFJjvG.png)
+![binwalk bootloader.bin](https://i.imgur.com/iuFJjvG.png)
 
 Binwalk found the uImage header and decoded it for us. U-Boot uses these headers
 to identify relevant memory areas. It's the same info that the `file` command
@@ -203,7 +203,7 @@ it.
 
 #### Kernel
 
-![binwalk mainkernel.bin](http://i.imgur.com/XrusrH2.png)
+![binwalk mainkernel.bin](https://i.imgur.com/XrusrH2.png)
 
 Compression is something we have to deal with before we can make any use of the
 data. binwalk has confirmed what we discovered in Part 2, the kernel
@@ -223,7 +223,7 @@ The uImage header is probably messing with tools, so we're gonna have to strip
 it out. We know the *lzma* data starts at byte `0x40`, so let's copy everything
 but the first 64 bytes.
 
-![dd if=mainkernel of=noheader](http://i.imgur.com/ZY0CI10.png)
+![dd if=mainkernel of=noheader](https://i.imgur.com/ZY0CI10.png)
 
 And when we try to decompress...
 
@@ -237,13 +237,13 @@ data itself. We're trying to decompress the whole `mainkernel` Flash area, but
 the stored data is extremely unlikely to be occupying 100% of the memory segment.
 Let's remove any unused memory from the tail of the binary and try again:
 
-![Cut off the tail; decompression success](http://i.imgur.com/4pdQnpX.png)
+![Cut off the tail; decompression success](https://i.imgur.com/4pdQnpX.png)
 
 `xz` seems to have decompressed the data successfully. We can easily verify that
 using the `strings` command, which finds ASCII strings in binary files. Since
 we're at it, we may as well look for something useful...
 
-![strings kernel grep key](http://i.imgur.com/nsWB75q.png)
+![strings kernel grep key](https://i.imgur.com/nsWB75q.png)
 
 The `Wi-Fi Easy and Secure Key Derivation` string looks promising, but as it
 turns out it's just a hardcoded string defined by the
@@ -254,7 +254,7 @@ We've proven the data has been properly decompressed, so let's keep moving.
 
 #### Filesystem
 
-![binwalk mainrootfs.bin](http://i.imgur.com/v8E2WxQ.png)
+![binwalk mainrootfs.bin](https://i.imgur.com/v8E2WxQ.png)
 
 The `mainrootfs` memory segment does **not** have a uImage header because it's
 relevant to the kernel but not to U-Boot.
@@ -265,7 +265,7 @@ make the data harder to locate inside the binary. We may have to fiddle with
 multiple versions of `unsquashfs` and/or modify the signatures, so let me show
 you what the signature looks like in this case:
 
-![sqsh signature in hexdump](http://i.imgur.com/GFaD38g.png)
+![sqsh signature in hexdump](https://i.imgur.com/GFaD38g.png)
 
 Since the filesystem is very common and finding the right configuration is
 tedious work, somebody may have already written a script to automate the task.
@@ -276,14 +276,14 @@ of the
 which compiles multiple versions of `unsquashfs` and includes a neat script
 called `unsquashfs_all.sh` to run all of them. It's worth a try.
 
-![unsquashfs_all.sh mainrootfs.bin](http://i.imgur.com/sYi6PO6.png)
+![unsquashfs_all.sh mainrootfs.bin](https://i.imgur.com/sYi6PO6.png)
 
 Wasn't that easy? We got lucky with the SquashFS version and supported signature,
 and `unsquashfs_all.sh` managed to decompress the filesystem. Now we've got
 every binary in the filesystem, every symlink and configuration file, and
 everything is nice and tidy:
 
-![tree unsquashed_filesystem](http://i.imgur.com/MUyII7j.png)
+![tree unsquashed_filesystem](https://i.imgur.com/MUyII7j.png)
 
 In the complete
 [file tree](https://gist.github.com/Palantir555/5d66ccd4b084053396749f88ad96a37f)
@@ -293,21 +293,21 @@ those in `/var/`, of course).
 Using the intel we have been gathering on the firmware since day 1 we can start
 looking for potentially interesting binaries:
 
-![grep -i -r '$INTEL' squashfs-root](http://i.imgur.com/89GG8mJ.png)
+![grep -i -r '$INTEL' squashfs-root](https://i.imgur.com/89GG8mJ.png)
 
 If we were looking for network/application vulnerabilities in the router, having
 every binary and config file in the system would be massively useful.
 
 #### Protected
 
-![binwalk protect.bin](http://i.imgur.com/t6bcd05.png)
+![binwalk protect.bin](https://i.imgur.com/t6bcd05.png)
 
 As we discussed in Part 3, this memory area is not compressed and contains all
 pieces of data that need to survive across reboots but be different across
 devices. `strings` seems like an appropriate tool for a quick overview of the
 data:
 
-![strings protect.bin](http://i.imgur.com/bzPVpdy.png)
+![strings protect.bin](https://i.imgur.com/bzPVpdy.png)
 
 [Everything in there](https://gist.github.com/Palantir555/568f7168866ddada5f9759295284f1db)
 seems to be just the `curcfg.xml` contents, some logs and those few isolated
