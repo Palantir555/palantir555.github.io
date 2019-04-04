@@ -74,7 +74,7 @@ site:
 
 - [Huawei's GPL compliance search page](http://m.huawei.com/enmobile/consumer/support/downloads/index.htm).
 - [HG533 GPL release](http://download-c.huawei.com/download/downloadCenter?downloadId=17643&siteCode=worldwide)
-- [Mirror of the HG533 release](https://mega.nz/#!QxADUL5D!6Fga4S5C7ENmgDhhrtQqZcevbH8-3Tj6NEhO7yOV8hI).
+- [Mirror of the HG533 release](https://drive.google.com/file/d/1B34sUGo36I3pXOEbD4---3KmAVNOpN16/view?usp=sharing).
 
 ![ls -lh gpl_source](https://i.imgur.com/rqWb3Jj.png)
 
