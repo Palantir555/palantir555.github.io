@@ -11,6 +11,7 @@ tags:
 - esp32
 - wireless
 - cosplay
+- embedded
 ---
 
 We hosted a Halloween party for some friends last week, and I wanted to integrate
