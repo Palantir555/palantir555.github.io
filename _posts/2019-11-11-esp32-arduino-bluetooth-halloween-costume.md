@@ -170,9 +170,9 @@ Resources: [Bluetooth Core Specification](https://www.bluetooth.com/specificatio
 ### Picking the hardware
 
 Picking the right microcontroller and development board for a serious project is
-often a huge and rather complicated task. Fortunately, this project is just a
-one-off, and my only concerns were delivery and development time. I was able to
-use only parts I already had, except for the `MP3-TF-16P` module.
+often a huge and rather complicated task. Fortunately, this project is designed
+for a single use, so my only concerns were part lead time and development time.
+I was able to use only parts I already had, except for the `MP3-TF-16P` module.
 
 If you're interested in the thought process behind my hardware choices, here's
 some of it:
@@ -195,8 +195,8 @@ RGB ones at hand.
 The power transistor had to be beefy enough to drive all 3 channels (RGB) for
 the entire LED strip, and -less importantly- fast enough to handle PWM. I already
 had some `TIP31A`s in the lab, and it can easily drive this strip's power without
-breaking a sweat. A MOSFET would be better for PWM control, but the ones I didn't
-have any beefy ones at hand.
+breaking a sweat. A MOSFET would be better for PWM control, but the ones I had at
+hand were not beefy enough to handle the current required for my LED strip.
 
 Everything else (power brick, perf board, resistors, pin headers...) is generic
 stuff I had in the lab.
@@ -221,7 +221,8 @@ another LED strip into the costume
 - Use more capabilities of Bluetooth GATT to create more diverse and complex
 interactions
 
-If this post is useful to you, don't forget to send me a video of your results! :)
+If this post was useful to you, and you decide to use it, don't forget to send me
+a video of your results! :)
 
 Also, if you're gonna build more functionality into your system, you should
 really try to understand Bluetooth GATT a little better. See the resources below.
