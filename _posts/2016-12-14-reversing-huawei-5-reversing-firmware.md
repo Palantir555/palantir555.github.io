@@ -180,9 +180,9 @@ open source, such as `busybox` and `iptables`. Given the right (wrong) versions,
 public vulnerability databases could be enough to find exploits for any of these.
 
 That being said, if you're looking for 0-days, backdoors or sensitive data, your
-best bet is not the open source projects. Devic specific and closed source code
-developed by the manufacturer or one of their providers has not been so heavily
-tested and may very well be riddled with bugs. Most of this code is stored as
+best bet is not the open source projects. Device-specific and closed-source code
+developed by the manufacturer or their contractors has not been so heavily
+tested, and may very well be riddled with bugs. Most of this code is stored as
 binaries in the user space; we've got the entire filesystem, so we're good.
 
 Without the source code for user space binaries, we need to find a way to
