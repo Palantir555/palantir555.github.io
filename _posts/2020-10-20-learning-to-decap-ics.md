@@ -276,7 +276,7 @@ acid to decap a simpler IC. It worked well enough:
 That being said, spending an entire afternoon in PPE and constant tedious work
 for only a chance to get an undamaged IC is unacceptable to me.
 
-I tried using [magnetically stirring](https://en.wikipedia.org/wiki/Magnetic_stirrer)
+I tried [magnetically stirring](https://en.wikipedia.org/wiki/Magnetic_stirrer)
 the acetone bath in an attempt to accelerate the process while remaining reasonably
 gentle, but it made no significant difference.
 
