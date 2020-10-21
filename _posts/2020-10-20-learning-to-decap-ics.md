@@ -143,7 +143,7 @@ should NOT be used to work with nitric acid; especially fuming (98%+) nitric aci
 Long, thick neoprene-based gloves are best for Nitric, but make delicate tasks
 difficult. I settled for wearing a thick neoprene glove on my non-dominant hand,
 and a vinyl glove in my dominant hand for the more delicate work. When touching
-any surface that hot or has been in touch with acid, I use the neoprene glove
+any surface that's hot or has been in touch with acid, I use the neoprene glove
 - Expose as little of your skin as possible: Wear shoes, trousers (not shorts),
 long sleeves... Preferably use a lab coat, so you can remove the acid-splashed
 clothing without dragging it over your face
