@@ -576,3 +576,5 @@ Commercial documentation:
 Insightful research:
 
 - [Bunnie unsetting PIC18F1320 eFuses to pull protected data off the chip](https://www.bunniestudios.com/blog/?page_id=40)
+- [Mikhail Davidov decapsulating ICs with a Nitric+Sulfuric acid mix and unsetting eFuses with UV light](https://duo.com/blog/microcontroller-firmware-recovery-using-invasive-analysis)
+- [John McMaster's SiliconPr0n wiki, with a plethora of information on chip decapping, reversing, attacks and more](https://siliconpr0n.org/wiki/doku.php)
