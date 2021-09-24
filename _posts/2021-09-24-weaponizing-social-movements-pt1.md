@@ -194,7 +194,7 @@ To simplify a rather complex concept, let's use an example.
 oversimplified; and you'd be right. For the purposes of these posts, there's no
 point in going into a lot of detail; especially regarding transfer functions and
 the mathematical relationships they are used to calculate. I'll focus on their
-most basic fundamental properties.*
+most fundamental properties.*
 
 Say an engineer is designing an oven. They're using a resistor to produce heat,
 and need to figure out how much current they should run through it to reach the
