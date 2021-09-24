@@ -110,7 +110,7 @@ participants will have enough space to naturally disperse and run comfortably.
 If pressure behind the chokepoint was allowed to build up unrestricted, the
 runners on the sides would be pushed into the barriers, and the ones in the
 middle pushed through the chokepoint at "high speed"; akin to the combustion
-gasses shooting through a rocket engine's nozzle. To control the
+gases shooting through a rocket engine's nozzle. To control the
 pressure at the front, the organizers set up human barriers that segmented the
 runners before the start:
 
