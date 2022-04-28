@@ -86,6 +86,6 @@ void MainWindow::mySlot (int idx)
 
 And now let’s take a look at how this simple example looks:
 
-![Default view](https://i.imgur.com/aEgo1.png)
-![Dropped menu](https://i.imgur.com/SS4Yx.png)
-![2nd option selected](https://i.imgur.com/S37Hx.png)
+![Default view]({{ site.url }}/assets/practical-reversing/aEgo1.png)
+![Dropped menu]({{ site.url }}/assets/practical-reversing/SS4Yx.png)
+![2nd option selected]({{ site.url }}/assets/practical-reversing/S37Hx.png)

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 1 - Hunting for Debug Ports
-thumbnail: https://i.imgur.com/aU83qTd.jpg
+thumbnail: https://raw.githubusercontent.com/Palantir555/palantir555.github.io/master/assets/practical-reversing/aU83qTd.jpg
 tags:
 - reverse engineering
 ---
@@ -19,7 +19,7 @@ Digging Through the Firmware
 In this series of posts we're gonna go through the process of Reverse Engineering
 a router. More specifically, a Huawei HG533.
 
-![Huawei HG533](https://i.imgur.com/UsxvPMo.jpg)
+![Huawei HG533]({{ site.url }}/assets/practical-reversing/UsxvPMo.jpg)
 
 At the earliest stages, this is the most basic kind of reverse engineering.
 We're simple looking for a serial port that the engineers who designed the device
@@ -40,7 +40,7 @@ They're not for end users, so they almost never have pins or connectors attached
 After taking a quick look at the board, 2 sets of unused pads call my atention
 (they were unused before I soldered those pins in the picture, anyway):
 
-![Pic of the 2 Potential UART Ports](https://i.imgur.com/5gJUa8R.jpg)
+![Pic of the 2 Potential UART Ports]({{ site.url }}/assets/practical-reversing/5gJUa8R.jpg)
 
 This device seems to have 2 different serial ports to communicate with
 2 different Integrated Circuits (ICs). Based on the location on the board and
@@ -58,7 +58,7 @@ There's a very simple trick I use to help find useless pads:
 Flash a bright light from the backside of the PCB and look at it from directly
 above. This is what that looks like:
 
-![2nd Serial Port - No Headers](https://i.imgur.com/g0REmPG.jpg)
+![2nd Serial Port - No Headers]({{ site.url }}/assets/practical-reversing/g0REmPG.jpg)
 
 We can see if any of the layers of the PCB is making contact with the solder
 blob in the middle of the pad.
@@ -84,7 +84,7 @@ to work with. For the 2nd serial port I decided to drill through the solder blob
 with a Dremel and a needle bit. That way we can pass the pins through the holes
 and solder them properly on the back of the PCB. It worked like a charm.
 
-![Use a Dremel to Drill Through the Solder Blobs](https://i.imgur.com/a8p40yt.jpg)
+![Use a Dremel to Drill Through the Solder Blobs]({{ site.url }}/assets/practical-reversing/a8p40yt.jpg)
 
 ## Identifying the Pinout
 
@@ -124,7 +124,7 @@ A multimeter or a logic analyser would be enough to figure out which pin is
 which, but if you want to understand what exactly is going on in each pin,
 nothing beats a half decent oscilloscope:
 
-![Channel1=Tx Channel2=Rx](https://i.imgur.com/HuEshXs.png)
+![Channel1=Tx Channel2=Rx]({{ site.url }}/assets/practical-reversing/HuEshXs.png)
 
 After checking the pins out with an oscilloscope, this is what we can see in
 each of them:
@@ -144,12 +144,12 @@ This is a dump from a logic analyser in which we've enabled protocol analysis
 and tried a few different baudrates. When we hit the right one, we start seeing
 readable text in the sniffed serial data (`\n\r\n\rU-Boot 1.1.3 (Aug...`)
 
-![Logic Protocol Analyser](https://i.imgur.com/OkHJtsA.jpg)
+![Logic Protocol Analyser]({{ site.url }}/assets/practical-reversing/OkHJtsA.jpg)
 
 Once we have both the pinout and baudrate, we're ready to start communicating
 with the device:
 
-![Documented UART Pinouts](https://i.imgur.com/znXRocn.jpg)
+![Documented UART Pinouts]({{ site.url }}/assets/practical-reversing/znXRocn.jpg)
 
 ## Connecting to the Serial Ports
 
@@ -158,14 +158,14 @@ talking to the device. Connect any UART to USB bridge you have around and start
 wandering around. This is my hardware setup to communicate with both serial
 ports at the same time and monitor one of the ports with an oscilloscope:
 
-![All Connected](https://i.imgur.com/aU83qTd.jpg)
+![All Connected]({{ site.url }}/assets/practical-reversing/aU83qTd.jpg)
 
 And when we open a serial terminal in our computer to communicate with the device,
 the primary UART starts spitting out useful info. These are the commands I use
 to connect to each port as well as the first lines they send during the boot
 process:
 
-![Boot Sequence](https://i.imgur.com/t43E8dm.jpg)
+![Boot Sequence]({{ site.url }}/assets/practical-reversing/t43E8dm.jpg)
 
 ```
 Please choose operation:

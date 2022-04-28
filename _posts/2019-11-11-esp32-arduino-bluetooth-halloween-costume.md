@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Quick development of bluetooth-based costume props using Arduino and ESP32
-thumbnail: https://i.imgur.com/JWfa1by.jpg
+thumbnail: https://raw.githubusercontent.com/Palantir555/palantir555.github.io/master/assets/halloween-ble/JWfa1by.jpg
 tags:
 - bluetooth
 - costume
@@ -29,7 +29,7 @@ behind some decissions.
 
 # The Hardware
 
-![Hardware overview](https://i.imgur.com/JWfa1by.jpg)
+![Hardware overview]({{ site.url }}/assets/halloween-ble/JWfa1by.jpg)
 
 <iframe align="middle" width="560" height="315" src="https://www.youtube.com/embed/vmRyjaTDPUU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -49,12 +49,12 @@ Any other ESP32 dev board should work
 accelerometer development module
 - [optional] 1x button
 
-![BT server circuit diagram](https://i.imgur.com/Rdp4sI9.png)
+![BT server circuit diagram]({{ site.url }}/assets/halloween-ble/Rdp4sI9.png)
 
 Since this part is gonna be smacked around, it's important to solder the
 connections together. This is my final circuit soldered on a perfboard:
 
-![BT server picture](https://i.imgur.com/E9ykfQn.jpg?2)
+![BT server picture]({{ site.url }}/assets/halloween-ble/E9ykfQn.jpg?2)
 
 In order to avoid soldering the development boards themselves (in case we wanna
 use them for another project in the future), it's a good idea to trim female pin
@@ -103,12 +103,12 @@ directly trough the voltage you apply to it, so we can run it using PWM
     - 12V power supply
     - USB power supply - Or a 12V to 5V regulator (I recommend [Traco Power](https://www.tracopower.com))
 
-![BT client circuit diagram](https://i.imgur.com/vSt8qgW.png)
+![BT client circuit diagram]({{ site.url }}/assets/halloween-ble/vSt8qgW.png)
 
 This is how it looks soldered together; the LED strip would be connected at either
 one of the 2 headers labeled `LED`.
 
-![BT client picture](https://i.imgur.com/PCYoZlj.jpg?3)
+![BT client picture]({{ site.url }}/assets/halloween-ble/PCYoZlj.jpg?3)
 
 # The Firmware
 

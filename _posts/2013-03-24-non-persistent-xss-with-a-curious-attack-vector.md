@@ -20,13 +20,13 @@ The vulnerable pages were `http://www.$(SITE).com/buscar/0/`
 When you tried to search something -"DEVDEV" in our example- this GET request
 was sent: `http://www.cuantocabron.com/busqueda/0/devdev`
 
-![XSS output vector](https://i.imgur.com/Q9kp2jp.png)
+![XSS output vector]({{ site.url }}/assets/practical-reversing/Q9kp2jp.png)
 
 After playing a bit with the search parameter, the first output of the value
 (displayed to the user) seemed to be properly filtered, but the page navigation
 buttons -prev, next- were not, so we should be able to inject code there:
 
-![](https://i.imgur.com/8Rl5jA9.png)
+![]({{ site.url }}/assets/practical-reversing/8Rl5jA9.png)
 
 But that injection is tricky... The vulnerable parameter is a link, and it’s
 being processed by the server before echoing it to make it URL-friendly, which
@@ -44,11 +44,11 @@ It was dirty, it was anything but subtle and it required another step of social
 engineering, but it did work and it might fool someone out there. Here’s a quick
 example of how it could be done:
 
-![Shitty example of social engineering](https://i.imgur.com/Q2yfpwx.png)
+![Shitty example of social engineering]({{ site.url }}/assets/practical-reversing/Q2yfpwx.png)
 
 And when the victim’s mouse hovers over the link...
 
-![Javascript successfully injected!](https://i.imgur.com/yckV2UT.png)
+![Javascript successfully injected!]({{ site.url }}/assets/practical-reversing/yckV2UT.png)
 
 And that’s as far as I got. I did not wait to have anything prettier or better
 and just reported it like that. I sent the email yesterday at 22.12, they were

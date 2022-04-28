@@ -45,7 +45,7 @@ Data is useless within its static memory cells, it needs to be read, written
 and passed around in order to be useful. A quick look at the board is enough to
 deduce where the data is flowing through, based on IC placement and PCB traces:
 
-![PCB With Data Flows and Some IC Names](https://i.imgur.com/JRgtMEM.jpg)
+![PCB With Data Flows and Some IC Names]({{ site.url }}/assets/practical-reversing/JRgtMEM.jpg)
 
 We're not looking for hardware backdoors or anything buried too deep, so we're
 only gonna look into the SPI data flowing between the Ralink and its external
@@ -71,7 +71,7 @@ and Flash. Let's get started; the first thing we need is to figure out how to
 connect the logic analyser. In this case we've got the datasheet for the Flash
 IC, so there's no need to reverse engineer any pinouts:
 
-![Flash Pic Annotated Pinout](https://i.imgur.com/54ih2LZ.jpg)
+![Flash Pic Annotated Pinout]({{ site.url }}/assets/practical-reversing/54ih2LZ.jpg)
 
 Standard SPI communication uses 4 pins:
 
@@ -84,7 +84,7 @@ can share MISO/MOSI/SCK lines.
 We know the pinout, so let's just connect a logic analyser to those 4 pins and
 capture some random transmission:
 
-![Connected Logic Analyser](https://i.imgur.com/TjSkKyN.jpg)
+![Connected Logic Analyser]({{ site.url }}/assets/practical-reversing/TjSkKyN.jpg)
 
 In order to set up our logic analyser we need to find out some SPI configuation
 options, specifically:
@@ -99,20 +99,20 @@ in the capture*
 The datasheet explains that the flash IC understands only 2 combinations of
 CPOL and CPHA: (CPOL=0, CPHA=0) or (CPOL=1, CPHA=1)
 
-![Datasheet SPI Settings](https://i.imgur.com/Jut5DCs.png)
+![Datasheet SPI Settings]({{ site.url }}/assets/practical-reversing/Jut5DCs.png)
 
 Let's take a first look at some sniffed data:
 
-![Logic Screencap With CPOL/CPHA Annotated](https://i.imgur.com/vaPgOc4.png)
+![Logic Screencap With CPOL/CPHA Annotated]({{ site.url }}/assets/practical-reversing/vaPgOc4.png)
 
 In order to understand exactly what's happenning you'll need the FL064PIF's
 instruction set, available in its datasheet:
 
-![FL064PIF Instruction Set](https://i.imgur.com/EwOqG0x.jpg)
+![FL064PIF Instruction Set]({{ site.url }}/assets/practical-reversing/EwOqG0x.jpg)
 
 Now we can finally analyse the captured data:
 
-![Logic Sample SPI Packet](https://i.imgur.com/IT1yDVu.png)
+![Logic Sample SPI Packet]({{ site.url }}/assets/practical-reversing/IT1yDVu.png)
 
 In the datasheet we can see that the FL064PIF has high-performance features for
 read and write operations: Dual and Quad options that multiplex the data over
@@ -143,7 +143,7 @@ I recorded this data from the Ralink-Flash SPI bus using a low-end Saleae
 analyser at its maximum sampling rate for this number of lines,
 `24 MS/s`:
 
-![Picture of Deformed Clock Signal](https://i.imgur.com/9wFGIj3.png)
+![Picture of Deformed Clock Signal]({{ site.url }}/assets/practical-reversing/9wFGIj3.png)
 
 As you can see, even though the clock signal has the 8 low to high transitions
 required for each byte, the waveform is deformed.
@@ -157,7 +157,7 @@ this point, but it's important to keep all error vectors in mind.
 Let's sniff the same bus using a higher performance logic analyser at
 `100 MS/s`:
 
-![High Sampling Rate SPI Sample Reading](https://i.imgur.com/vVgxUa4.png)
+![High Sampling Rate SPI Sample Reading]({{ site.url }}/assets/practical-reversing/vVgxUa4.png)
 
 As you can see, this clock signal is perfectly regular when our Sampling Rate is
 high enough.
@@ -175,7 +175,7 @@ be interested in sniffing. Simply connecting an oscilloscope to the MISO and MOS
 pins will help us figure out how to trigger those transmissions and yield some
 other useful data.
 
-![Scope and UART Connected](https://i.imgur.com/uF6C4hN.jpg)
+![Scope and UART Connected]({{ site.url }}/assets/practical-reversing/uF6C4hN.jpg)
 
 Here's a video (no audio) showing both the serial interface and the MISO/MOSI
 signals while we manipulate the router:
@@ -208,11 +208,11 @@ Steps 3 and 4 can be combined so you see the data flow in real time in the scope
 sure you don't miss any data. In order to comfortably connect both scope and
 logic sniffer to the same pins, these test clips come in very handy:
 
-![SOIC16 Test Clip Connected to Flash IC](https://i.imgur.com/cFYWhXd.jpg)
+![SOIC16 Test Clip Connected to Flash IC]({{ site.url }}/assets/practical-reversing/cFYWhXd.jpg)
 
 Once we've got the traffic we can take a first look at it:
 
-![Analysing Save Capture on Logic](https://i.imgur.com/HOu51lW.png)
+![Analysing Save Capture on Logic]({{ site.url }}/assets/practical-reversing/HOu51lW.png)
 
 Let's consider what sort of data could be extracted from this traffic dump that
 might be useful to us. We're working with a memory storage IC, so we can see the
@@ -263,7 +263,7 @@ and
 The traffic map is much more useful when combined with the Flash memory map we
 found in Part 2:
  
-![Flash Memory Map From Part 2](https://i.imgur.com/ODnxzJY.jpg)
+![Flash Memory Map From Part 2]({{ site.url }}/assets/practical-reversing/ODnxzJY.jpg)
 
 From the traffic map we can see the bulk of the `save` command's traffic is
 simple:
@@ -273,7 +273,7 @@ simple:
 
 In the MISO binary we can see most of the read data was just tons of `1`s:
 
-![Picture MISO Hexdump 0xff](https://i.imgur.com/73c7UKy.png)
+![Picture MISO Hexdump 0xff]({{ site.url }}/assets/practical-reversing/73c7UKy.png)
 
 Most of the data in the MOSI binary is plaintext XML, and it looks exactly like
 the `/var/curcfg.xml` file we discovered in Part 2. As we discussed then, this
@@ -321,7 +321,7 @@ The most widely adopted solution for routers is to create a WiFi network using
 default credentials, print those credentials on a sticker at the factory and
 stick it to the back of the device.
 
-![Router Sticker - Annotated](https://i.imgur.com/ATznq7F.png)
+![Router Sticker - Annotated]({{ site.url }}/assets/practical-reversing/ATznq7F.png)
 
 The WiFi password is the 'unique piece of data', and the computer printing the
 stickers in the factory is the 'external entity'. Both the firmware and the
@@ -361,11 +361,11 @@ The same process we followed for ATP's `save` gives us these results:
 
 UART output:
 
-![UART Factory Reset Debug Messages](https://i.imgur.com/u8ZMr4Q.png)
+![UART Factory Reset Debug Messages]({{ site.url }}/assets/practical-reversing/u8ZMr4Q.png)
 
 Traffic overview:
 
-![Logic Screencap Traffic Overview](https://i.imgur.com/4xBapGf.png)
+![Logic Screencap Traffic Overview]({{ site.url }}/assets/practical-reversing/4xBapGf.png)
 
 Output from our python scripts:
 
@@ -430,7 +430,7 @@ traffic is not conclusive on whether or not it exists.
 As part of the MOSI data we can see the new WiFi password be saved to Flash
 inside the XML string:
 
-![Found Current Password MOSI](https://i.imgur.com/jwyhjr2.png)
+![Found Current Password MOSI]({{ site.url }}/assets/practical-reversing/jwyhjr2.png)
 
 What about the default password being read? If we look in the MISO binary, it's
 nowhere to be seen. Either the Ralink is reading it using a different mode
@@ -449,7 +449,7 @@ We can actually see the default credentials being read from the `protect` area
 of Flash this time (not sure why the Ralink would load it to set a **new**
 password; it's probably incidental):
 
-![Default WiFi Creds In MISO Capture](https://i.imgur.com/0MFkiDc.png)
+![Default WiFi Creds In MISO Capture]({{ site.url }}/assets/practical-reversing/0MFkiDc.png)
 
 As you can see, they're in plain text and separated from almost anything else
 in Flash. This may very well mean there's no password generation algorithm in
