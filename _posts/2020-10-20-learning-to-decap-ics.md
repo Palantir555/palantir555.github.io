@@ -512,7 +512,7 @@ damaging the very delicate MEMS parts.
 The ideal way to take pictures under the microscope would be to use a camera
 designed to fit into the microscope. I tried using a cheapish one included with
 the microscope I bought, but the results were pretty terrible; probably because
-of lighting completely opaque samples like these is hard and imperfect in a
+lighting completely opaque samples like these is hard and imperfect in a
 microscope like mine.
 
 Better cameras would definitely yield MUCH better results, but they are not cheap.

@@ -65,7 +65,7 @@ the dev modules. Then, solder those headers to the perfboard.
 
 On the other end, there's the GATT `client`. It boots, scans for servers, connects
 to ours, and starts polling its attributes. Whenever it receives a notification
-from the server, it simulates lithining using the LED strip, and plays thunder
+from the server, it simulates lightning using the LED strip, and plays thunder
 sound files over the speakers. If the ambiance jumper (GPIO19) is set, it behaves
 as if a notification was received every 45-65 seconds.
 
