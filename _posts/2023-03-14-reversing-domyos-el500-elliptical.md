@@ -1,0 +1,263 @@
+---
+layout: post
+title: Reverse Engineering the BLE Comms of an Elliptical Trainer
+thumbnail: TODO
+tags:
+- reverse engineering
+- reversing
+- bluetooth
+- ble
+- domyos
+- el500
+- gatt
+---
+
+Quick-n-dirty introduction to BLE GATT reverse engineering.
+
+My goal for this project was very concrete, so a lot of the details are left
+unexplored (for now). This post aims to be a quick reference for my future self,
+and to hopefully help anyone else who might be interested in doing something similar.
+
+No security is bypased, no cool exploit is used, no dangerous backdoor is found.
+We are just gonna connect to the device and figure out how it works using very
+simple methodologies.
+
+Some decisions are also made for the sake of my own learning, and may be simplified
+by using different tools and approaches. Consider following this "guide" if you
+are more interested in learning about BLE and GATT than about learning how to use
+the fastest and most efficient tools.
+
+## The Target: Domyos EL500
+
+[The EL500](https://www.decathlon.com/products/el500-smart-connect-elliptical-exercise-machine-331582)
+is -AFAIK- the cheapest bluetooth-enabled elliptical trainer sold by Decathlon.
+It's not worth getting into much detail: it's a cheap machine, has multiple
+resistance settings, a heart rate monitor, and bluetooth connectivity.
+
+A mobile app called `eConnected` is provided to monitor the session on your
+smartphone, and save the logs as an image of a graph.
+
+![el500-drawing]({{ site.url }}/assets/el500-and-console-drawing.png) TODO TODO TODO
+
+I was interested in building a very specific user interface, and logging the data
+in much more detail, so I decided to reverse engineer the BLE comms, and build my
+own interface in python. As one does...
+
+## The Protocol: BLE GATT
+
+BLE (Bluetooth Low Energy) is a wireless communication technology for short-range
+comms between devices. BLE supports multiple protocols with different degrees
+of flexibility, data throughput, energy usage, etc.
+
+The BLE protocol we are interested in is GATT (Generic Attribute Profile); it is
+-AFAIK- the most commonly used on "IoT devices" for control and monitoring.
+It is highly specified to facilitate inter-operatility, which plays to our advantage
+in the reverse engineering process.
+
+Basically, GATT allows our target (GATT server) to expose a set of "services",
+each of which can contain a set of "characteristics", each of which can have
+"descriptor" values. Each characteristic can be read, written, or subscribed to.
+
+TODO TODO TODO : Mention attributes and permissions
+
+![GATT diagram]({{ site.url }}/assets/gatt-diagram.png) TODO TODO TODO
+
+When the mobile app (GATT client) subscribes to a characteristic, and the value
+of that characteristic changes, the mobile app receives a notification.
+
+The spec allows multiple clients to subscribe to characteristics of the same
+service, and the server can send notifications to all of them.
+
+We can easily set the device in pairing mode, discover it using some bluetooth
+tool, confirm that it is indeed running GATT, connect to it, and discover how the
+"GATT attributes" are set up.
+
+!!!! TODO TODO TODO: Services/characts/descriptors list pulled from nRF Connect !!!!!!
+
+Other devices may also use pairing codes or other authentication mechanisms to
+enhance security, but that's not the case here; or in most devices without a screen.
+Generally, as long as the target device is under your control, connecting to it
+to discover its services and characteristics is pretty standard.
+
+For more info, see the specifications provided by the
+[Bluetooth SIG](https://www.bluetooth.com/specifications/).
+Or one of the countless BLE tutorials available online.
+
+## The Tools: bluetoothctl, nRF Connect, Android, BlueZ, gattacker...
+
+Given the popularity of BLE in modern devices, there are plenty of tools to work
+with it. Some are for developers, others for users, or security researchers...
+
+I'd classify them in 3 categories:
+    - Offensive tools: Made specifically to run attacks or offensive recon against BLE targets
+        - `gattacker`, `ubertooth`, etc.
+    - System tools: Made to integrate and manage BLE on an OS
+        - Linux: `bluetoothctl`, `hcitool`, `bluez`, `gatttool`, etc.
+    - Developer tools: Made to help developers create and debug their systems
+        - Android apps: `nRF Connect`
+        - Android: Developer mode's bluetooth traffic dumps
+        - BLE/GATT libraries: `bluepy`, `pygatt`, embedded SDKs, etc.
+
+I tried sniffing the traffic using `ubertooth`, if just to make sure there
+was no funny business going on. But it was not worth the effort for a project like this.
+
+Other than that, I decided against using any of the many offensive tools out there.
+I couldn't be bothered to find a dongle that would support MAC vendor spoofing,
+was properly integrated into my OS, etc. Being a firmware developer by trade, I'd
+rather build my own tools if necessary, and learn more along the way. YMMV.
+
+On linux, `bluetoothctl` is a reasonably simple way to take a quick look at the
+device. But the tool that proved most useful and enjoyable was `nRF Connect` for
+Android. It's simple, versatile, and has a nice UI. It's also free, and doesn't
+require a complex setup or dedicated hardware. It will allow you to monitor/communicate
+with the target in real time, and export detailed logs for further analysis.
+
+
+![nRF Connect screenshot]({{ site.url }}/assets/nrf-connect-screenshot.png) TODO TODO TODO
+
+## The Process:
+
+### 1. Scouting the GATT setup - Direct connection/discovery
+
+Set the target in pairing mode, use `nRF Connect` to discover it, connect to it,
+and explore the services, characteristics and descriptors. Export the list as xml:
+
+```
+TODO TODO TODO: list of services/characts/descriptors and permissions as pulled from nRF Connect
+```
+
+This information can be enough for very simple devices. I've found devices that
+only had a couple of characteristics, and writing to them was enough to understand
+their purpose.
+
+In this case, there's a lot of characteristics.Subscribing to all of them from
+nRF connect is not enough to start receiving notifications, and writing random
+values to them does not do anything.
+
+We need to understand what the device is expecting to receive from the `eConnected` app..
+
+### 2. "Leeching" notifications
+
+I'm sure there's a better term for this process (eavesdropping?), but I personally
+refer to it as "leeching":
+
+1. Connect to the device using `nRF Connect`
+    - Subscribe to all characteristics
+2. Start the `eConnected` app
+    - Connect to the device - May need a device restart or nRF disconnect first
+    - Start a session
+    - Manipulate the device (walk, change resistance, measure heart rate, etc.)
+3. Observe the notifications received by `nRF Connect` (should have auto-reconnected)
+
+I like this process because it's simple, extremely insightful, and perfectly
+within the BLE spec itself.
+
+In this case, as soon as `eConnected` connects to the device, we start getting
+flooded with notifications. They are for different characteristics, but some
+useful patterns begin to emerge:
+
+- Most notifications come from one characteristic: `...9616`
+    - If the device is constantly reporting its status, this could be where it's sent
+- About half the notifications are 20 bytes long, and start with the same 4 bytes: `F0-BC-FF-FF`
+    - The first 2 or 4 bytes seem to be a sort of "message id", as they are
+      repeated in many notifications with the same length
+
+We repeat the process multiple times, manipulating the device in different ways,
+and exporting the logs from `nRF Connect` each time. Then we move them to a PC
+for further analysis. Following this process, we can confirm that `F0-BC` messages
+are reporting the device's status, and we can start figuring out what each byte
+in the message means:
+
+![F0-BC message reversing]({{ site.url }}/assets/f0-bc-reversing.png) TODO TODO TODO
+
+I was hoping to find out what message is sent by the app in order to kickstart
+the connection: I checked the logs for any messages with the same message ID that
+was only sent once per session. I found one, but creating a clean session from
+`nRF Connect` and sending that message to the same characteristic did not get the
+device to do anything.
+
+If the startup message is only passed through to the device's logic, without
+notifying it to all subscribers (as would be expected), we're gonna have to find
+it some other way.
+
+Since the traffic does not seem to be encrypted, we could use android's developer
+tools to dump the traffic and analyze it. I did it, but it's slow, cumbersome,
+hard to contextualize, etc.
+
+Another quick way would probably be to reverse engineer the `eConnected` app and look for
+it there. Trying to dump the firmware, or find and decrypt a firmware update file,
+would also be a valid attack vector, although it would take a lot more effort and risk.
+
+But for this project, I'd rather continue on the wireless path. If we can just
+fool the app into thinking our system is a legitimate device, it should send us
+the startup message...
+
+### 3. Target spoofing
+
+With countless BLE devices advertising themselves everywhere, how can the app
+tell which BLE devices are Domyos eliptical trainers? A couple possible ways:
+
+- Device MAC Address - The first 3 bytes are the vendor's MAC address assigned by IANA
+- ~Device Name~ (customizable by the user)
+- Advertised data: Manufacturer data, services, etc.
+
+We have access to all that information in our target, so we can try to spoof it.
+My BLE adapter did not allow me to set a custom MAC address, and I couldn't be
+bothered to go find one that does (I've done enough of that with Wi-Fi adapters
+for a lifetime).
+
+Instead, I decided to take much longer writing a quick-n-dirty Arduino sketch for an ESP32
+dev board. The modules running on these dev boards are designed to be integrated
+into real products, so it should give me everything I need.
+
+Cloning the vendor's MAC address, services and characteristics was easy enough.
+It got the app to display the spoofed device in the list of available devices.
+But it would not successfully connect to it.
+
+![Spoofed device in the app]({{ site.url }}/assets/spoofed-device.png) TODO TODO TODO
+
+I also had to clone the CCCDs (Client Characteristic Configuration Descriptors).
+Once I did, the app was able to connect to the device and start sending messages.
+It wrote the same message 10 times, then disconnected:
+
+![Startup messages read from ESP32]({{ site.url }}/assets/startup-messages.png) TODO TODO TODO
+
+So now the app is expecting a message from the device... This converstaion is
+more complex than a single message, and critical for the session to start.
+I could write it to the device using `nRF Connect`, then come back to the ESP for
+the next message... But that's gonna get annoying very quickly.
+
+I'd rather automate the process.
+
+### 4. Man In The Middle
+
+This would be time for any sensible person to find the right BLE dongle and offensive
+tool and get a standard MITM running in a few minutes. But where's the fun in that?
+
+![MITM setup]({{ site.url }}/assets/mitm-setup.png) TODO TODO TODO
+
+[Python this](TODO), [Arduino that](TODO), yadda yadda...
+
+Success! I have successfully put myself inbetween the app and the device, and
+am capable of intercepting and modifying the messages at will. Everything is logged
+in real time in a format of my choosing, which makes the packet analysis much easier.
+
+![MITM logs]({{ site.url }}/assets/mitm-logs.png) TODO TODO TODO
+
+This is enough insight to satisfy my current "needs": Create a custom app that
+connects to the device and logs/displays its status over time.
+
+### To be continued...
+
+At this point, rather than spending more time reverse engineering the protocol via
+raw packet analysis, I decided to take a step back and start writing a custom
+client. I may write about that in the future.
+
+When working on projects like this, I usually take handwritten notes as I go.
+This time I tried taking them digitally, so I figured I'd share them here:
+
+![Notes]({{ site.url }}/assets/personal-notes.png) TODO TODO TODO
+
+Yes, they're unreadable... but I like them :)
+
+Anyway, I hope this post was useful to someone. Happy hacking!
