@@ -18,21 +18,22 @@ My goal for this project was very concrete, so a lot of the details are left
 unexplored (for now). This post aims to be a quick reference for my future self,
 and to hopefully help anyone else who might be interested in doing something similar.
 
-No security is bypased, no cool exploit is used, no dangerous backdoor is found.
-We are just gonna connect to the device and figure out how it works using very
-simple methodologies.
+No security is bypassed, no exciting exploits are used, and no dangerous
+backdoors are found. We will simply connect to the device and determine how it
+works using straightforward methodologies.
 
-Some decisions are also made for the sake of my own learning, and may be simplified
-by using different tools and approaches. Consider following this "guide" if you
-are more interested in learning about BLE and GATT than about learning how to use
-the fastest and most efficient tools.
+Some decisions were made for the sake of my own learning, and might be simplified
+by using different tools and approaches. Consider following this guide if you
+are more interested in learning about BLE GATT than in discovering the fastest
+and most efficient tools.
 
 ## The Target: Domyos EL500
 
-[The EL500](https://www.decathlon.com/products/el500-smart-connect-elliptical-exercise-machine-331582)
-is -AFAIK- the cheapest bluetooth-enabled elliptical trainer sold by Decathlon.
-It's not worth getting into much detail: it's a cheap machine, has multiple
-resistance settings, a heart rate monitor, and bluetooth connectivity.
+[The EL500](https://www.decathlon.com/products/el500-smart-connect-elliptical-exercise-machine-331582),
+as far as I know, is the most affordable Bluetooth-enabled elliptical
+trainer sold by Decathlon. It's not necessary to delve into too much detail:
+it's an inexpensive machine with multiple resistance settings, a heart rate
+monitor, and Bluetooth connectivity.
 
 ![el500-drawing]({{ site.url }}/assets/domyos-el500/domyos-target.jpg)
 
@@ -117,12 +118,10 @@ necessary, and learn more along the way. YMMV.
 
 ### 1. Scouting the GATT setup - Direct connection/discovery
 
-On linux, `bluetoothctl` is a relatively simple way to take a quick look at the
-device. But for speed and convenience, I recommend you use the `nRF Connect`
-app for Android. It's simple, versatile, and has a nice UI. It's also free, and
-doesn't require a complex setup or dedicated hardware. It will allow you to
-scout, monitor and communicate with the target in real time, and to export
-detailed logs for further analysis.
+On Linux, `bluetoothctl` provides a straightforward way to quickly examine the
+device. However, for speed and convenience, I recommend using the `nRF Connect`
+app for Android. It's simple, versatile, and has an intuitive UI. It's also free
+and doesn't require complex setup or dedicated hardware.
 
 ![nrf service discovery]({{ site.url }}/assets/domyos-el500/nrf-discovery-drawn.jpg)
 
@@ -215,23 +214,22 @@ With countless BLE devices advertising themselves everywhere, how can the app
 tell which BLE devices are Domyos eliptical trainers? A couple possible ways:
 
 - Device MAC Address - The first 3 bytes are the vendor's MAC address assigned by IANA
-- ~~Device Name~~ (customizable by the user)
 - Advertised data: Manufacturer data, services, etc.
+- ~~Device Name~~ (customizable by the user)
 
-We have access to all that information in our target, so we can try to spoof it.
-My BLE adapter did not allow me to set a custom MAC address, and I couldn't be
-bothered to go find one that does (I've done enough of that with Wi-Fi adapters
-for a lifetime).
+We have access to all this information in our target, so we can attempt to spoof it.
+My BLE adapter didn't allow me to set a custom MAC address, and I couldn't be bothered to
+search for one that does (I've done enough of that with Wi-Fi adapters over the years...).
 
 Instead, I decided to write a quick-n-dirty Arduino sketch for an ESP32
 dev board. The modules running on these dev boards are designed to be integrated
-into real products, so it should give me everything I need.
+into real products, so it must have everything I need.
 
-Cloning the vendor's MAC address, services and characteristics was easy enough.
+Cloning the vendor's MAC address, services and characteristics was obvious enough.
 It got the app to display the spoofed device in the list of available devices.
 But it would not succeed when connect to it.
 
-I also had to clone the CCCDs (Client Characteristic Configuration Descriptors).
+As it turns out, I also had to clone the CCCDs (Client Characteristic Configuration Descriptors).
 Once I did, the app was able to connect to the device and start sending messages.
 It wrote the same message 10 times, then disconnected:
 
@@ -242,9 +240,9 @@ different, to the point of feeling buggy:
 
 ![iOS econnected startup msgs]({{ site.url }}/assets/domyos-el500/econnected-ios-startup-msgs.png)
 
-So now the app is expecting a message from the device before continuing the
-converstaion... I could write it to the device using `nRF Connect`, then come
-back to the ESP for the next message... But that's gonna get annoying very quickly.
+So, the app must now be expecting a message from the device before continuing the
+converstaion... I could write it to the device using `nRF Connect`, then return
+to the ESP for the subsequent message... But that's gonna get annoying very quickly.
 
 I'd rather automate the process.
 
