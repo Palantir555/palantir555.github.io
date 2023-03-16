@@ -12,7 +12,7 @@ tags:
 - gatt
 ---
 
-Introduction to BLE GATT reverse engineering.
+# Introduction to BLE GATT reverse engineering.
 
 My goal for this project was very concrete, so a lot of the details are left
 unexplored (for now). This post aims to be a quick reference for my future self,
@@ -59,15 +59,15 @@ The BLE protocol we are interested in is GATT (Generic Attribute Profile); it is
 It is highly specified to facilitate inter-operatility, which plays to our advantage
 in the reverse engineering process.
 
-Basically, GATT allows our target (GATT server) to expose a set of "services",
+Grossly oversimplifying things, GATT allows our target (GATT server) to expose a set of "services",
 each of which can contain a set of "characteristics", each of which can have
 "descriptor" values. Each characteristic can be read, written, or subscribed to,
 depending on how they're configured by the server.
 
-![GATT diagram]({{ site.url }}/assets/domyos-el500/gatt-diagram.png) TODO TODO TODO
+![GATT diagram - courtesy of adafruit]({{ site.url }}/assets/domyos-el500/gatt-sructure-courtesy-adafruit.png)
 
 When the mobile app (GATT client) subscribes to a characteristic, and the value
-of that characteristic changes, a notification is sent to the app.
+of that characteristic changes, a notification is (can be) sent to the app.
 
 The spec allows multiple clients to subscribe to characteristics of the same
 service, and the server can send notifications to all of them.
@@ -76,7 +76,7 @@ We can easily set the device in pairing mode, discover it using some bluetooth
 tool, confirm that it is indeed running GATT, connect to it, and discover how the
 "GATT attributes" are set up.
 
-![nrf service discovery]({{ site.url }}/assets/domyos-el500/nrf-discovery-stitched.jpg)
+![nRF Connect screenshot]({{ site.url }}/assets/domyos-el500/nrf-scanner.jpg)
 
 Other devices may also use pairing codes or other authentication mechanisms to
 enhance security, but that's not the case here; or in most devices without a screen.
@@ -124,14 +124,13 @@ doesn't require a complex setup or dedicated hardware. It will allow you to
 scout, monitor and communicate with the target in real time, and to export
 detailed logs for further analysis.
 
-![nRF Connect screenshot]({{ site.url }}/assets/domyos-el500/nrf-scanner.jpg)
+![nrf service discovery]({{ site.url }}/assets/domyos-el500/nrf-discovery-drawn.jpg)
 
 Start the target EL500, use `nRF Connect` to discover it, connect to it,
-and explore the services, characteristics and descriptors. Export the list as xml:
+and explore the services, characteristics and descriptors. Export the list and
+save it:
 
-```
-TODO TODO TODO: list of services/characts/descriptors and permissions as pulled from nRF Connect
-```
+![services and characts]({{ site.url }}/assets/domyos-el500/handwritten-server-info.jpg)
 
 This information can be enough for very simple devices. I've found devices that
 only had a couple of characteristics, and writing to them was enough to understand
@@ -144,10 +143,15 @@ values to them does not do anything.
 We need to understand what a regular conversation between the target and the
 official app looks like...
 
+You could try using nRF Connect to spoof the target, and try to connect to it
+from the app on another phone. But if you need to spoof the MAC address to be
+recognized by the app -as is the case here- you'll need to use a different
+approach...
+
 ### 2. "Leeching" notifications
 
-I'm sure there's a better term for this process (eavesdropping?), but I personally
-refer to it as "leeching":
+There's probably a better term for this process (eavesdropping? piggybacking? not quite),
+but I personally refer to it as "leeching":
 
 ![leeching diagram]({{ site.url }}/assets/domyos-el500/leeching-diagram.jpg)
 
@@ -268,14 +272,16 @@ connects to the device and logs/displays its status over time.
 ### To be continued...
 
 At this point, rather than spending more time reverse engineering the protocol via
-raw packet analysis, I decided to take a step back and start writing a custom
-client. I may write about that in the future.
+raw packet analysis, I decided to take a step back and start writing the custom
+client. I'll need it eventually anyway, and it's gonna make packet forging and
+manipulation much easier, which in turn will make the protocol reversing quicker.
 
-When working on projects like this, I usually take handwritten notes as I go.
-This time I tried taking them digitally, so I figured I'd share them here:
-
-![Notes]({{ site.url }}/assets/domyos-el500/personal-notes.png)
-
-Yes, they're unreadable... but I like them :)
+But I'm short on time lately, so that will have to wait for another day.
 
 Anyway, I hope this post was useful to someone. Happy hacking!
+
+P.S. When working on projects like this, I often take handwritten notes as I go.
+This time I tried taking them digitally, so I figured I'd share them here.
+Yes, they're rather unreadable... But they do the job, and I like them :)
+
+![Notes]({{ site.url }}/assets/domyos-el500/personal-notes.png)
