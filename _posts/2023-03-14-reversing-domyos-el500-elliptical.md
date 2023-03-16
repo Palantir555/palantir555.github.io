@@ -14,9 +14,9 @@ tags:
 
 # Introduction to BLE GATT reverse engineering.
 
-My goal for this project was very concrete, so a lot of the details are left
-unexplored (for now). This post aims to be a quick reference for my future self,
-and to hopefully help anyone else who might be interested in doing something similar.
+My goal for this project was quite specific, leaving many details unexplored (for now).
+This post aims to be a quick reference for my future self, and to hopefully help
+anyone else who might be interested in doing something similar.
 
 No security is bypassed, no exciting exploits are used, and no dangerous
 backdoors are found. We will simply connect to the device and determine how it
@@ -31,9 +31,9 @@ and most efficient tools.
 
 [The EL500](https://www.decathlon.com/products/el500-smart-connect-elliptical-exercise-machine-331582),
 as far as I know, is the most affordable Bluetooth-enabled elliptical
-trainer sold by Decathlon. It's not necessary to delve into too much detail:
-it's an inexpensive machine with multiple resistance settings, a heart rate
-monitor, and Bluetooth connectivity.
+trainer sold by Decathlon. There's no need to delve into too much detail; it's an
+affordable machine with multiple resistance settings, a heart rate monitor, and
+Bluetooth connectivity.
 
 ![el500-drawing]({{ site.url }}/assets/domyos-el500/domyos-target.jpg)
 
@@ -45,7 +45,7 @@ like this, and are saved as an image of the progress graph:
 
 I was interested in building a very specific user interface, and logging the data
 in much more detail, so I decided to reverse engineer the BLE comms, and build my
-own interface in python. As one does...
+own interface in Python. As one does...
 
 First, we need to understand the BLE protocol, and the tools we'll be using.
 
@@ -57,15 +57,15 @@ of flexibility, data throughput, energy usage, etc.
 
 The BLE protocol we are interested in is GATT (Generic Attribute Profile); it is
 -AFAIK- the most commonly used on "IoT devices" for control and monitoring.
-It is highly specified to facilitate inter-operatility, which plays to our advantage
+It is highly specified to facilitate interoperability, which plays to our advantage
 in the reverse engineering process.
 
 Grossly oversimplifying things, GATT allows our target (GATT server) to expose a set of "services",
-each of which can contain a set of "characteristics", each of which can have
-"descriptor" values. Each characteristic can be read, written, or subscribed to,
-depending on how they're configured by the server.
+each of which can contain a set of "characteristics". Each characteristic has
+a value that may be read, written, or subscribed to, and may or may not have
+"descriptors" associated with them. That's all determined by the server's configuration.
 
-![GATT diagram - courtesy of adafruit]({{ site.url }}/assets/domyos-el500/gatt-sructure-courtesy-adafruit.png)
+![GATT diagram - courtesy of adafruit]({{ site.url }}/assets/domyos-el500/gatt-structure-courtesy-adafruit.png)
 
 When the mobile app (GATT client) subscribes to a characteristic, and the value
 of that characteristic changes, a notification is (can be) sent to the app.
@@ -102,16 +102,16 @@ I'd classify them in 3 categories:
 - Developer tools: Made to help developers create and debug their systems
     - Android apps: `nRF Connect`
     - Android: `Bluetooth HCI snoop log` developer mode option
-    - BLE/GATT libraries: `bluepy`, `pygatt`, `gatt`, embedded SDKs, etc.
+    - BLE/GATT libraries: `bluepy`, `pygatt`, `gatt`, embedded SDKs, Arduino libs, etc.
 
 I tried sniffing the traffic using `ubertooth`, if just to make sure there
-was no funny business going on. But it's not worth the effort for a project like this.
+was no funny business going on. But it is not worth the effort for a project like this.
 
 Other than that, I decided against using any of the many offensive tools out there.
 I couldn't be bothered to find a dongle that would support MAC vendor spoofing,
 worked well with my setup, etc.
 
-Since this shouldn't be a high effort target, I'd rather build my own tools as
+Since this shouldn't be a high effort target, I would rather build my own tools as
 necessary, and learn more along the way. YMMV.
 
 ## The Process:
@@ -197,16 +197,16 @@ notifying it to all subscribers (as would be expected), we're gonna have to find
 it some other way.
 
 Since the traffic does not seem to be encrypted, we could use android's developer
-tools to dump the traffic and analyze it. I did it, but it's slow, cumbersome,
+tools to dump the traffic and analyze it. I did it, but it's rather slow, cumbersome,
 hard to contextualize, etc.
 
 Another quick way would probably be to reverse engineer the `eConnected` app and look for
 it there. Trying to dump the firmware, or find and decrypt a firmware update file,
 would also be a valid attack vector, although it would take a lot more effort and risk.
 
-But for this project, I'd rather continue on the wireless path. If we can just
-fool the app into thinking our system is a legitimate device, it should send us
-the startup message...
+However, for this project, I'd prefer to continue with the wireless approach.
+If we can just fool the app into thinking our system is a legitimate device, it
+should send us the startup message...
 
 ### 3. Target spoofing
 
