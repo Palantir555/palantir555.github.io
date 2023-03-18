@@ -47,16 +47,16 @@ I was interested in building a very specific user interface, and logging the dat
 in much more detail, so I decided to reverse engineer the BLE comms, and build my
 own interface in Python. As one does...
 
-First, we need to understand the BLE protocol, and the tools we'll be using.
+First, we need to understand the basics of BLE, and the tools we'll be using.
 
 ## The Protocol: BLE GATT
 
 BLE (Bluetooth Low Energy) is a wireless communication technology for short-range
-comms between devices. BLE supports multiple protocols with different degrees
+comms between devices. BLE supports multiple profiles with different degrees
 of flexibility, data throughput, energy usage, etc.
 
 The BLE protocol we are interested in is GATT (Generic Attribute Profile); it is
--AFAIK- the most commonly used on wireless devices for control and monitoring.
+-AFAIK- the most commonly used on wireless devices to exchange arbitrary data.
 It is highly specified to facilitate interoperability, which plays to our advantage
 in the reverse engineering process.
 
@@ -79,19 +79,20 @@ Even though this device -as so many others- does not seem to use any of the
 security mechanisms supported by BLE, they are still worth mentioning:
 
 - Pairing: The client and server go through a "secure" connection process to
-authenticate each other and share the encryption keys used to encrypt later communications.
-The pairing process supports 4 different association modes, each with its own
-set of security properties and suitable for devices with different capabilities:
+authenticate each other and share the keys used for further communication.
+The pairing process supports 4 different association models, each with its own
+set of security properties and suitable differently abled devices:
     - Just Works: Unauthenticated pairing process, common in devices without a screen or other
 means of presenting a pairing code. Since BLE 4.2's "Secure Connections" (an upgrade
 to the older Secure Simple Pairing), the key exchange is performed with P-256
 Elliptic Curve Diffie-Hellman (ECDH), which protects the process against passive
 eavesdropping, but not so much against Man-in-the-Middle attacks.
     - Numeric Comparison: The devices go through the ECDH key exchange, then share
-a secret and use it along with their respective secret keys to compute the same
+a secret and use it along with their respective private keys to compute the same
 pairing code. Each device displays the code to the user, who must confirm that
 the codes match on both devices.
     - Passkey: One device displays a pairing code for the user to enter on the other device.
+Or, less commonly, the user enters the same code on both devices.
 The pairing code is used along the ECDH-derived shared secret to compute the
 encryption keys.
     - Out of Band: The devices may or may not use ECDH to exchange keys, but they
@@ -102,7 +103,7 @@ display a QR code for the user to scan from a mobile app, etc.
 store the necessary information to reconnect in the future without having to go
 through the pairing process again.
 
-For more info, and in case I made some mistakes, you should check out the BLE
+For more/better info, you should check out the BLE
 specifications published by the [Bluetooth SIG](https://www.bluetooth.com/specifications/).
 Or at least one of the
 [countless](https://learn.adafruit.com/introduction-to-bluetooth-low-energy?view=all)
