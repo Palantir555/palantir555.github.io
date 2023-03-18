@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Practical Introduction to BLE GATT Reverse Engineering: The Domyos EL500
-thumbnail: TODO
+thumbnail: https://raw.githubusercontent.com/Palantir555/palantir555.github.io/master/assets/domyos-el500/personal-notes.png
 tags:
 - reverse engineering
 - reversing
@@ -12,7 +12,7 @@ tags:
 - gatt
 ---
 
-# Introduction to BLE GATT reverse engineering.
+# Introduction to BLE GATT Reverse Engineering.
 
 My goal for this project was quite specific, leaving many details unexplored (for now).
 This post aims to be a quick reference for my future self, and to hopefully help
@@ -196,11 +196,12 @@ In this case, as soon as `eConnected` connects to the device, we start getting
 flooded with notifications. They are sent to different characteristics, but some
 useful patterns begin to emerge:
 
-- Most notifications come from one characteristic: `...9616`
-    - This charact is likely used for most device to app communication, including status reports
+- Most notifications come from one characteristic: `49535343-1e4d-4bd9-ba61-23c647249616`
+    - This characteristic is likely used for most device to app communication, including status reports
 - About half the notifications are 20 bytes long, and start with the same 4 bytes: `F0-BC-FF-FF`
-    - The first 2 to 4 bytes seem to be a sort of "message id", as they are
-      repeated in many notifications with the same length
+    - If we group the notifications by length, plenty of those groups seem to have
+a common 2 to 4 bytes prefix, which would indicate the implementation uses a sort
+of message/command id for the notifications
 
 We repeat the process multiple times, manipulating the device in different ways,
 and exporting the logs from `nRF Connect` each time. Then we move them to a PC
