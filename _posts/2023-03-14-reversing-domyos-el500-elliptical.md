@@ -304,10 +304,11 @@ manipulation much easier, which in turn will make the protocol reversing quicker
 
 But I'm short on time lately, so that will have to wait for another day.
 
-Anyway, I hope this post was useful to someone. Happy hacking!
-
-P.S. When working on projects like this, I often take handwritten notes as I go.
+BTW, when working on projects like this, I often take handwritten notes as I go.
 This time I tried taking them digitally, so I figured I'd share them here.
 Yes, they're rather unreadable... But they do the job, and I like them :)
+They're the reason for all the crayon drawings in the post.
 
 ![Notes]({{ site.url }}/assets/domyos-el500/personal-notes.png)
+
+Anyway, I hope this post was useful to someone. Happy hacking!
