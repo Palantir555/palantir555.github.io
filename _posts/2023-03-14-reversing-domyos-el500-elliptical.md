@@ -56,37 +56,60 @@ comms between devices. BLE supports multiple protocols with different degrees
 of flexibility, data throughput, energy usage, etc.
 
 The BLE protocol we are interested in is GATT (Generic Attribute Profile); it is
--AFAIK- the most commonly used on "IoT devices" for control and monitoring.
+-AFAIK- the most commonly used on wireless devices for control and monitoring.
 It is highly specified to facilitate interoperability, which plays to our advantage
 in the reverse engineering process.
 
-Grossly oversimplifying things, GATT allows our target (GATT server) to expose a set of "services",
-each of which can contain a set of "characteristics". Each characteristic has
-a value that may be read, written, or subscribed to, and may or may not have
-"descriptors" associated with them. That's all determined by the server's configuration.
+Grossly oversimplifying things, a profile is a predefined collection of services,
+and each service contains a group of characteristics. Characteristics can have
+associated descriptors that provide metadata or connection-specific config
+options for their characteristic.
 
-![GATT diagram - courtesy of adafruit]({{ site.url }}/assets/domyos-el500/gatt-structure-courtesy-adafruit.png)
+Here's a diagram to illustrate the very basics:
 
-When the mobile app (GATT client) subscribes to a characteristic, and the value
-of that characteristic changes, a notification is (can be) sent to the app.
+![GATT diagram]({{ site.url }}/assets/domyos-el500/gatt-basics.jpg)
 
-The spec allows multiple clients to subscribe to characteristics of the same
-service, and the server can send notifications to all of them.
-
-We can easily set the device in pairing mode, discover it using some bluetooth
+We can easily start the device, discover it using some bluetooth
 tool, confirm that it is indeed running GATT, connect to it, and discover how the
-"GATT attributes" are set up.
+GATT properties are set up.
 
 ![nRF Connect screenshot]({{ site.url }}/assets/domyos-el500/nrf-scanner.jpg)
 
-Other devices may also use pairing codes or other authentication mechanisms to
-enhance security, but that's not the case here; or in most devices without a screen.
-Generally, as long as the target device is under your control, connecting to it
-to discover its services and characteristics is pretty standard.
+Even though this device -as so many others- does not seem to use any of the
+security mechanisms supported by BLE, they are still worth mentioning:
 
-For more info, see the specifications provided by the
-[Bluetooth SIG](https://www.bluetooth.com/specifications/).
-Or one of the countless BLE tutorials available online.
+- Pairing: The client and server go through a "secure" connection process to
+authenticate each other and share the encryption keys used to encrypt later communications.
+The pairing process supports 4 different association modes, each with its own
+set of security properties and suitable for devices with different capabilities:
+    - Just Works: Unauthenticated pairing process, common in devices without a screen or other
+means of presenting a pairing code. Since BLE 4.2's "Secure Connections" (an upgrade
+to the older Secure Simple Pairing), the key exchange is performed with P-256
+Elliptic Curve Diffie-Hellman (ECDH), which protects the process against passive
+eavesdropping, but not so much against Man-in-the-Middle attacks.
+    - Numeric Comparison: The devices go through the ECDH key exchange, then share
+a secret and use it along with their respective secret keys to compute the same
+pairing code. Each device displays the code to the user, who must confirm that
+the codes match on both devices.
+    - Passkey: One device displays a pairing code for the user to enter on the other device.
+The pairing code is used along the ECDH-derived shared secret to compute the
+encryption keys.
+    - Out of Band: The devices may or may not use ECDH to exchange keys, but they
+will use communication channels outside bluetooth to share some secure element(s).
+e.g. Tap the devices to kickstart an NFC-based key exchange, or have the device
+display a QR code for the user to scan from a mobile app, etc.
+- Bonding: Akin to a website's "remember me". The paired devices exchange and
+store the necessary information to reconnect in the future without having to go
+through the pairing process again.
+
+For more info, and in case I made some mistakes, you should check out the BLE
+specifications published by the [Bluetooth SIG](https://www.bluetooth.com/specifications/).
+Or at least one of the
+[countless](https://learn.adafruit.com/introduction-to-bluetooth-low-energy?view=all)
+[BLE](https://www.arduino.cc/reference/en/libraries/arduinoble/)
+[intros](https://devzone.nordicsemi.com/guides/short-range-guides/b/bluetooth-low-energy/posts/ble-characteristics-a-beginners-tutorial)
+[available](http://lpccs-docs.renesas.com/Tutorial-DA145x-BLE-Security/pairing_and_bonding.html)
+[online](https://iotexpert.com/ble-write-request-write-command-signed-write-command-prepare-write/).
 
 ## The Tools: bluetoothctl, nRF Connect, Android, BlueZ, gattacker...
 
@@ -135,9 +158,9 @@ This information can be enough for very simple devices. I've found devices that
 only had a couple of characteristics, and writing to them was enough to understand
 their purpose.
 
-In this case, there's a lot of characteristics. Subscribing to all of them from
-nRF connect is not enough to start receiving notifications, and writing random
-values to them does not do anything.
+In this case, there's a lot of characteristics. Enabling notifications in all of
+them from nRF connect is not enough to start receiving data, and writing random
+values to them also does nothing.
 
 We need to understand what a regular conversation between the target and the
 official app looks like...
@@ -155,7 +178,7 @@ but I personally refer to it as "leeching":
 ![leeching diagram]({{ site.url }}/assets/domyos-el500/leeching-diagram.jpg)
 
 1. Connect to the device using `nRF Connect`
-    - Subscribe to all characteristics - this will be remembered for next time
+    - Enable notifications for all characteristics that allow it - this will be remembered for the next connection
     - Disconnect from the device
 2. Start the `eConnected` app
     - Connect to the device - This should get `nRF Connect` to auto-reconnect
@@ -204,11 +227,14 @@ Another quick way would probably be to reverse engineer the `eConnected` app and
 it there. Trying to dump the firmware, or find and decrypt a firmware update file,
 would also be a valid attack vector, although it would take a lot more effort and risk.
 
-However, for this project, I'd prefer to continue with the wireless approach.
+However, for this project, I'd prefer to continue with the wireless approach...
+
+### 3. Target spoofing
+
 If we can just fool the app into thinking our system is a legitimate device, it
 should send us the startup message...
 
-### 3. Target spoofing
+![spoofing diagram]({{ site.url }}/assets/domyos-el500/spoofing-diagram.jpg)
 
 With countless BLE devices advertising themselves everywhere, how can the app
 tell which BLE devices are Domyos eliptical trainers? A couple possible ways:
@@ -229,7 +255,7 @@ Cloning the vendor's MAC address, services and characteristics was obvious enoug
 It got the app to display the spoofed device in the list of available devices.
 But it would not succeed when connect to it.
 
-As it turns out, I also had to clone the CCCDs (Client Characteristic Configuration Descriptors).
+I also had to recreate the CCCDs (Client Characteristic Configuration Descriptors).
 Once I did, the app was able to connect to the device and start sending messages.
 It wrote the same message 10 times, then disconnected:
 
