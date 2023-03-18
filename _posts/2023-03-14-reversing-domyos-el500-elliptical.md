@@ -35,13 +35,13 @@ trainer sold by Decathlon. There's no need to delve into too much detail; it's a
 affordable machine with multiple resistance settings, a heart rate monitor, and
 Bluetooth connectivity.
 
-![el500-drawing]({{ site.url }}/assets/domyos-el500/domyos-target.jpg)
+![el500-drawing](/assets/domyos-el500/domyos-target.jpg)
 
 A mobile app called `eConnected` is provided to monitor the session on your
 smartphone, and save the logs as an image of a graph. The active sessions look
 like this, and are saved as an image of the progress graph:
 
-![econnected session]({{ site.url }}/assets/domyos-el500/econnected-quick-session.jpg)
+![econnected session](/assets/domyos-el500/econnected-quick-session.jpg)
 
 I was interested in building a very specific user interface, and logging the data
 in much more detail, so I decided to reverse engineer the BLE comms, and build my
@@ -67,13 +67,13 @@ options for their characteristic.
 
 Here's a diagram to illustrate the very basics:
 
-![GATT diagram]({{ site.url }}/assets/domyos-el500/gatt-basics.jpg)
+![GATT diagram](/assets/domyos-el500/gatt-basics.jpg)
 
 We can easily start the device, discover it using some bluetooth
 tool, confirm that it is indeed running GATT, connect to it, and discover how the
 GATT properties are set up.
 
-![nRF Connect screenshot]({{ site.url }}/assets/domyos-el500/nrf-scanner.jpg)
+![nRF Connect screenshot](/assets/domyos-el500/nrf-scanner.jpg)
 
 Even though this device -as so many others- does not seem to use any of the
 security mechanisms supported by BLE, they are still worth mentioning:
@@ -147,13 +147,13 @@ device. However, for speed and convenience, I recommend using the `nRF Connect`
 app for Android. It's simple, versatile, and has an intuitive UI. It's also free
 and doesn't require complex setup or dedicated hardware.
 
-![nrf service discovery]({{ site.url }}/assets/domyos-el500/nrf-discovery-drawn.jpg)
+![nrf service discovery](/assets/domyos-el500/nrf-discovery-drawn.jpg)
 
 Start the target EL500, use `nRF Connect` to discover it, connect to it,
 and explore the services, characteristics and descriptors. Export the list and
 save it:
 
-![services and characts]({{ site.url }}/assets/domyos-el500/handwritten-server-info.jpg)
+![services and characts](/assets/domyos-el500/handwritten-server-info.jpg)
 
 This information can be enough for very simple devices. I've found devices that
 only had a couple of characteristics, and writing to them was enough to understand
@@ -176,7 +176,7 @@ approach...
 There's probably a better term for this process (eavesdropping? piggybacking? not quite),
 but I personally refer to it as "leeching":
 
-![leeching diagram]({{ site.url }}/assets/domyos-el500/leeching-diagram.jpg)
+![leeching diagram](/assets/domyos-el500/leeching-diagram.jpg)
 
 1. Connect to the device using `nRF Connect`
     - Enable notifications for all characteristics that allow it - this will be remembered for the next connection
@@ -187,7 +187,7 @@ but I personally refer to it as "leeching":
     - Manipulate the device (walk, change resistance, measure heart rate, etc.)
 3. Observe the notifications received by `nRF Connect` (should have auto-reconnected)
 
-![side by side apps]({{ site.url }}/assets/domyos-el500/side-by-side-apps.jpg)
+![side by side apps](/assets/domyos-el500/side-by-side-apps.jpg)
 
 I like this process because it's simple, extremely insightful, and perfectly
 within the BLE spec itself.
@@ -209,7 +209,7 @@ for further analysis. Following this process, we can confirm that `F0-BC` messag
 are reporting the device's status, and we can start figuring out what each byte
 in the message means:
 
-![F0-BC message reversing]({{ site.url }}/assets/domyos-el500/packet-analysis-notes.jpg)
+![F0-BC message reversing](/assets/domyos-el500/packet-analysis-notes.jpg)
 
 I was hoping to find out what message is sent by the app in order to kickstart
 the connection: I checked the logs for any messages with the same message ID that
@@ -236,7 +236,7 @@ However, for this project, I'd prefer to continue with the wireless approach...
 If we can just fool the app into thinking our system is a legitimate device, it
 should send us the startup message...
 
-![spoofing diagram]({{ site.url }}/assets/domyos-el500/spoofing-diagram.jpg)
+![spoofing diagram](/assets/domyos-el500/spoofing-diagram.jpg)
 
 With countless BLE devices advertising themselves everywhere, how can the app
 tell which BLE devices are Domyos eliptical trainers? A couple possible ways:
@@ -261,12 +261,12 @@ I also had to recreate the CCCDs (Client Characteristic Configuration Descriptor
 Once I did, the app was able to connect to the device and start sending messages.
 It wrote the same message 10 times, then disconnected:
 
-![Android econnected startup msgs]({{ site.url }}/assets/domyos-el500/econnected-android-startup-msgs.png)
+![Android econnected startup msgs](/assets/domyos-el500/econnected-android-startup-msgs.png)
 
 Using the iOS version of the `eConnected` app, the behavior was significantly
 different, to the point of feeling buggy:
 
-![iOS econnected startup msgs]({{ site.url }}/assets/domyos-el500/econnected-ios-startup-msgs.png)
+![iOS econnected startup msgs](/assets/domyos-el500/econnected-ios-startup-msgs.png)
 
 So, the app must now be expecting a message from the device before continuing the
 converstaion... I could write it to the device using `nRF Connect`, then return
@@ -279,7 +279,7 @@ I'd rather automate the process.
 This would be time for any sensible person to find the right BLE dongle and offensive
 tool and get a standard MITM running in a few minutes. But where's the fun in that?
 
-![MITM setup]({{ site.url }}/assets/domyos-el500/mitm-setup.jpg)
+![MITM setup](/assets/domyos-el500/mitm-setup.jpg)
 
 [Python this](https://github.com/Palantir555/domyos-el500-hack/blob/master/mitm/mitm-client.py),
 [Arduino that](https://github.com/Palantir555/domyos-el500-hack/blob/master/mitm/esp32-spoofer/arduino-gatt-server/el500-spoofer/el500-spoofer.ino), yadda yadda... Just a bunch
@@ -290,7 +290,7 @@ Success! I have successfully put myself inbetween the app and the device, and
 am capable of intercepting and modifying the messages at will. Everything is logged
 in real time in a format of my choosing, which makes the packet analysis much easier.
 
-![MITM logs]({{ site.url }}/assets/domyos-el500/mitm-logs.jpg)
+![MITM logs](/assets/domyos-el500/mitm-logs.jpg)
 
 This is enough insight to satisfy my current "needs": Create a custom app that
 connects to the device and logs/displays its status over time.
@@ -309,6 +309,6 @@ This time I tried taking them digitally, so I figured I'd share them here.
 Yes, they're rather unreadable... But they do the job, and I like them :)
 They're the reason for all the crayon drawings in the post.
 
-![Notes]({{ site.url }}/assets/domyos-el500/personal-notes.png)
+![Notes](/assets/domyos-el500/personal-notes.png)
 
 Anyway, I hope this post was useful to someone. Happy hacking!
