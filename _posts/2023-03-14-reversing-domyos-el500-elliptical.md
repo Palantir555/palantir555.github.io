@@ -28,16 +28,15 @@ and most efficient tools.
 ## The Target: Domyos EL500
 
 [The EL500](https://www.decathlon.com/products/el500-smart-connect-elliptical-exercise-machine-331582),
-as far as I know, is the most affordable Bluetooth-enabled elliptical
-trainer sold by Decathlon. There's no need to delve into too much detail; it's an
-affordable machine with multiple resistance settings, a heart rate monitor, and
-Bluetooth connectivity.
+is a cheap(ish) Bluetooth-enabled elliptical trainer sold by Decathlon. There's
+no need to delve into too much detail; it's an affordable machine with multiple
+resistance settings, a heart rate monitor, and Bluetooth connectivity.
 
 ![el500-drawing](/assets/domyos-el500/domyos-target.jpg)
 
-A mobile app called `eConnected` is provided to monitor the session on your
-smartphone, and save the logs as an image of a graph. The active sessions look
-like this, and are saved as an image of the progress graph:
+A mobile app called `eConnected` is provided to monitor the exercise session from your
+smartphone, and save it for future reference as an image of a graph. The active
+sessions look like this, and are saved as an image of that same graph:
 
 ![econnected session](/assets/domyos-el500/econnected-quick-session.jpg)
 
@@ -76,7 +75,8 @@ GATT properties are set up.
 Even though this device -as so many others- does not seem to use any of the
 security mechanisms supported by BLE, they are still worth mentioning:
 
-- Pairing: The client and server go through a "secure" connection process to
+- [Pairing](http://lpccs-docs.renesas.com/Tutorial-DA145x-BLE-Security/pairing_and_bonding.html#pairing):
+The client and server go through a "secure" connection process to
 authenticate each other and share the keys used for further communication.
 The pairing process supports 4 different association models, each with its own
 set of security properties and suitable differently abled devices:
@@ -97,9 +97,18 @@ encryption keys.
 will use communication channels outside bluetooth to share some secure element(s).
 e.g. Tap the devices to kickstart an NFC-based key exchange, or have the device
 display a QR code for the user to scan from a mobile app, etc.
-- Bonding: Akin to a website's "remember me". The paired devices exchange and
+- [Bonding](http://lpccs-docs.renesas.com/Tutorial-DA145x-BLE-Security/pairing_and_bonding.html#bonding):
+Akin to a website's "remember me". The paired devices exchange and
 store the necessary information to reconnect in the future without having to go
 through the pairing process again.
+- [Message Signatures](http://lpccs-docs.renesas.com/Tutorial-DA145x-BLE-Security/access_and_signing.html#authentication-and-data-signing):
+BLE devices can generate and use a dedicated signing key (CSRK) to digitally sign
+messages for authentication, integrity and non-repudiation purposes
+- [Authorization](http://lpccs-docs.renesas.com/Tutorial-DA145x-BLE-Security/access_and_signing.html?highlight=authorization):
+The BLE spec accounts for the possibility of allowing different levels of access for
+connected clients. Given the nature of the feature, GATT can simply report if
+a given attribute requires authorization, but the product implications of that are
+left to the application layer
 
 For more/better info, you should check out the BLE
 specifications published by the [Bluetooth SIG](https://www.bluetooth.com/specifications/).
@@ -220,12 +229,13 @@ notifying it to all subscribers (as would be expected), we're gonna have to find
 it some other way.
 
 Since the traffic does not seem to be encrypted, we could use android's developer
-tools to dump the traffic and analyze it. I did it, but it's rather slow, cumbersome,
-hard to contextualize, etc.
+tools to dump the traffic and analyze it. I did it, but it's rather slow and
+cumbersome, the data is hard to contextualize, etc.
 
-Another quick way would probably be to reverse engineer the `eConnected` app and look for
-it there. Trying to dump the firmware, or find and decrypt a firmware update file,
-would also be a valid attack vector, although it would take a lot more effort and risk.
+Another quick way would probably be to reverse engineer the `eConnected` app and
+figure out the entire protocol from there. Trying to dump the firmware, or find
+and decrypt a firmware update file, would also be a valid attack vector, although
+it would take a lot more effort and risk.
 
 However, for this project, I'd prefer to continue with the wireless approach...
 
