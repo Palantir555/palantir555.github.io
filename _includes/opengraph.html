@@ -1,10 +1,10 @@
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
 <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-<meta property="og:image" content="{% if post.thumbnail %}{{ post.thumbnail }}{% else %}{{ site.homepage_thumbnail }}{% endif %}">
+<meta property="og:image" content="{% if page.thumbnail %}{{ page.thumbnail }}{% else %}{{ site.homepage_thumbnail }}{% endif %}">
 
-{% if post.description %}
-  <meta property="og:description" content="{{ post.description | strip_html | strip_newlines | truncate: 160 }}">
+{% if page.description %}
+  <meta property="og:description" content="{{ page.description | strip_html | strip_newlines | truncate: 160 }}">
 {% endif %}
 
 {% if page.date %}

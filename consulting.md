@@ -3,13 +3,16 @@ layout: page
 title: Professional Services
 ---
 
-I'm available for contract work through my Spanish company:
+I offer professional contract work through my Spanish company: **[Demux Labs, S.L.U.](https://www.demux-labs.com)**
 
-[**Demux Labs, S.L.U.**](https://www.demux-labs.com)
+I specialize in **firmware development for IoT systems** with a strong focus on
+security and reliability.
 
-We specialize on firmware development, architectural design and embedded security
-for the Internet of Things.
+## Contact
 
-If you'd like to discuss rates and availability, do not hesitate to get in touch:
+To discuss rates, availability, or any other inquiries, feel free to get in touch with me:
 
-[jc@demux-labs.com](mailto:jc@demux-labs.com?Subject=Professional%20Services)
+- Email: [jc@demux-labs.com](mailto:jc@demux-labs.com?Subject=Professional%20Services)
+
+I look forward to working with you and contributing to the success of your projects.
+

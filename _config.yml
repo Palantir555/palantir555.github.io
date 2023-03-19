@@ -10,17 +10,17 @@ permalink: pretty
 title: Hack The World
 tagline: 'Juan Carlos Jimenez'
 description: 'Projects and learnt lessons on Systems Security, Embedded Development, IoT and anything worth writing about'
-url: https://jcjc-dev.com
-baseurl: /
-homepage_thumbnail: https://imgur.com/plg2HBD
+url: 'https://jcjc-dev.com'
+baseurl: ''
+homepage_thumbnail: 'https://i.imgur.com/plg2HBD.jpeg'
 
 disqusid: jcjc-dev
 
 author:
     name:      'Juan Carlos Jimenez'
-    twitter:   https://twitter.com/Palantir555
-    linkedin:  https://uk.linkedin.com/in/juan-carlos-jiménez-bba49033/en
-    gh:        https://github.com/Palantir555
+    twitter:   'https://twitter.com/Palantir555'
+    linkedin:  'https://uk.linkedin.com/in/juan-carlos-jiménez-bba49033/en'
+    gh:        'https://github.com/Palantir555'
 
 paginate:      5
 
@@ -28,7 +28,7 @@ paginate:      5
 version:       2.1.0
 
 github:
-    repo:      https://github.com/Palantir555
+    repo:      'https://github.com/Palantir555'
 
 exclude:
     - _posts/WORK_IN_PROGRESS
