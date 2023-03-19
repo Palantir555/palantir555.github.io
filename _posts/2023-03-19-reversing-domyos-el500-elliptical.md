@@ -80,20 +80,20 @@ The client and server go through a "secure" connection process to
 authenticate each other and share the keys used for further communication.
 The pairing process supports 4 different association models, each with its own
 set of security properties and suitable differently abled devices:
-    - Just Works: Unauthenticated pairing process, common in devices without a screen or other
+    - **Just Works**: Unauthenticated pairing process, common in devices without a screen or other
 means of presenting a pairing code. Since BLE 4.2's "Secure Connections" (an upgrade
 to the older Secure Simple Pairing), the key exchange is performed with P-256
 Elliptic Curve Diffie-Hellman (ECDH), which protects the process against passive
 eavesdropping, but not so much against Man-in-the-Middle attacks.
-    - Numeric Comparison: The devices go through the ECDH key exchange, then share
+    - **Numeric Comparison**: The devices go through the ECDH key exchange, then share
 a secret and use it along with their respective private keys to compute the same
 pairing code. Each device displays the code to the user, who must confirm that
 the codes match on both devices.
-    - Passkey: One device displays a pairing code for the user to enter on the other device.
+    - **Passkey**: One device displays a pairing code for the user to enter on the other device.
 Or, less commonly, the user enters the same code on both devices.
 The pairing code is used along the ECDH-derived shared secret to compute the
 encryption keys.
-    - Out of Band: The devices may or may not use ECDH to exchange keys, but they
+    - **Out of Band**: The devices may or may not use ECDH to exchange keys, but they
 will use communication channels outside bluetooth to share some secure element(s).
 e.g. Tap the devices to kickstart an NFC-based key exchange, or have the device
 display a QR code for the user to scan from a mobile app, etc.
