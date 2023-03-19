@@ -32,7 +32,7 @@ is a cheap(ish) Bluetooth-enabled elliptical trainer sold by Decathlon. There's
 no need to delve into too much detail; it's an affordable machine with multiple
 resistance settings, a heart rate monitor, and Bluetooth connectivity.
 
-![el500-drawing](/assets/domyos-el500/domyos-target.jpg)
+![el500-drawing](/assets/domyos-el500/domyos-target-compressed.jpg)
 
 A mobile app called `eConnected` is provided to monitor the exercise session from your
 smartphone, and save it for future reference as an image of a graph. The active
@@ -154,7 +154,7 @@ device. However, for speed and convenience, I recommend using the `nRF Connect`
 app for Android. It's simple, versatile, and has an intuitive UI. It's also free
 and doesn't require complex setup or dedicated hardware.
 
-![nrf service discovery](/assets/domyos-el500/nrf-discovery-drawn.jpg)
+![nrf service discovery](/assets/domyos-el500/nrf-discovery-drawn-compressed.jpg)
 
 Start the target EL500, use `nRF Connect` to discover it, connect to it,
 and explore the services, characteristics and descriptors. Export the list and
