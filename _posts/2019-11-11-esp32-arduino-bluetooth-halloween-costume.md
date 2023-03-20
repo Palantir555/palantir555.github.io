@@ -4,6 +4,7 @@ title: Quick development of bluetooth-based costume props using Arduino and ESP3
 thumbnail: https://raw.githubusercontent.com/Palantir555/palantir555.github.io/master/assets/halloween-ble/JWfa1by.jpg
 tags:
 - bluetooth
+- BLE
 - costume
 - halloween
 - arduino
@@ -33,9 +34,9 @@ behind some decissions.
 
 <iframe align="middle" width="560" height="315" src="https://www.youtube.com/embed/vmRyjaTDPUU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### The BLE server
+### The BLE GATT server
 
-The circuit hidden in the costume prop is called, in bluetooth GATT terms,
+The circuit hidden in the costume prop is called, in BLE GATT terms,
 the `server`. It uses an accelerometer to detect abrupt movements.
 The sensor is calibrated so the prop can be moved freely, and only hitting it,
 tapping it on the ground, or moving it aggressively will trigger a notification
