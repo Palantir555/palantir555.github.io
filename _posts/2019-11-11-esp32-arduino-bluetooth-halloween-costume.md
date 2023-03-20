@@ -151,19 +151,19 @@ disturbing the signal
 - Privacy and security are irrelevant, since this device is not critical, not
 dangerous, and is only gonna be used once (Watch out!)
 
-Bluetooth 5 can certainly handle those requirements.
+BLE can certainly handle those requirements.
 
-Bluetooth 5 can be used in different ways to optimize certain requirements: energy
-consumption, data throughput, bidirectional communication, etc.
+BLE can be used in different ways to optimize certain requirements: energy
+consumption, data throughput, etc.
 Using the Generic Attribute Profile (GATT), we can cover most requirements that might
 come up in a costume. We can send a notification whenever an event happens in the
 prop, and we can use attributes to report other status information (e.g. switches
 in the prop could set the other device's behaviour).
 
 If you're using this post to build your own project, and your requirements differ
-from mine, make sure Bluetooth 5 is the right fit for you. And even if Bluetooth 5
-is an appropriate choice, GATT might not be. Figure out what you need to optimize,
-and find out what's the best fit.
+from mine, make sure BLE is the right fit for you. And even if it is an appropriate
+choice, GATT might not be. Figure out what you need to optimize, and find out what's
+the best fit.
 
 Resources: [Bluetooth Core Specification](https://www.bluetooth.com/specifications/bluetooth-core-specification/)
 
