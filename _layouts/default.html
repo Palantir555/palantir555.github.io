@@ -29,15 +29,15 @@
         const fullSizeOverlay = document.getElementById('fullsize-overlay');
         fullSizeOverlay.style.display = 'none';
       }
-  
+
       // Run this code after the entire page content has loaded
-      window.onload = function() {
+      document.addEventListener('DOMContentLoaded', function() {
         // Add click event listener to all images within post content
         document.querySelectorAll('.post img').forEach((img) => {
           img.style.cursor = 'pointer';
           img.addEventListener('click', () => openFullSizeOverlay(img.src));
         });
-      };
+      });
     </script>
 
   </body>
