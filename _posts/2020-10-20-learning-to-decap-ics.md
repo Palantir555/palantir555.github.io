@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Learning to Decapsulate Integrated Circuits using Acid Deposition
+title: Learning to Decapsulate Integrated Circuits Using Acid Deposition
 thumbnail: /assets/ic-decapping/jc/micro-result-pic16f84-ultrasonic-acetone.jpg
 tags:
 - reverse engineering
