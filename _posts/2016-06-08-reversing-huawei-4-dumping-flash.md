@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 4 - Dumping the Flash
+thumbnail: /assets/other-assets/flashdump-thumbnail.jpg
 tags:
 - reverse engineering
 ---

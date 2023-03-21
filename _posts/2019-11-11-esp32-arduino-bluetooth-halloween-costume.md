@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Quick development of bluetooth-based costume props using Arduino and ESP32
-thumbnail: https://raw.githubusercontent.com/Palantir555/palantir555.github.io/master/assets/halloween-ble/JWfa1by.jpg
+thumbnail: /assets/halloween-ble/JWfa1by.jpg
 tags:
 - bluetooth
 - BLE

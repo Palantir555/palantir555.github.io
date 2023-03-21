@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Creating a Drop-Down Menu with Qt 4.8
+thumbnail: /assets/other-assets/SS4Yx.png
 tags:
 - software development
 - c++

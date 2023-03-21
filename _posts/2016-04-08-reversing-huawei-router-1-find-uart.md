@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 1 - Hunting for Debug Ports
-thumbnail: https://raw.githubusercontent.com/Palantir555/palantir555.github.io/master/assets/practical-reversing/aU83qTd.jpg
+thumbnail: /assets/practical-reversing/g0REmPG.jpg
 tags:
 - reverse engineering
 ---

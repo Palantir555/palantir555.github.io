@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Picking a Practice Lock in Slow Motion
+thumbnail: /assets/other-assets/lock-picking.jpg
 tags:
 - security
 - lock picking

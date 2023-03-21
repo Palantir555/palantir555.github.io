@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 5 - Digging Through the Firmware
-thumbnail: https://raw.githubusercontent.com/Palantir555/palantir555.github.io/master/assets/practical-reversing/gRI8fMt.png
+thumbnail: /assets/practical-reversing/gRI8fMt.png
 tags:
 - reverse engineering
 - IDA

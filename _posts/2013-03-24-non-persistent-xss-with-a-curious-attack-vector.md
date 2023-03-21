@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Non-Persistent XSS with a Curious Attack Vector
+thumbnail: /assets/practical-reversing/Q9kp2jp.png
 tags:
 - security
 - xss

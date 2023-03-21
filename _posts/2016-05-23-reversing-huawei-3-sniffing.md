@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 3 - Following the Data
+thumbnail: /assets/practical-reversing/JRgtMEM.jpg
 tags:
 - reverse engineering
 ---

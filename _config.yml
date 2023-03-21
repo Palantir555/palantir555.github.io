@@ -12,7 +12,7 @@ tagline: 'Juan Carlos Jimenez'
 description: 'Projects and learnt lessons on Systems Security, Embedded Development, IoT and anything worth writing about'
 url: 'https://jcjc-dev.com'
 baseurl: ''
-homepage_thumbnail: 'https://i.imgur.com/plg2HBD.jpeg'
+homepage_thumbnail: '/assets/practical-reversing/blog-thumbnail.jpg'
 
 disqusid: jcjc-dev
 

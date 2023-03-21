@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 2 - Scouting the Firmware
+thumbnail: /assets/practical-reversing/aZ32bs8.png
 tags:
 - reverse engineering
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Learning to Decapsulate Integrated Circuits using Acid Deposition
-thumbnail: https://raw.githubusercontent.com/Palantir555/palantir555.github.io/master/assets/ic-decapping/jc/micro-result-pic16f84-ultrasonic-acetone.jpg
+thumbnail: /assets/ic-decapping/jc/micro-result-pic16f84-ultrasonic-acetone.jpg
 tags:
 - reverse engineering
 - integrated circuit
