@@ -86,6 +86,27 @@ title: Archive
 
 
 
+# DIY
+
+{% for post in site.posts %}
+  {% for tag in post.tags %}
+    {% if tag == "diy" %}
+<div class="post-tile">
+  <a href="{{ site.baseurl }}{{ post.url }}">
+    <div class="post-thumbnail" style="background-image: url('{{ site.baseurl }}{{ post.thumbnail }}');"></div>
+  </a>
+  <div class="post-details">
+    <p><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></p>
+    <p>{{ post.date | date_to_string }}</p>
+  </div>
+</div>
+    {% break %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+
+
 # Software Development
 
 {% for post in site.posts %}
