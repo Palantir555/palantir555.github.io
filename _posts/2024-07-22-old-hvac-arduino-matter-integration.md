@@ -113,7 +113,7 @@ necessary.
 keeping the Arduino inside it would make future maintenance or changes more
 difficult than I'd like.
 
-## Final Approach: Create an Arduino Nano Matter 
+## Final Approach: Connecting an Arduino Nano Matter to the Indoor Unit
 
 ### The solution
 
