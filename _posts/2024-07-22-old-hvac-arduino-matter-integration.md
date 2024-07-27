@@ -34,11 +34,13 @@ There are 3 components in my very old Mitsubishi Electric HVAC system:
 3. Remote Controller: This is the wall-mounted device that allows you to configure
    the system. It has a display and buttons 
 
+Overall, the HVAC system looks like this:
+
+![HVAC System Overview](/assets/hvac-arduino-matter/architecture-overview.png)
+
 For all the technical details, you can refer to your system's manual. In my case,
 the [Technical & Service Manual](/assets/hvac-arduino-matter/mitsubishi-aircon-mrslim_peh_series.pdf)
-proved very useful. It includes highly detailed diagrams like this one:
-
-![HVAC System Diagram](/assets/hvac-arduino-matter/hvac-system-overview-diagram.png)
+proved very useful.
 
 And when it homes to my smart home setup, I mostly use Zigbee devices, along
 with some Matter devices. Apple HomePod Minis manage the Matter network, while
@@ -57,6 +59,8 @@ are expected some degree of compliance with these profiles.
 
 ## Approach 1: Buy an off-the-shelf solution
 
+![off-the-shelf solution](/assets/hvac-arduino-matter/off-the-shelf-solution-diagram.png)
+
 The first approach I considered was to just buy a smart HVAC controller that
 would grant me full control over the system: Setting temperatures, fan speeds,
 modes, etc.
@@ -72,6 +76,8 @@ want to connect this thing without replacing very significant parts of the
 system, I need to go DIY.
 
 ## Approach 2: Reverse engineer the communications between the remote controller and the indoor unit
+
+![remote controller implant](/assets/hvac-arduino-matter/remote-controller-implant.png)
 
 The remote controller is connected to the indoor unit using a 2-wire cable. it
 provides power to the remote controller over those 2 lines, and also carries
@@ -114,6 +120,8 @@ keeping the Arduino inside it would make future maintenance or changes more
 difficult than I'd like.
 
 ## Final Approach: Connecting an Arduino Nano Matter to the Indoor Unit
+
+![indoor unit implant](/assets/hvac-arduino-matter/indoor-unit-implant.png)
 
 ### The solution
 
