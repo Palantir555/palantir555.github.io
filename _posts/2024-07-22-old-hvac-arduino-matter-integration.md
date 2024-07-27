@@ -24,6 +24,8 @@ But how?
 
 There are 3 components in my very old Mitsubishi Electric HVAC system:
 
+![HVAC System Overview](/assets/hvac-arduino-matter/architecture-overview.png)
+
 1. Indoor (Main) Unit: This is the unit that is inside the house. In my case,
    hidden over the drop ceiling in the bathroom. It conditions the air (cooling
    or heating), blows it through the ducts, controls its humidity, filters it...
@@ -33,10 +35,6 @@ There are 3 components in my very old Mitsubishi Electric HVAC system:
    exchange with the outside air.
 3. Remote Controller: This is the wall-mounted device that allows you to configure
    the system. It has a display and buttons 
-
-Overall, the HVAC system looks like this:
-
-![HVAC System Overview](/assets/hvac-arduino-matter/architecture-overview.png)
 
 For all the technical details, you can refer to your system's manual. In my case,
 the [Technical & Service Manual](/assets/hvac-arduino-matter/mitsubishi-aircon-mrslim_peh_series.pdf)
@@ -77,8 +75,6 @@ system, I need to go DIY.
 
 ## Approach 2: Reverse engineer the communications between the remote controller and the indoor unit
 
-![remote controller implant](/assets/hvac-arduino-matter/remote-controller-implant.png)
-
 The remote controller is connected to the indoor unit using a 2-wire cable. it
 provides power to the remote controller over those 2 lines, and also carries
 the bidirectional communication between the two devices.
@@ -89,6 +85,8 @@ control, since I very rarely change the settings in the system. I just need to
 turn it on and off.
 
 ## Approach 3: Create an Arduino Nano Matter implant for the remote controller
+
+![remote controller implant](/assets/hvac-arduino-matter/remote-controller-implant.png)
 
 Earlier this year, Arduino released a new board called the
 [Arduino Nano Matter](https://store.arduino.cc/pages/nano-matter). It was built
