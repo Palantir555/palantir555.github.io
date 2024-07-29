@@ -227,6 +227,8 @@ So, there you go! My HVAC system is now Matter-enabled, and I can easily
 control it from my phone, automate when I want it to turn on/off, or ask
 Siri/Alexa/Google to control it for me.
 
+![toggling hvac on/off](/assets/hvac-arduino-matter/toggling-hvac-onoff.gif)
+
 For a project built in a handful of evenings, I'm very happy with the result.
 
 and I hope this article helps you integrate whichever devices you couldn't
