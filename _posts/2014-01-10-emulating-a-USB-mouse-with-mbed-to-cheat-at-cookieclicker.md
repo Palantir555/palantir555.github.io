@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Emulating a USB Mouse with mbed to Cheat at CookieClicker
+summary: Using an mbed microcontroller's USBMouse and USBKeyboard libraries to emulate USB input devices, demonstrated by auto-clicking in CookieClicker and inflating APM in StarCraft 2.
 thumbnail: /assets/other-assets/mbed-cookie-cheater.jpg
 tags:
 - embedded

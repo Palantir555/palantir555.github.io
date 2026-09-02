@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Quick development of bluetooth-based costume props using Arduino and ESP32
+summary: Building a Bluetooth Low Energy costume prop for Halloween using two ESP32 boards, an accelerometer to detect hits, and an LED strip and speaker to simulate lightning and thunder in response.
 thumbnail: /assets/halloween-ble/JWfa1by.jpg
 tags:
 - bluetooth

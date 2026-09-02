@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 1 - Hunting for Debug Ports
+summary: First post in a router reverse engineering series, covering how to locate an undocumented UART debug port on a Huawei HG533 router's PCB, identify its pinout and baud rate, and use it to gain root shell access.
 thumbnail: /assets/practical-reversing/g0REmPG.jpg
 demux: true
 tags:

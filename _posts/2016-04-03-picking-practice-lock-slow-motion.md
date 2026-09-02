@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Picking a Practice Lock in Slow Motion
+summary: A slow motion video and explanation of picking a cut-away practice lock using the racking method, showing how tension wrench pressure affects pin setting.
 thumbnail: /assets/other-assets/lock-picking.jpg
 tags:
 - security

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Learning to Decapsulate Integrated Circuits Using Acid Deposition
+summary: A trial and error account of learning to decapsulate integrated circuits at home using nitric acid deposition, an acetone syringe, and an ultrasonic cleaner, including safety precautions and microscope photos of exposed silicon dies.
 thumbnail: /assets/ic-decapping/jc/micro-result-pic16f84-ultrasonic-acetone.jpg
 demux: true
 tags:

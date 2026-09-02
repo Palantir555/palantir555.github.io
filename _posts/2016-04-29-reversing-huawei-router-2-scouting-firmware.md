@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 2 - Scouting the Firmware
+summary: Second post in the series, using the UART shell to explore the router's BusyBox filesystem, uncovering plaintext credentials, private keys, and configuration files, and taking a first look at the bootloader's U-Boot console.
 thumbnail: /assets/practical-reversing/aZ32bs8.png
 demux: true
 tags:

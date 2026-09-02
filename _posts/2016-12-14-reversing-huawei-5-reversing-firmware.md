@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 5 - Digging Through the Firmware
+summary: Fifth post in the series, covering how to obtain GPL source code, disassemble MIPS binaries with tools like IDA, and search the firmware for a default WiFi password algorithm and command injection vulnerabilities.
 thumbnail: /assets/practical-reversing/gRI8fMt.png
 demux: true
 tags:

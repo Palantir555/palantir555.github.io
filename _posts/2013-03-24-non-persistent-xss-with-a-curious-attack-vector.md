@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Non-Persistent XSS with a Curious Attack Vector
+summary: A writeup of a non-persistent XSS vulnerability found in a Spanish meme site's search pagination, including the unusual attack vector needed to bypass its filtering and how it was responsibly disclosed and fixed.
 thumbnail: /assets/practical-reversing/Q9kp2jp.png
 tags:
 - security

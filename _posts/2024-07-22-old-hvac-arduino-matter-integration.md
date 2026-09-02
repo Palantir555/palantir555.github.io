@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Integrating Systems Into Your Smart Home Using Arduino Nano Matter"
+summary: Integrating an old Mitsubishi Electric HVAC system into a Matter smart home using an Arduino Nano Matter.
 thumbnail: /assets/hvac-arduino-matter/arduino-nano-relay-diagram.png
 demux: true
 tags:

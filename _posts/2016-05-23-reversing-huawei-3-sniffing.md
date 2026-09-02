@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 3 - Following the Data
+summary: Third post in the series, explaining how to sniff SPI traffic between the router's main chip and flash memory with a logic analyzer, and using custom Python scripts to reconstruct the data being read and written.
 thumbnail: /assets/practical-reversing/JRgtMEM.jpg
 demux: true
 tags:

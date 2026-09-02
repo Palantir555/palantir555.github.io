@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Practical Introduction to BLE GATT Reverse Engineering: Hacking the Domyos EL500"
+summary: A practical introduction to reverse engineering Bluetooth GATT devices, using a Domyos EL500 elliptical trainer as an example by leeching notifications, spoofing the device with an ESP32, and building a man in the middle to log its protocol.
 thumbnail: /assets/domyos-el500/thumbnail.jpg
 demux: true
 tags:

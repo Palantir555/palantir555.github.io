@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Practical Reverse Engineering Part 4 - Dumping the Flash
+summary: Fourth post in the series, detailing how to dump the router's flash chip directly with an SPI programmer, then split and decompress the resulting image into its bootloader, kernel, and filesystem segments.
 thumbnail: /assets/other-assets/flashdump-thumbnail.jpg
 demux: true
 tags:
