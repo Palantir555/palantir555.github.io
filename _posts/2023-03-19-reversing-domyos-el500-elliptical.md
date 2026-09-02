@@ -2,6 +2,7 @@
 layout: post
 title: "Practical Introduction to BLE GATT Reverse Engineering: Hacking the Domyos EL500"
 thumbnail: /assets/domyos-el500/thumbnail.jpg
+demux: true
 tags:
 - reverse engineering
 - reversing
