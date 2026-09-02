@@ -2,17 +2,16 @@
 layout: post
 title: Learning to Decapsulate Integrated Circuits Using Acid Deposition
 thumbnail: /assets/ic-decapping/jc/micro-result-pic16f84-ultrasonic-acetone.jpg
+demux: true
 tags:
 - reverse engineering
 - integrated circuit
 - IC
 - decapsultion
-- decap
 - decapping
 - acid
 - nitric
 - ultrasound
-- syringe
 - embedded
 ---
 

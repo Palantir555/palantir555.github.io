@@ -2,8 +2,12 @@
 layout: post
 title: Practical Reverse Engineering Part 2 - Scouting the Firmware
 thumbnail: /assets/practical-reversing/aZ32bs8.png
+demux: true
 tags:
 - reverse engineering
+- linux
+- u-boot
+- BusyBox
 ---
 
 - [Part 1]({{ site.url }}/2016/04/08/reversing-huawei-router-1-find-uart/):

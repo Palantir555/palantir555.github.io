@@ -2,6 +2,7 @@
 layout: post
 title: Practical Reverse Engineering Part 5 - Digging Through the Firmware
 thumbnail: /assets/practical-reversing/gRI8fMt.png
+demux: true
 tags:
 - reverse engineering
 - IDA

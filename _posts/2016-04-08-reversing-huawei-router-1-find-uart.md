@@ -2,8 +2,12 @@
 layout: post
 title: Practical Reverse Engineering Part 1 - Hunting for Debug Ports
 thumbnail: /assets/practical-reversing/g0REmPG.jpg
+demux: true
 tags:
 - reverse engineering
+- UART
+- linux
+- PCB
 ---
 
 - **Part 1**: Hunting for Debug Ports

@@ -2,8 +2,13 @@
 layout: post
 title: Practical Reverse Engineering Part 3 - Following the Data
 thumbnail: /assets/practical-reversing/JRgtMEM.jpg
+demux: true
 tags:
 - reverse engineering
+- firmware
+- logic analyzer
+- SPI
+- serial
 ---
 
 - [Part 1]({{ site.url }}/2016/04/08/reversing-huawei-router-1-find-uart/):

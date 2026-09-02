@@ -2,6 +2,7 @@
 layout: post
 title: "Integrating Systems Into Your Smart Home Using Arduino Nano Matter"
 thumbnail: /assets/hvac-arduino-matter/arduino-nano-relay-diagram.png
+demux: true
 tags:
 - diy
 - firmware

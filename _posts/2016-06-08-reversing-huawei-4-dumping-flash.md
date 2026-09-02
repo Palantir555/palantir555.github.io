@@ -2,8 +2,14 @@
 layout: post
 title: Practical Reverse Engineering Part 4 - Dumping the Flash
 thumbnail: /assets/other-assets/flashdump-thumbnail.jpg
+demux: true
 tags:
 - reverse engineering
+- flash
+- SPI
+- memory dumping
+- logic analyzer
+- sniffing
 ---
 
 - [Part 1]({{ site.url }}/2016/04/08/reversing-huawei-router-1-find-uart/):
