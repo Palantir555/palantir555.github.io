@@ -3,8 +3,8 @@
 <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta property="og:image" content="{% if page.thumbnail %}{{ site.baseurl }}{{ page.thumbnail }}{% else %}{{ site.baseurl }}{{ site.homepage_thumbnail }}{% endif %}">
 
-{% if page.description %}
-  <meta property="og:description" content="{{ page.description | strip_html | strip_newlines | truncate: 160 }}">
+{% if page.summary %}
+  <meta property="og:description" content="{{ page.summary | strip_html | strip_newlines | truncate: 160 }}">
 {% endif %}
 
 {% if page.date %}

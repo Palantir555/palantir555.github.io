@@ -4,6 +4,13 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Canonical URL: tells search engines which URL variant (https/apex) is authoritative -->
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <!-- Meta description: shown in Google search result snippets -->
+  <meta name="description" content="{{ page.summary | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PFE1L556R2"></script>
   <script>
